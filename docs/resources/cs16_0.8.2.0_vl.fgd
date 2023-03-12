@@ -1,0 +1,3420 @@
+// ------------------------------------------------------------------------------
+// cs1.6 游戏定义文件 (.fgd)
+// 版本号: 0.8.2.0
+// 最后更新标识：2012年7月18日 由 vluzacn
+// 支持:
+//   地图编辑器 Worldcraft 3.3, Hammer 3.4 - 3.5beta4 (部分效果在 Hammer 3.5 中才能显示)
+//   编译程序 ZHLT 各版本 (部分键值只在特定版本 ZHLT 有效)
+//   游戏 Half-Life 1.0.0.9 plus cs1.6
+// -------------------------------------------------------------------------------
+//
+// 声明:
+//   可以任意发布修改版,如发布修改版请务必在发布说明中包含完整作者信息及本声明.
+//
+// 作者信息:
+// by Justin DeJong aka "N0TH1NG" modified from code by Chris Bokitch aka "autolycus"
+// by Tim Holt aka Waldo (burkenholt@home.com) modified from code by Justin DeJong aka "N0TH1NG"
+// Version 0.7.7 and 0.7.8 by fjl (fjl05@yahoo.com)
+// Version 0.7.8enhanced and 0.7.9.2e by tommy of escondido
+// Version 0.7.9.2 by KeshTath (milsys@hotmail.com)
+// Version 0.7.9.3 & 0.7.9.3b & 0.7.9.3c by tommy of escondido
+// Version 0.7.9.4 - 0.7.9.9 by Anders Jenbo aka Wolf aka NoBody (fuck@os.dk)
+// Version 0.8.0.1 - 0.8.0.5 by Hex-a-Decimal (okas_p_m_92@yahoo.com)
+// 翻译 vluzacn (vluzacn@163.com)
+// 版本 0.8.1.0 - 0.8.2.0 修改者 vluzacn (vluzacn@163.com)
+//
+// -----------------------------------------------------------------------
+//
+// 修改须知请勿删除 (by vluzacn) :
+//   添加删除任何实体键值请先自己测试并查找相关资料.
+//   为保持fgd兼容性,不要做不必要的细微修改.
+//   fgd文件命名: "cs16_<版本号>_<不超过5字母的最后修改者标识>.fgd".
+//   请参考更新历史使用恰当版本号
+//
+// -----------------------------------------------------------------------
+// 更新历史(详见文本最后)
+// 2012年7月18日 - vluzacn (0.8.2.0)
+// 2010年9月26日 - vluzacn (0.8.1.4)
+// 2010年8月14日 - vluzacn (0.8.1.3)
+// 2010年6月7日 - vluzacn (0.8.1.2)
+// 2010年5月23日 - vluzacn (0.8.1.1c)
+// 2010年1月26日 - vluzacn (0.8.1.1b)
+// 2009年12月26日 - vluzacn (0.8.1.1)
+// 2009年11月14日 - vluzacn (0.8.1.0c)
+// 2009年11月4日 - vluzacn (0.8.1.0b)
+// 2009年10月25日 - vluzacn (0.8.1.0)
+// August 9, 2008 - Hex-a-Decimal (0.8.0.5)
+// July 25, 2008 - Hex-a-Decimal (0.8.0.4)
+// July 2, 2008 - Hex-a-Decimal (0.8.0.3)
+// July 1, 2008 - Hex-a-Decimal (0.8.0.2)
+// June 30, 2008 - Hex-a-Decimal (0.8.0.1)
+// May 12, 2005 - Wolf (0.8.0.0)
+// Agust 25, 2004 - Wolf (0.7.9.9)
+// Agust 25, 2004 - Wolf (0.7.9.8)
+// Mar 22, 2004 - tommy (0.7.9.3c)
+// Oct 18, 2003 - tommy (0.7.9.3b)
+// Oct 16, 2003 - tommy (0.7.9.3 fix)
+// Sept 17, 2003 - tommy (0.7.9.3)
+// June 15, 2003 - tommy  (0.7.9.2e)
+// January 21st, 2003 - KeshTath (0.7.9.2)
+// Oct 7th, 2002 - tommy  (0.7.8.1)
+// Aug 19th, 2002 - tommy (0.7.8enhanced)
+// Aug 11th, 2002 - tommy (0.7.8enhanced)
+// Aug 2nd, 2002 - tommy (0.7.8enhanced)
+// April 29th, 2002 - tommy (0.7.8enhanced)
+// April 7th, 2002 - fjl (0.7.8)
+// March 16th, 2002 - fjl (0.7.7)
+// Jan 26, 2001 - Tim Holt (0.7.6)
+// Jan 6, 2001 - Tim Holt (0.7.5)
+// 01/05/2001 - Morlam (0.7.4)
+// 01/04/2001 - Morlam (0.7.3)
+// 01/01/2001 - Tim Holt (0.7.2)
+// 12/31/2000 - Tim Holt (0.7.1)
+// Original changes by Tim Holt (0.7.0)
+//
+// --------------------------------------------------------------------------------
+
+//
+// 在此设置各类实体的颜色
+//
+
+@BaseClass color(0 255 0) = color_player []
+@BaseClass color(64 128 0) = color_cs []
+@BaseClass color(255 255 0) = color_light []
+@BaseClass color(255 255 255) = color_env []
+@BaseClass color(192 192 192) = color_wall []
+@BaseClass color(64 64 64) = color_point []
+@BaseClass color(255 128 0) = color_door []
+@BaseClass color(192 64 0) = color_effect []
+@BaseClass color(255 32 0) = color_func []
+@BaseClass color(255 0 0) = color_compile []
+@BaseClass color(255 0 128) = color_trigger []
+@BaseClass color(255 64 128) = color_game []
+@BaseClass color(255 64 64) = color_path []
+
+//
+// Worldspawn
+//
+
+@SolidClass = worldspawn : "World entity"
+[
+	message(string) : "注释 (无用)"
+	style(choices) : " 纹理发光样式" : "" =
+	[
+		"" : "普通"
+		10: "闪烁的荧光"
+		2 : "脉冲 缓慢 强大"
+		11: "脉冲 缓慢"
+		5 : "脉冲 温和"
+		1 : "闪烁 A"
+		6 : "闪烁 B"
+		3 : "烛光 A"
+		7 : "烛光 B"
+		8 : "烛光 C"
+		4 : "滤波 快速"
+		9 : "滤波 缓慢"
+		12: "水下光线"
+	]
+	_minlight(string) : " 最小灯光等级 (0.0-2.0)"
+	skyname(string) : "天空背景图"
+//-	sounds(integer) : "播放的CD音轨" : 0
+//-	light(integer) : "默认灯光级别" : 0
+	WaveHeight(string) : "水纹理固体的波浪高度" : "0"
+	MaxRange(string) : "最大可视距离" : "32768"
+	startdark(choices) : "开始时黑暗" : "" =
+	[
+		"" : "否"
+		1 : "是"
+	]
+//-	newunit(choices) : "进入新关卡单元" : "" = 
+//-	[
+//-		"" : "否,保留原有状态"
+//-		1 : "是,清除保存状态"
+//-	]
+]
+
+//
+// BaseClasses
+//
+
+@BaseClass = Targetname 
+[
+	targetname(target_source) : "名称"
+]
+
+@BaseClass = Global 
+[
+//-	globalname(string) : "全局实体名称" 
+]
+
+@BaseClass = Master
+[
+	master(string) : "属主" 
+]
+
+@BaseClass = Target 
+[
+	target(target_destination) : "目标" 
+]
+
+@BaseClass base(Target) = Targetx 
+[
+	delay(string) : "引发前延时" : "0"
+	killtarget(target_destination) : "删除的目标 (无法复原)"
+]
+
+@BaseClass = Angles
+[
+	angles(choices) : "实体角度 (倾斜 旋转 滚动)" : "0 0 0" =
+	[
+		"-90 0 0" : "-90 0 0 (向上)"
+		"90 0 0" : "90 0 0 (向下)"
+	]
+]
+
+@BaseClass = Appearflags
+[
+	spawnflags(Flags) =
+	[
+		2048 : "死亡模式中禁用" : 0
+	]
+]
+
+@BaseClass = Skin
+[
+	skin(choices) : "内容物 (非固体时)" : "" =
+	[
+		"": "无"
+		-1: "空"
+		-3: "水"
+		-4: "毒液"
+		-5: "熔岩"
+		-6: "水2"
+		-16: "梯 (攀爬区域)"
+	]
+]
+
+@BaseClass = WaveScale
+[
+	scale(string) : "波浪高度(8单位)" : ""
+]
+
+@BaseClass = Effects
+[
+	effects(choices) : " 实体效果 (数字可相加)": "" =
+	[
+		"" : "无"
+		1 : "1 (粒子漩涡)"
+		2 : "2 (枪口火焰)"
+		4 : "4 (强光)"
+		8 : "8 (弱光)"
+		16 : "16 (假定环境光线向上)"
+		32 : "32 (不插入下一帧)"
+		64 : "64 (发光图标)"
+		128 : "128 (不可见/无网络传输)"
+	]
+]
+
+@BaseClass = Gravity
+[
+	gravity(string) : "重力 (1.0=正常 填0无效)" : "1"
+]
+@BaseClass = Velocity
+[
+	velocity(string): "初始移动速度 (X Y Z)" : "0 0 0"
+]
+@BaseClass = Avelocity
+[
+	avelocity(string) : "初始转动速度 (倾斜 旋转 滚动)" : "0 0 0"
+]
+
+@BaseClass = RenderFxChoices
+[
+	renderfx(choices) :" 渲染效果" : "" =
+	[
+		"": "普通 (0)"
+		//* Additive or Texture mode only.
+		1: "脉冲 缓慢 (1)"
+		//* Additive or Texture mode only.
+		2: "脉冲 快速 (2)"
+		//* Additive or Texture mode only.
+		3: "脉冲 缓慢大范围 (3)"
+		//* Additive or Texture mode only.
+		4: "脉冲 快速大范围 (4)"
+		9: "滤波 缓慢 (9)"
+		10: "滤波 快速 (10)"
+		11: "滤波 极快 (11)"
+		12: "闪烁 缓慢 (12)"
+		13: "闪烁 快速 (13)"
+//*These don't seem to do anything. Correct me if I'm wrong... 
+//*		5: "Slow Fade Away"
+//*		6: "Fast Fade Away"
+//*		7: "Slow Become Solid"
+//*		8: "Fast Become Solid"
+//* Constant Glow only affects the Glow rendermode. With this setting, Glow mode behaves
+//* exactly like Additive mode - except that (as is usual for Glow mode) the sprite isn't
+//* obscured by intervening sprites or models. (Hmm. Call me slow, but..... how is this
+//* useful?)
+		14: "恒定的发光模式 (14)"
+		15: "扭曲 (仅模型) (15)"
+		16: "扭曲+渐隐 (16)"
+//* Strange effect. As seen, briefly, when a Gargantua dies.
+		19: "发光外壳(仅模型)(19)"
+	]
+]
+
+@BaseClass = RenderFields 
+[
+	rendermode(choices) : " 渲染模式" : "" =
+	[
+		"": "普通0 - 无光"
+		//*   For BSP objects, the object will be rendered as a pure area of whatever
+		//* color is specified in FX Color.
+		//*   For models and sprites, this is the same as Normal mode.
+		//* 含有透明部分的mdl不要使用这个渲染模式,否则有时会导致后面物体消失.
+
+		1: "纯颜色1 (仅固体实体)"
+		//*   For BSP objects, the object will be rendered without shadows.
+		//*   For models and sprites, this is the same as Normal mode, except that the Pulse
+		//* renderfx settings work.
+
+		2: "纹理2 - 微光(全亮)"
+		//*   Like additive, but as the player gets further from the sprite, it gets
+		//* progressively larger and more transparent. The sprite is also not obscured by
+		//* intervening models, which can sometimes look bad.
+		//*   Alphatest sprites won't use their masks in this mode.
+
+		3: "发光3 (仅图标动画)"
+		//*   For BSP objects, this only affects textures beginning with {. Blue pixels
+		//*   will be transparent; non-blue pixels will be solid.
+		//*   For models, this mode is the same as Normal mode.
+		//*   For sprites, this mode is for displaying sprites in Indexalpha mode - i.e.
+		//* the palette positions are used as opacity settings; 0 for fully transparent,
+		//* and 255 for fully opaque, regardless of what the palette colors actually are.
+		//* The only palette colour that will be used is the last one, which sets the
+		//* colour for the whole sprite. (Needless to say, this will look odd unless the
+		//* sprite is designed to be displayed this way!)
+		//*   Oddly, Alphatest sprites won't use their masks in this mode.
+
+		4: "固体4 - 无光"
+		//*   Only bright parts of the object are visible; darker parts are just more
+		//* transparent, and black is not drawn. Useful for making lighting or hologram
+		//* effects.
+
+		5: "附加5"
+	]
+
+	renderfx(choices) :" 渲染效果" : "" =
+	[
+		"": "普通 (0)"
+		//* Additive or Texture mode only.
+		1: "脉冲 缓慢 (1)"
+		//* Additive or Texture mode only.
+		2: "脉冲 快速 (2)"
+		//* Additive or Texture mode only.
+		3: "脉冲 缓慢大范围 (3)"
+		//* Additive or Texture mode only.
+		4: "脉冲 快速大范围 (4)"
+		9: "滤波 缓慢 (9)"
+		10: "滤波 快速 (10)"
+		11: "滤波 极快 (11)"
+		12: "闪烁 缓慢 (12)"
+		13: "闪烁 快速 (13)"
+//*These don't seem to do anything. Correct me if I'm wrong... 
+//*		5: "Slow Fade Away"
+//*		6: "Fast Fade Away"
+//*		7: "Slow Become Solid"
+//*		8: "Fast Become Solid"
+//* Constant Glow only affects the Glow rendermode. With this setting, Glow mode behaves
+//* exactly like Additive mode - except that (as is usual for Glow mode) the sprite isn't
+//* obscured by intervening sprites or models. (Hmm. Call me slow, but..... how is this
+//* useful?)
+		14: "恒定的发光模式 (14)"
+		15: "扭曲 (仅模型) (15)"
+		16: "扭曲+渐隐 (16)"
+//* Strange effect. As seen, briefly, when a Gargantua dies.
+		19: "发光外壳(仅模型)(19)"
+	]
+
+	renderamt(integer) : " 透明度 (0-255 0=完全透明)" : 255
+	//* 当渲染效果为19时,透明度决定发光外壳的厚度.
+
+	rendercolor(color255) : " 渲染色 (R G B)" : ""
+	//* 当使用滚动纹理(纹理名称scroll开头)时,渲染色决定滚动速度:
+	//* R是速度值的符号,R=0为正,R=1为负,
+	//* G是速度值的高位,G每增加1,速度增加16单位,
+	//* B是速度值的低位,B每增加1,速度增加1/16单位.
+]
+
+// LRCHLT Texture light additions
+// these will only work with advanced compiling tools that allow 
+// switchable texture lighting.  note that lighting used by
+// moveable entitys may be left behind!
+//
+@BaseClass = TexLightType
+[
+	style(choices) : " 纹理发光样式" : "" =
+	[
+		"" : "普通"
+		-3: "捆绑到同名光源"
+		10: "闪烁的荧光"
+		2 : "脉冲 缓慢 强大"
+		11: "脉冲 缓慢"
+		5 : "脉冲 温和"
+		1 : "闪烁 A"
+		6 : "闪烁 B"
+		3 : "烛光 A"
+		7 : "烛光 B"
+		8 : "烛光 C"
+		4 : "滤波 快速"
+		9 : "滤波 缓慢"
+		12: "水下光线"
+	]
+]
+
+@BaseClass = Minlight
+[
+	_minlight(string) : " 最小灯光等级 (0.0-2.0)"
+]
+
+@BaseClass = ZHLT
+[
+	zhlt_invisible(choices) :" (ZHLT)不可见" : "" =
+	[
+		"": "否"
+		1: "是"
+	]
+	zhlt_noclip(choices) :" (ZHLT)不与玩家接触(可穿过)" : "" =
+	[
+		"": "否"
+		1: "是"
+	]
+	zhlt_lightflags(choices) :" (ZHLT)光影选项" : "" =
+	[
+		"": "普通"
+		2: "不透明 (产生阴影)"
+		10: "不透明 + 透明纹理修正"
+	]
+	zhlt_customshadow(color1) : " (ZHLT)自定义阴影"
+	light_origin(string) : " (ZHLT)光影编译移动轴心目标"
+]
+
+@BaseClass base(RenderFields, Effects, TexLightType, ZHLT, Minlight) = SolidVisible
+[
+]
+
+@BaseClass = SolidInvisible
+[
+	zhlt_invisible(choices) :" (ZHLT)不可见的固体实体" : 1 =
+	[
+		1: "是"
+	]
+	zhlt_noclip(choices) :" (ZHLT)不与玩家接触" : "" =
+	[
+		"": "否"
+		1: "是"
+	]
+]
+
+@BaseClass = WarningOnce
+[
+	classname(string) : "[注意!!只能使用一次或一回合]"
+]
+
+@BaseClass base(Targetname, Global, Master, Target, Angles, SolidVisible, Appearflags) = BaseTank
+[
+	// Mainly for use with 1009 team settings (game_team_master)
+	spawnflags(flags) =
+	[
+		1 : "开始时打开(自动射击)" : 0
+		16: "目标消失后停止射击" : 0
+		32: "玩家控制" : 0
+	]
+	yawrate(string) : "左右转动速度" : "45"
+	yawrange(string) : "左右转动范围" : "180"
+	yawtolerance(string) : "左右转动偏差" : "15"
+	pitchrate(string) : "上下转动速度" : "0"
+	pitchrange(string) : "上下转动范围" : "0"
+	pitchtolerance(string) : "上下转动偏差" : "5"
+	barrel(string) : "枪口X坐标 (相对于轴心)" : "0"
+	barrely(string) : "枪口Y坐标 (相对于轴心)" : "0"
+	barrelz(string) : "枪口Z坐标 (相对于轴心)" : "0"
+	spritesmoke(sprite) : "烟雾图标动画文件" : ""
+	spriteflash(sprite) : "火花图标动画文件" : ""
+	spritescale(string) : "图标动画比例" : "1"
+	rotatesound(sound) : "转动声音" : ""
+	firerate(string) : "射速" : "1"
+	bullet_damage(string) : "每发子弹伤害" : "0"
+	persistence(string) : "目标消失后持续射击时间" : "1"
+	firespread(choices) : "射击准确度" : 0 =
+	[
+		0: "完美"
+		1: "较好"
+		2: "一般"
+		3: "较差"
+		4: "极差"
+	]
+	minRange(string) : "最小搜寻范围" : "0"
+	maxRange(string) : "最大搜寻范围" : "0"
+]
+
+@BaseClass = BeamStartEnd 
+[
+	LightningStart(target_destination) : "激光起点" 
+	LightningEnd(target_destination) : "激光终点" 
+]
+
+@BaseClass base(Targetname, Global, Targetx, Angles, SolidVisible, Appearflags) = Breakable
+[
+	health(integer) : "耐久度" : 1
+	material(choices) :"材质" : "" =
+	[
+		//*   <b>Gibs:</b> models/glassgibs.mdl
+		//*   <b>Break noise:</b> debris/bustglassX.wav
+		//*   <b>Bounce noise:</b> debris/glassX.wav
+		"": "玻璃"
+		//*   <b>Gibs:</b> models/woodgibs.mdl
+		//*   <b>Break noise:</b> debris/bustcrateX.wav
+		//*   <b>Bounce noise:</b> debris/woodX.wav
+		1: "木头"
+		//*   <b>Gibs:</b> models/metalplategibs.mdl
+		//*   <b>Break noise:</b> debris/bustmetalX.wav
+		//*   <b>Bounce noise:</b> debris/metalX.wav
+		2: "金属"
+		//*   <b>Gibs:</b> models/fleshgibs.mdl
+		//*   <b>Break noise:</b> debris/bustfleshX.wav
+		//*   <b>Bounce noise:</b> debris/fleshX.wav
+		3: "肉"
+		//*   <b>Gibs:</b> models/cindergibs.mdl
+		//*   <b>Break noise:</b> debris/bustconcreteX.wav
+		//*   <b>Bounce noise:</b> debris/concreteX.wav
+		4: "空心砖"  
+		//*   <b>Gibs:</b> models/ceilinggibs.mdl
+		//*   <b>Break noise:</b> debris/bustceilingX.wav
+		//*   <b>Bounce noise:</b> none
+		5: "天花板"
+		//*   <b>Gibs:</b> models/computergibs.mdl
+		//*   <b>Break noise:</b> debris/bustmetalX.wav
+		//*   <b>Bounce noise:</b> debris/woodX.wav
+		//*   <b>Note:</b> Generates sparks when damaged.
+		6: "电脑"
+		//*   <b>Gibs:</b> models/glassgibs.mdl
+		//*   <b>Break noise:</b> debris/bustglassX.wav
+		//*   <b>Bounce noise:</b> debris/glassX.wav
+		//*   <b>Note:</b> Makes ricochet noises when damaged.
+		7: "防弹玻璃 (无法击碎)"
+		//*   <b>Gibs:</b> models/rockgibs.mdl
+		//*   <b>Break noise:</b> debris/bustconcreteX.wav
+		//*   <b>Bounce noise:</b> debris/concreteX.wav
+		8: "岩石"
+	]
+	explosion(choices) : "碎片散发方向" : "random" =
+	[
+		"random": "随机"
+		"directed": "攻击者方向"
+	]
+	gibmodel(studio) : "碎片模型" : ""
+	spawnobject(choices) : "破碎时产生的实体[无法复位]" : "" =
+	[
+		"": "无"
+		1: "盔甲能量"
+		2: "医药包"
+		9: "散弹枪弹药"
+	]
+	explodemagnitude(integer) : "爆炸范围 (0=不爆炸)" : 0
+]
+
+//* Don't create a light whose name begins with "light" - a bug/feature in RAD means
+//* that such a light won't be able to switch on and off.
+@BaseClass = Light 
+[
+	_light(color255) : "光线 (颜色和亮度)" : "255 255 255 100"
+	//* This field will have no effect on a dynamic (i.e. named) light.
+	style(Choices) : "光线样式 (实体无名称时)" : "" =
+	[
+		"" : "普通"
+		10: "闪烁的荧光"
+		2 : "脉冲 缓慢强大"
+		11: "脉冲 缓慢"
+		5 : "脉冲 温和"
+		1 : "闪烁 A"
+		6 : "闪烁 B"
+		3 : "烛光 A"
+		7 : "烛光 B"
+		8 : "烛光 C"
+		4 : "滤波 快速"
+		9 : "滤波 缓慢"
+		12 : "水下光线"
+	]
+	//* This field will have no effect on a static (i.e. nameless) light.
+	//*   'a' is dark, 'm' is normal brightness, 'z' is full brightness.
+	//* There's no support for a light to have a custom appearances when it's in a
+	//* state other than 'on'. See trigger_lightstyle if you need this effect.
+	pattern(string) : "自定义样式(a-z) (实体有名称时)"
+	_fade(string) : "光线衰减速度 (仅ZHLT)" : ""
+	_falloff(Choices) : "光线衰减模式 (仅ZHLT)" : "" =
+	[
+		"" : "默认"
+		1 : "线性"
+		2 : "平方"
+	]
+	spawnflags(Flags) =
+	[
+		1 : "开始时关闭" : 0
+	]
+]
+
+@BaseClass size(-16 -16 -16, 16 16 16) = gibshooterbase
+[
+	//* The number of pieces to create.
+	m_iGibs(integer) : "喷射数量" : 3
+	//* Delay (in seconds) between shots. If 0, all the gibs are fired at once.
+	delay(string) : "喷射间隔 (0=同时喷出)" : "0"
+	//* How fast the gibs are fired
+	m_flVelocity(integer) : "喷射速度" : 200
+	//* Course variance
+	m_flVariance(string) : "方向变化程度" : "0.15"
+	//* Time in seconds for gibs to live, +/- 5%
+	m_flGibLife(string) : "落地后保留时间" : "4"
+	spawnflags(Flags) = 
+	[
+		1 : "可多次引发" : 0
+	]
+]
+
+@BaseClass = ButtonSounds
+[
+	sounds(choices) : "声音样式 (sound/buttons/)" : "" = 
+	[
+		"": "无"
+		1: "电钮1 button1.wav"
+		2: "电钮2 button2.wav"
+		3: "电钮3 button3.wav"
+		4: "电钮4 button4.wav"
+		5: "电钮5 button5.wav"
+		6: "电钮6 button6.wav"
+		7: "电钮7 button7.wav"
+		8: "电钮8 button8.wav"
+		9: "电钮9 button9.wav"
+		10: "电钮10 button10.wav"
+		11: "电钮11 button11.wav"
+		12: "门闩锁住 latchlocked1.wav"
+		13: "门闩解锁 latchunlocked1.wav"
+		14: "普通电灯开关 lightswitch2.wav"
+		21: "转门 lever1.wav"
+		22: "转门 lever2.wav"
+		23: "转门 lever3.wav"
+		24: "转门 lever4.wav"
+		25: "转门 lever5.wav"
+	]
+]
+
+@BaseClass = LockedUnlocked
+[
+	//*   The locked sound & sentence will be played if
+	//*   The player walks into a door which has a name. 
+	locked_sound(choices) : "锁住时的声音 (sound/buttons/)" : "" = 
+	[
+		"": "无"
+		1: "电钮1 button1.wav"
+		2: "电钮2 button2.wav"
+		3: "电钮3 button3.wav"
+		4: "电钮4 button4.wav"
+		5: "电钮5 button5.wav"
+		6: "电钮6 button6.wav"
+		7: "电钮7 button7.wav"
+		8: "电钮8 button8.wav"
+		9: "电钮9 button9.wav"
+		10: "电钮10 button10.wav"
+		11: "电钮11 button11.wav"
+		12: "门闩锁住 latchlocked1.wav"
+		13: "门闩解锁 latchunlocked1.wav"
+		14: "普通电灯开关 lightswitch2.wav"
+		21: "转门1 lever1.wav"
+		22: "转门2 lever2.wav"
+		23: "转门3 lever3.wav"
+		24: "转门4 lever4.wav"
+		25: "转门5 lever5.wav"
+	]
+	//*   The unlocked sound & sentence will be played whenever a door starts to open and whenever
+	//* a button starts to push in. (They will never be played when a door starts to close, even if
+	//* "Toggle" is selected.)
+	unlocked_sound(choices) : "解锁时的声音 (sound/buttons/)" : "" = 
+	[
+		"": "无"
+		1: "电钮1 button1.wav"
+		2: "电钮2 button2.wav"
+		3: "电钮3 button3.wav"
+		4: "电钮4 button4.wav"
+		5: "电钮5 button5.wav"
+		6: "电钮6 button6.wav"
+		7: "电钮7 button7.wav"
+		8: "电钮8 button8.wav"
+		9: "电钮9 button9.wav"
+		10: "电钮10 button10.wav"
+		11: "电钮11 button11.wav"
+		12: "门闩锁住 latchlocked1.wav"
+		13: "门闩解锁 latchunlocked1.wav"
+		14: "普通电灯开关 lightswitch2.wav"
+		21: "转门1 lever1.wav"
+		22: "转门2 lever2.wav"
+		23: "转门3 lever3.wav"
+		24: "转门4 lever4.wav"
+		25: "转门5 lever5.wav"
+	]
+	locked_sentence(choices) : "锁住时的语句" : "" = 
+	[
+	//* The letters correspond to the sentence group played (see sound/sentences.txt);
+	//* e.g. Blast Door (NF) will cycle through NF0, NF1 and NF3.
+		"": "无"
+		1: "信息（拒绝访问）"
+		2: "安全锁定"
+		3: "防爆门效果"
+		4: "防火门效果"
+		5: "防化门效果"
+		6: "防射线门效果"
+		7: "信息（围堵）"
+		8: "维护门效果"
+		9: "破损关门效果"
+	]
+	unlocked_sentence(choices) : "解锁时的语句" : "" = 
+	[
+	//* The letters correspond to the sentence group played (see sound/sentences.txt);
+	//* e.g. Blast Door (EF) will cycle through EF0, EF1 and EF3.
+		"": "无"
+		1: "信息（访问通过）"
+		2: "安全打开"
+		3: "防爆门效果"
+		4: "防火门效果"
+		5: "防化门效果"
+		6: "防射线门效果"
+		7: "信息（围堵）"
+		8: "维护门效果"
+	]
+]
+
+@BaseClass base(Targetname, Targetx, Global, Master, Angles, SolidVisible, LockedUnlocked, Appearflags) = Door
+[
+	skin(choices) : "内容物" : 0 =
+	[
+		0: "默认"
+		-1: "空"
+		-3: "水"
+		-4: "毒液"
+		-5: "熔岩"
+		-6: "水2"
+		-16: "梯 (攀爬区域)"
+	]
+	speed(integer) : "移动速度" : 64
+	//* -----------------------------------------------------------------
+	//* The number against each sound corresponds to the wav file played.
+	//* e.g. Vacuum (4) plays "doors/doormove4.wav".
+	//* -----------------------------------------------------------------
+	movesnd(choices) : "移动声音 (sound/doors/)" : "" = 
+	[
+		"": "无声"
+		1: "电动机 doormove1.wav"
+		2: "气动 doormove2.wav"
+		3: "气动滚轴 doormove3.wav"
+		4: "真空 doormove4.wav"
+		5: "液压 doormove5.wav"
+		6: "大滚轴 doormove6.wav"
+		7: "轨道门 doormove7.wav"
+		8: "爽快的金属门 doormove8.wav"
+		9: "吱吱响1 doormove9.wav"
+		10: "吱吱响2 doormove10.wav"
+	]
+	//* -----------------------------------------------------------------
+	//* The number against each sound corresponds to the wav file played.
+	//* e.g. Chunk (4) plays "doors/doorstop4.wav".
+	//* -----------------------------------------------------------------
+	stopsnd(choices) : "停止声音 (sound/doors/)" : "" = 
+	[
+		"": "无声"
+		1: "叮当响 doorstop1.wav"
+		2: "叮当混响 doorstop2.wav"
+		3: "齿轮 doorstop3.wav"
+		4: "结实的门 doorstop4.wav"
+		5: "轻型气闸 doorstop5.wav"
+		6: "金属滑动 doorstop6.wav"
+		7: "金属锁 doorstop7.wav"
+		8: "轻快金属 doorstop8.wav"
+	]
+//* Setting wait to -1 also prevents the door from reversing when it comes into
+//* contact with the player, as seen on the bunker door in Crossfire.
+	wait(integer) : "关闭前延时 (-1=直到新回合)" : 4
+	lip(integer) : "露出的尺寸" : 0
+	dmg(integer) : "挤压伤害" : 0
+	healthvalue(integer): "引发时加血" : 0
+//-	message(string) : "引发时显示的信息名"
+	netname(string) : "关闭时引发的目标"
+//-	health(integer) : "耐久度 (通过枪击打开)" : 0
+	WaveHeight(integer) : "波浪高度" : 0
+	spawnflags(flags) =
+	[
+		1 : "开始时打开" : 0
+		4 : "?不连接" : 0
+		8: "内容物非固体" : 0
+		32: "不自动关闭" : 0
+//* Normally a named door, or a door with "use only" selected, won't open when touched.
+		256: "按E键打开" : 0
+	]
+]
+
+@BaseClass = PlatSounds 
+[
+	movesnd(choices) : "移动声音 (sound/plats/)" : "" = 
+	[
+		"": "无"
+		//* plats/bigmove1.wav
+		1: "大电梯 bigmove1.wav"
+		//* plats/bigmove2.wav
+		2: "大电梯 bigmove2.wav"
+		//* plats/elevmove1.wav
+		3: "电梯 elevmove1.wav"
+		//* plats/elevmove2.wav
+		4: "电梯 elevmove2.wav"
+		//* plats/elevmove3.wav
+		5: "电梯 elevmove3.wav"
+		//* plats/freightmove1.wav
+		6: "货物 freightmove1.wav"
+		//* plats/freightmove2.wav
+		7: "货物 freightmove2.wav"
+		//* plats/heavymove1.wav
+		8: "沉重 heavymove1.wav"
+		//* plats/rackmove1.wav
+		9: "齿条 rackmove1.wav"
+		//* plats/railmove1.wav
+		10: "齿条 railmove1.wav"
+		//* plats/squeekmove1.wav
+		11: "杂乱 squeekmove1.wav"
+		//* plats/talkmove1.wav
+		12: "怪异 talkmove1.wav"
+		//* plats/talkmove2.wav
+		13: "怪异 talkmove2.wav"
+	]
+	stopsnd(choices) : "停止声音 (sound/plats/)" : "" = 
+	[
+		"": "无"
+		//* plats/bigstop1.wav
+		1: "大电梯 bigstop1.wav"
+		//* plats/bigstop2.wav
+		2: "大电梯 bigstop2.wav"
+		//* plats/freightstop1.wav
+		3: "货物 freightstop1.wav"
+		//* plats/heavystop2.wav
+		4: "沉重 heavystop2.wav"
+		//* plats/rackstop1.wav
+		5: "齿条 rackstop1.wav"
+		//* plats/railstop1.wav
+		6: "齿条 railstop1.wav"
+		//* plats/squeekstop1.wav
+		7: "杂乱 squeekstop1.wav"
+		//* plats/talkstop1.wav
+		8: "怪异 talkstop1.wav"
+	]
+	volume(string) : "音量 (0.0-1.0)" : "0.85"
+]
+
+@BaseClass = PlayerAnim
+[
+	sequence(Choices) : "显示的动作 (仅编辑器中)" : 0 =
+	[
+	0 : "dummy"	1 : "idle1"	2 : "crouch_idle"	3 : "walk"	4 : "run"	5 : "crouchrun"
+	6 : "jump"	7 : "longjump"	8 : "swim"	9 : "treadwater"	10 : "crouch_aim_carbine"
+	11 : "crouch_shoot_carbine"	12 : "crouch_reload_carbine"	13 : "ref_aim_carbine"
+	14 : "ref_shoot_carbine"	15 : "ref_reload_carbine"	16 : "crouch_aim_onehanded"
+	17 : "crouch_shoot_onehanded"	18 : "crouch_reload_onehanded"
+	19 : "ref_aim_onehanded"	20 : "ref_shoot_onehanded"	21 : "ref_reload_onehanded"
+	22 : "crouch_aim_dualpistols_1"	23 : "crouch_shoot_dualpistols_1"
+	24 : "crouch_shoot2_dualpistols_1"	25 : "crouch_reload_dualpistols_1"
+	26 : "ref_aim_dualpistols_1"	27 : "ref_shoot_dualpistols_1"
+	28 : "ref_shoot2_dualpistols_1"	29 : "ref_reload_dualpistols_1"
+	30 : "crouch_aim_rifle"	31 : "crouch_shoot_rifle"	32 : "crouch_reload_rifle"
+	33 : "ref_aim_rifle"	34 : "ref_shoot_rifle"	35 : "ref_reload_rifle"
+	36 : "crouch_aim_mp5"	37 : "crouch_shoot_mp5"	38 : "crouch_reload_mp5"
+	39 : "ref_aim_mp5"	40 : "ref_shoot_mp5"	41 : "ref_reload_mp5"
+	42 : "crouch_aim_shotgun"	43 : "crouch_shoot_shotgun"	44 : "crouch_reload_shotgun"
+	45 : "ref_aim_shotgun"	46 : "ref_shoot_shotgun"	47 : "ref_reload_shotgun"
+	48 : "crouch_aim_m249"	49 : "crouch_shoot_m249"	50 : "crouch_reload_m249"
+	51 : "ref_aim_m249"	52 : "ref_shoot_m249"	53 : "ref_reload_m249"
+	54 : "I_am_a_stupid_placeholder"	55 : "so_am_I"	56 : "ref_aim_grenade"
+	57 : "ref_shoot_grenade"	58 : "crouch_aim_grenade"	59 : "crouch_shoot_grenade"
+	60 : "crouch_aim_c4"	61 : "crouch_shoot_c4"	62 : "ref_aim_c4"
+	63 : "ref_shoot_c4"	64 : "ref_reload_c4"	65 : "crouch_aim_dualpistols_2"
+	66 : "crouch_shoot_dualpistols_2"	67 : "crouch_shoot2_dualpistols_2"
+	68 : "crouch_reload_dualpistols_2"	69 : "ref_aim_dualpistols_2"
+	70 : "ref_shoot_dualpistols_2"	71 : "ref_shoot2_dualpistols_2"
+	72 : "ref_reload_dualpistols_2"	73 : "crouch_aim_knife"	74 : "crouch_shoot_knife"
+	75 : "ref_aim_knife"	76 : "ref_shoot_knife"	77 : "crouch_aim_ak47"
+	78 : "crouch_shoot_ak47"	79 : "crouch_reload_ak47"	80 : "ref_aim_ak47"
+	81 : "ref_shoot_ak47"	82 : "ref_reload_ak47"	83 : "crouch_aim_shieldgren"
+	84 : "crouch_shoot_shieldgren"	85 : "ref_aim_shieldgren"
+	86 : "ref_shoot_shieldgren"	87 : "crouch_aim_shieldknife"
+	88 : "crouch_shoot_shieldknife"	89 : "ref_aim_shieldknife"
+	90 : "ref_shoot_shieldknife"	91 : "crouch_aim_shieldgun"
+	92 : "crouch_shoot_shieldgun"	93 : "crouch_reload_shieldgun"
+	94 : "ref_aim_shieldgun"	95 : "ref_shoot_shieldgun"	96 : "ref_reload_shieldgun"
+	97 : "crouch_aim_shielded"	98 : "ref_aim_shielded"	99 : "gut_flinch"
+	100 : "head_flinch"	101 : "death1"	102 : "death2"	103 : "death3"	104 : "head"
+	105 : "gutshot"	106 : "left"	107 : "back"	108 : "right"	109 : "forward"
+	110 : "crouch_die"
+	]
+]
+
+@BaseClass = HostageAnim
+[
+	sequence(Choices) : "显示的动作 (仅编辑器中)" : 0 =
+	[
+	0 : "walk"	1 : "walk_scared"	2 : "run"	3 : "run1"	4 : "run2"	5 : "180_Left"
+	6 : "180_Right"	7 : "flinch"	8 : "flinch1"	9 : "laflinch"	10 : "raflinch"
+	11 : "llflinch"	12 : "rlflinch"	13 : "idle1"	14 : "idle3"	15 : "idle4"
+	16 : "idle5"	17 : "idle6"	18 : "idle7"	19 : "crouchstand"
+	20 : "crouch_idle"	21 : "crouch_idle2"	22 : "crouch_idle3_1"	23 : "crouch_idle3_2"
+	24 : "panic"	25 : "fear1"	26 : "fear2"	27 : "eye_wipe"	28 : "pull_needle"
+	29 : "return_needle"	30 : "give_shot"	31 : "diesimple"	32 : "dieforward"
+	33 : "dieforward1"	34 : "diebackward"	35 : "headshot"	36 : "gutshot"
+	37 : "lying_on_back"	38 : "lying_on_stomach"	39 : "dead_sitting"
+	40 : "dead_table1"	41 : "dead_table2"	42 : "dead_table3"	43 : "barnacled1"
+	44 : "barnacled2"	45 : "barnacled3"	46 : "barnacled4"	47 : "console"
+	48 : "checktie"	49 : "dryhands"	50 : "tieshoe"	51 : "writeboard"	52 : "studycart"
+	53 : "lean"	54 : "pondering"	55 : "pondering2"	56 : "pondering3"
+	57 : "buysoda"	58 : "pause"	59 : "yes"	60 : "no"	61 : "push_button"
+	62 : "converse1"	63 : "converse2"	64 : "retina"	65 : "talkleft"
+	66 : "talkright"	67 : "deskidle"	68 : "coffee"	69 : "franticbutton"
+	70 : "startle"	71 : "sitlookleft"	72 : "sitlookright"	73 : "sitscared"
+	74 : "sitting2"	75 : "sitting3"	76 : "cprscientist"	77 : "cprscientistrevive"
+	78 : "cowering_in_corner"	79 : "sstruggleidle"	80 : "sstruggle"
+	81 : "headcrabbed"	82 : "c1a0_catwalkidle"	83 : "c1a0_catwalk"	84 : "ceiling_dangle"
+	85 : "ventpull1"	86 : "ventpull2"	87 : "ventpullidle1"	88 : "ventpullidle2"
+	89 : "sitidle"	90 : "sitstand"	91 : "keypad"	92 : "lookwindow"	93 : "wave"
+	94 : "pulldoor"	95 : "beatdoor"	96 : "fallingloop"	97 : "crawlwindow"
+	98 : "divewindow"	99 : "locked_door"	100 : "push_button2"	101 : "unlock_door"
+	102 : "quicklook"	103 : "handrailidle"	104 : "handrail"	105 : "hanging_idle"
+	106 : "fall"	107 : "scientist_get_pulled"	108 : "hanging_idle2"
+	109 : "fall_elevator"	110 : "scientist_idlewall"	111 : "ickyjump_sci"
+	112 : "haulscientist"	113 : "c1a4_wounded_idle"	114 : "c1a4_dying_speech"
+	115 : "tentacle_grab"	116 : "helicack"	117 : "windive"	118 : "scicrashidle"
+	119 : "scicrash"	120 : "onguard"	121 : "seeya"	122 : "rocketcrawl"
+	123 : "portal"	124 : "gluonshow"	125 : "crouch"	126 : "kneel"	127 : "pepsiidle"
+	128 : "pepsifall"
+	]
+]
+
+@BaseClass base(Targetname, Global, SolidVisible, Appearflags, PlatSounds) = Trackchange
+[
+	//* height is the distance the track/train will move. By default, the track starts in its top position 
+	//* and goes downward (This can be changed in the Flags section #8).
+	height(integer) : "移动高度" : 0
+	spawnflags(flags) =
+	[
+		//* Auto activate and relink may not be funcional
+		1: "?自动激活火车" : 0
+		2: "?重新连接路径" : 0
+		8: "先连接第二路径" : 0
+		16: "只旋转" : 0
+		64: "绕X轴旋转" : 0
+		128: "绕Y轴旋转" : 0
+	]
+	//* rotation is the amount in degrees the track will turn to line up with the new track.
+	rotation(integer) : "转动角度" : 0
+	train(target_destination) : "火车实体"
+	//* toptrack is the Name (targetname) of the last path_corner-track in the upper area, or last area, of the track.
+	toptrack(target_destination) : "第一路径"
+	//* bottomtrack is the Name (targetname) of the first path_corner-track in the lower area, or next area, of the track
+	bottomtrack(target_destination) : "第二路径"
+	//* speed is the speed in units per second that the track platform will move downward. 
+	//* (If the #16 Rotate Only flag is set, this is just the speed of rotation).
+	speed(integer) : "移动/转动速度" : 0
+//*
+//* The first path_track-corner should not have a Next stop target (target). Instead, where it says Fire on 
+//* dead end (netname), enter a value equal to the Name (targetname) of the func_trackautochange. Now, when 
+//* the train reaches the path_track-corner, it will stop, then activate the func_trackautochange. 
+//* When the it gets to the bottom, the train will continue on to the next path_track-corner defined 
+//* by Bottom track (bottomtrack) in the func_trackautochange properties.
+//*
+]
+
+//-@BaseClass base(Targetname, Master, Target) = Trigger
+//-[
+//-	delay(string) : "引发前延时" : "0"
+//-	killtarget(target_destination) : "删除的目标"
+//-	netname(target_destination) : "Target Path"
+//* style commented out, seems to serve no purpose besides adding 
+//* to the lightdata load.
+//*	style(integer) : "Style" : 32
+//-	sounds(choices) : "声音样式" : "" = 
+//-	[
+//-		"": "无"
+//-		//* the rest of these may or may not work, copied from button
+//-		1: "夸大的咝咝声"
+//-		2: "拒绝访问声音"
+//-		3: "访问通过声音"
+//-		4: "快速连串声音"
+//-		5: "断电声音 1"
+//-		6: "断电声音 2"
+//-		7: "活塞声音"
+//-		8: "小咝咝声"
+//-		9: "钥匙卡声"
+//-		10: "嗡嗡声"
+//-		11: "挂断电话声"
+//-		14: "光开关"
+//-	]
+//-	message(string) : "信息名 (设置声音)"
+//-	spawnflags(flags) = 
+//-	[
+//*		1: "monsters":0
+//-		2: "玩家不能引发":0
+//-		4: "推动实体引发": 0
+//-	]
+//-]
+
+//
+// Entities
+//
+
+@PointClass base(color_env) base(Targetname, Appearflags) iconsprite("sprites/CS/AmbientGeneric.spr") = ambient_generic : "Universal sound Ambient"
+[
+	message(sound) : "声音文件"
+	preset(choices) :"预设方案 (覆盖自定义方案)" : "" =
+	[
+		"": "无"
+		1: " 1大型机器"
+		2: " 2中型机器"
+		3: " 3小型机器"
+		4: " 4缓慢渐变音量"
+		5: " 5正常渐变音量"
+		6: " 6快速渐变音量"
+		7: " 7缓慢震荡音量"
+		8: " 8正常震荡音量"
+		9: " 9快速震荡音量"
+		10: "10缓慢震荡音高"
+		11: "11正常震荡音高"
+		12: "12快速震荡音高"
+		13: "13极低音高"
+		14: "14很低音高"
+		15: "15较低音高"
+		16: "16较高音高"
+		17: "17很高音高"
+		18: "18极高音高"
+		19: "19渐变音高+震荡音高"
+		20: "20渐变音高+震荡音量"
+		21: "21随机音高"
+		22: "22快速随机音高+高音"
+		23: "23通过引发递增音高"
+		24: "24大型机器+随机音高"
+		25: "25间断+高音"
+		26: "26快速随机音高+低音"
+		27: "27极慢震荡音高+高音"
+	]
+	health(integer) : "音量 (0-10)" : 10
+	volstart(integer) : "初始音量" : 0
+	fadein(integer) : "音量淡入时间长短 (0-100)" : 0
+	fadeout(integer) : "音量淡出时间长短 (0-100)" : 0
+//*main pitch frequency
+	pitch(integer) : "音高 (100 = 正常)" : 100
+//*begin pitch 
+	pitchstart(integer) : "初始音高" : 0
+//*how fast to change from begin pitch to main pitch.
+	spinup(integer) : "音高淡入时间长短 (0-100)" : 0
+//*how fast to go back down from main pitch to nothing. //* 不是"nothing"而是"begin pitch"
+	spindown(integer) : "音高淡出时间长短 (0-100)" : 0
+//*LFO = low frequency oscillator.
+//*type of sound wave, sqr will jump back and forth between low and high pitch, tri has sharp transitions, and rnd has smooth transitions. //*rnd=random
+	lfotype(choices) : "低频震荡类型" : 0 = 
+	[
+		0: "无"
+		1: "跳跃"
+		2: "波动"
+		3: "随机改变"
+	]
+//*rate is the frequency (how often the LFO effect repeats itself).
+	lforate(integer) : "低频震荡频率高低 (0-1000)" : 0
+//*how much pitch change,  This effect is commonly called "vibrato" in music and song. 
+	lfomodpitch(integer) : "低频震荡音高变化 (0-100)" : 0
+//*how strong a "pulse" of volume rather than a wavering pitch.
+	lfomodvol(integer) : "低频震荡音量变化 (0-100)" : 0
+//*cspinup is unknown to me.
+//* 如果cspinup>0,实体打开后, 每次用引发方式"关"引发时, 音高都会增加, 
+//* 总共可以通过引发增加cspinup次, 此后就不能再播放. 每局复位. 
+//* 注意spinup>0时cspinup才有效. cspinup<0(spindown须>0)时有某种奇怪效果. 
+	cspinup(integer) : "音高引发递增次数 (淡入须>0)" : 0
+	spawnflags(flags) =
+	[
+		1: "播放到各处" : 0
+//*small is <~800 units range
+		2: "小范围(约800)" : 0
+//* Medium is the default radius, so ticking this does nothing.  <~1250 units
+		4: "中范围(约1250)" : 0
+//*large is <~2000 units range
+		8: "大范围(约2000)" : 0
+		16: "开始时静音" : 0
+		32: "不锁定(只播放一次)" : 0
+	]
+]
+
+@PointClass base(color_func) base(Targetname, Angles, RenderFields, Effects, Gravity, Velocity, Avelocity, Appearflags) studio() size(-16 -16 0, 16 16 16) = armoury_entity : "Items in the armoury" 
+[
+	item(choices)  : "武器" : "" = 
+	[
+		"": "mp5navy"
+		1: "tmp"
+		2: "p90"
+		3: "mac10"
+		4: "ak47"
+		5: "sg552"
+		6: "m4a1"
+		7: "aug"
+		8: "scout"
+		9: "g3sg1"
+		10: "awp"
+		11: "m3"
+		12: "xm1014"
+		13: "m249"
+		14: "闪光弹"
+		15: "高爆手榴弹"
+		16: "防弹衣"
+		17: "防弹衣+头盔"
+		18: "烟雾弹"
+	]
+	model(choices)  : "显示的模型 (仅编辑器中)" : "models/w_mp5.mdl" =
+	[
+		"models/w_mp5.mdl": "mp5navy"
+		"models/w_tmp.mdl": "tmp"
+		"models/w_p90.mdl": "p90"
+		"models/w_mac10.mdl": "mac10"
+		"models/w_ak47.mdl": "ak47"
+		"models/w_sg552.mdl": "sg552"
+		"models/w_m4a1.mdl": "m4a1"
+		"models/w_aug.mdl": "aug"
+		"models/w_scout.mdl": "scout"
+		"models/w_g3sg1.mdl": "g3sg1"
+		"models/w_awp.mdl": "awp"
+		"models/w_m3.mdl": "m3"
+		"models/w_xm1014.mdl": "xm1014"
+		"models/w_m249.mdl": "m249"
+		"models/w_flashbang.mdl": "闪光弹"
+		"models/w_hegrenade.mdl": "高爆手榴弹"
+		"models/w_kevlar.mdl": "防弹衣"
+		"models/w_assault.mdl": "防弹衣+头盔"
+		"models/w_smokegrenade.mdl": "烟雾弹"
+	]
+//*
+//*note: count always resets to only one item after first round
+//*
+	count(integer) : "初始数量[只在第一局有效]" : 1
+]
+
+@PointClass base(color_wall) base(Targetname, Angles, RenderFields, Appearflags) size(-16 -16 0, 16 16 72) Studio() = cycler : "Monster Cycler" 
+[
+//* 支持:-framerate,-model(sprite),+model(studio),+skin,+body,+sequence,+frame
+	model(studio) : "模型文件" : ""
+	body(integer) : " 身体子模型" : 0
+	skin(integer) : " 皮肤" : 0
+	sequence(integer) : " 动作" : 0
+	frame(integer) : " 初始帧" : 0
+]
+
+@PointClass base(color_wall) base(Targetname, Angles, RenderFields, Appearflags) Studio() = cycler_sprite : "Sprite Cycler" 
+[
+//* 支持:+framerate,+model(sprite),+scale,+model(studio),+skin,+body,+sequence,-frame
+	model(studio) : "模型(mdl)或图标动画(spr)文件": ""
+//-	model(studio) : "模型文件" : ""
+//-	model(sprite) : "图标动画文件" : ""
+	body(integer) : " 身体子模型 (模型)" : 0
+	skin(integer) : " 皮肤 (模型)" : 0
+	sequence(integer) : " 动作 (模型)" : 0
+	framerate(string) : " 每秒播放帧数" : "10.0"
+	scale(string) : " 缩放比例 (图标动画)" : "1.0"
+]
+
+@PointClass base(color_effect) iconsprite("sprites/CS/wreck.spr") base(Targetname, Angles, RenderFields, Appearflags) size(-4 -4 -4, 4 4 4) = cycler_wreckage : "Wreckage" 
+[
+//* 支持:+framerate,+model(sprite),+scale,+model(studio),+skin,+body,+sequence,-frame
+	model(studio) : "模型(mdl)或图标动画(spr)文件": ""
+//-	model(studio) : "模型文件" : ""
+//-	model(sprite) : "图标动画文件" : ""
+	body(integer) : " 身体子模型 (模型)" : 0
+	skin(integer) : " 皮肤 (模型)" : 0
+	sequence(integer) : " 动作 (模型)" : 0
+	framerate(string) : " 每秒播放帧数" : "10.0"
+	scale(string) : " 缩放比例 (图标动画)" : "1.0"
+	spawnflags(flags) =
+	[
+		32: "?锁定" : 0
+	]
+]
+
+//
+// Environmental effects
+//
+
+//* the beam can lead to network lag due to continous changing animation.
+@PointClass base(color_func) base(Targetname, BeamStartEnd, RenderFxChoices, Appearflags) size(-16 -16 -16, 16 16 16) iconsprite("sprites/CS/beam.spr") = env_beam : "Energy Beam Effect"
+[
+	renderamt(integer) : "亮度 (0 - 255)" : 100
+	rendercolor(color255) : "颜色 (R G B)" : "255 255 255"
+	//* If you only give the beam one endpoint, then radius will specifies how
+	//* far away the other endpoint should be (randomly) placed.
+	Radius(integer) : "终点半径 (未指定终点时)" : 256
+	life(string) : "持续时间(秒) (0=无限)" : "1"
+	BoltWidth(integer) : "光线宽度大小 (0-255)" : 20
+	NoiseAmplitude(integer) : "噪点数量 (0-255)" : 0
+	texture(sprite) : "图标动画纹理文件" : "sprites/laserbeam.spr"
+	TextureScroll(integer) : "纹理滚动速度 (0-100)" : 35
+	framerate(integer) : "每10秒播放帧数" : 0
+	framestart(integer) : "开始帧序号" : 0
+	StrikeTime(string) : "发射间隔时间(秒)" : "1"
+	damage(string) : "每秒伤害力" : "0"
+	spawnflags(flags) = 
+	[
+		//* This is the default unless you specify a name.
+		1 : "开始时发射" : 0
+		2 : "锁定" : 0
+		4 : "间隔时间随机性" : 0
+		//* Makes the beam form a circle, with a diameter that stretches between the two endpoints.
+		//* For some unknown reason, both endpoints must have a model.
+		//*   NB: because the beam will stretch between the origins of the two entities, you'll
+		//* need to give each endpoint an origin brush.
+		8 : "环形光" : 0
+		16: "发射出冒火花" : 0
+		32: "接受处冒火花" : 0
+		64: "绘制烧焦痕迹" : 0
+		//* The beam fades in from nothing, like a tracer bullet.
+		128: "开始处变暗" : 0
+		256: "结束处变暗" : 0
+	]
+]
+
+@PointClass base(color_effect) base(Targetname, Angles, Appearflags) size(-4 -4 -4, 4 4 4) Studio("models/can.mdl") = env_beverage : "Beverage Dispenser"
+[
+	health(integer) : "饮料总数" : 100000
+	skin(choices) : "饮料类型" : "" = 
+	[
+		"" : "可口可乐"
+		1 : "雪碧"
+		2 : "Diet Coke"
+		3 : "橙汁"
+		4 : "Surge"
+		5 : "Moxie"
+		6 : "随机"
+	]
+]
+
+@PointClass base(color_effect) base(Targetname, Angles, Appearflags) size(-16 -16 -16, 16 16 16) iconsprite("sprites/CS/blood.spr") = env_blood : "Blood Effects" 
+[
+	color(choices) : "血的颜色" : "" =
+	[
+		"" : "黑白血液黄色痕迹"
+		1 : "黄色血液黄色痕迹"
+		2 : "红色血液红色痕迹"
+	]
+	amount(string) : "血量 (模拟受伤)" : "100"
+	spawnflags(flags) =
+	[
+		1: "随机方向" : 0
+		2: "血流" : 0
+		4: "从引发者身上喷出" : 0
+		8: "在墙上绘制痕迹" : 0
+	]
+]
+
+//* Bubbles cannot drift sideways with this entity; use an env_model and
+//* "valve/models/pipe_bubbles.mdl" instead.
+@SolidClass base(color_env) base(Targetname, Angles, SolidInvisible, Skin, Appearflags) = env_bubbles : "Bubble Volume" 
+[
+	density(integer) : "水泡数量大小" : 2
+	frequency(integer) : "水泡频率大小" : 2
+	current(integer) : "水流速度" : 0
+	spawnflags(Flags) = 
+	[
+		1 : "开始时关闭" : 0
+	]
+]
+
+@PointClass base(color_func) base(Targetname, Appearflags) iconsprite("sprites/CS/envexplosion.spr") = env_explosion : "Explosion" 
+[
+	iMagnitude(Integer) : "爆炸范围" : 100
+	spawnflags(flags) =
+	[
+		1: "不产生伤害" : 0
+		2: "可重复引发" : 0
+		4: "无火球" : 0
+		8: "无烟" : 0
+		16: "无痕迹" : 0
+		32: "无火花" : 0
+	]
+]
+
+@PointClass base(color_effect) base(WarningOnce, Targetname, Appearflags) iconsprite("sprites/CS/EnvFunnel.spr") = env_funnel : "Large Portal Funnel" 
+[
+	spawnflags(flags) =
+	[
+		1: "反向" : 0
+	]
+]
+
+@PointClass base(color_trigger) base(Targetname, Appearflags) iconsprite("sprites/CS/EnvGlobal.spr") = env_global : "Global State"
+[
+	globalstate(string) : "设置全局状态实体"
+	triggermode(choices) : "引发模式" : "" =
+	[
+		"" : "关"
+		1 : "开"
+		2 : "死亡"
+		3 : "锁定"
+	]
+	initialstate(choices) : "初始状态" : "" =
+	[
+		"" : "关"
+		1 : "开"
+		2 : "死亡"
+	]
+	spawnflags(flags) =
+	[
+		1 : "设为初始状态" : 0
+	]
+]
+
+@PointClass base(color_wall) base(Targetname, Angles, RenderFields, Appearflags) size(-4 -4 -4, 4 4 4) sprite() = env_glow : "Light Glow/Haze" 
+[
+//* 支持:+framerate,+model(sprite),+scale,+model(studio),+skin,+body,+sequence,-frame
+	model(sprite) : "图标动画文件" : "sprites/glow01.spr"
+	framerate(string) : " 每秒播放帧数" : "10.0"
+	scale(string) : " 缩放比例 (图标动画)" : "1.0"
+]
+
+@PointClass base(color_game) base(Targetname, Appearflags) iconsprite("sprites/CS/fade.spr") = env_fade : "Screen Fade" 
+[
+	rendercolor(color255) : "颜色 (R G B)" : "0 0 0"
+	renderamt(integer) : "透明度 (0-255)" : 255
+	duration(string) : "渐变时间(秒)" : "2"
+	holdtime(string) : "保持时间(秒)" : "0"
+	spawnflags(flags) =
+	[
+		1: "反向渐变" : 0
+		2: "调制模式" : 0
+		4: "只对引发者有效" : 0
+	]
+]
+
+@PointClass base(color_env) base(Targetname, Appearflags) iconsprite("sprites/CS/envfog.spr") = env_fog : "Global Fog Properties"
+[
+	// No longer used
+	// fadein(integer) : "Fade in time" : 0
+	// holdtime(string) : "Hold time (0 = permanent)" : "0"
+	// fadeout(integer) : "Fade out time" : 0
+	// startdist(integer) : "Fog start position" : 0
+	// enddist(integer) : "Fog end position" : 1000
+	density(string) : "雾的密度 (0.01 - 0)" : "0.001"
+	rendercolor(color255) : "雾的颜色 (R G B)" : "255 255 255"
+	spawnflags(flags) =
+	[
+		1 : "开始时打开" : 0
+	]
+]
+
+//*may cause network lag due to changing animation.
+@PointClass base(color_func) base(Targetname, RenderFxChoices, Angles, Appearflags) size(-16 -16 -16, 16 16 16) iconsprite("sprites/CS/laser.spr") = env_laser : "Laser Beam Effect"
+[
+	LaserTarget(target_destination) : "激光目标"
+	renderamt(integer) : "亮度 (0 - 255)" : 100
+	rendercolor(color255) : "颜色 (R G B)" : "0 0 0"
+	width(integer) : "光线宽度 (0-255)" : 20
+	NoiseAmplitude(integer) : "噪点数量 (0-255)" : 0
+	texture(sprite) : "图标动画纹理文件" : "sprites/laserbeam.spr"
+	EndSprite(sprite) : "结束动画" : ""
+	TextureScroll(integer) : "纹理滚动速度 (0-100)" : 35
+	framestart(integer) : "开始帧序号" : 0
+	damage(string) : "每秒伤害力" : "100"
+	spawnflags(flags) = 
+	[
+		1 : "开始时发射" : 0
+		16: "发射处冒火花" : 0
+		32: "接受处冒火花" : 0
+		64: "绘制烧焦痕迹" : 0
+	]
+]
+
+@PointClass base(color_game) base(Targetname, Target, Appearflags) iconsprite("sprites/CS/Announcement.spr") = env_message : "HUD Text Message" 
+[
+	message(string) : "信息名"
+	spawnflags(flags) =
+	[
+		1: "只播放一次" : 0
+		2: "对所有玩家" : 0
+	]
+	messagesound(sound) : "声音文件"
+	messagevolume(string) : "音量 (0-10)" : "10"
+	messageattenuation(Choices) : "范围" : 0 =
+	[
+//*small is <~800 units range
+		0 : "小 (约800)"
+//*medium is <~1250 units range
+		1 : "中 (约1250)"
+//*large is <~2000 units range
+		2 : "大 (约2000)"
+		3 : "播放到各处"
+	]
+]
+
+//*beta tested by [dmv]Cross, works in STEAM CS 1.6
+@PointClass base(color_env) base(Targetname, Appearflags) iconsprite("sprites/CS/EnvRain.spr") = env_rain : "rain Properties" []
+
+@PointClass base(color_trigger) base(Targetname, Target, RenderFields, Appearflags) size(-16 -16 -16, 16 16 16) iconsprite("sprites/CS/render.spr") = env_render : "Render Controls"
+[
+	spawnflags(flags) =
+	[
+		1: "不修改渲染效果" : 0
+		2: "不修改透明度" : 0
+		4: "不修改渲染模式" : 0
+		8: "不修改渲染色" : 0
+	]
+]
+
+@PointClass base(color_func) base(Targetname, Appearflags) iconsprite("sprites/CS/EnvShake.spr") = env_shake : "Screen Shake" 
+[
+	spawnflags(flags) =
+	[
+		1: "整个地图" : 0
+	]
+	amplitude(string) : "震级 0-16" : "4"
+	radius(string) : "作用范围" : "500"
+	duration(string) : "持续时间(秒)" : "1"
+	frequency(string) : "频率 (0.1-255.0)" : "2.5"
+]
+
+@PointClass base(color_effect) base(Targetname, Angles, RenderFields, Appearflags, gibshooterbase) Studio("models/CS/envshooter.mdl") size(-16 -16 -16, 16 16 16) = env_shooter : "Model Shooter"
+[
+	shootmodel(studio) : "模型(mdl)或图标动画(spr)文件" : "models/can.mdl"
+//-	shootmodel(studio) : "模型文件" : "models/can.mdl"
+//-	shootmodel(sprite) : "图标动画文件" : "models/can.mdl"
+	skin(integer) : " 皮肤 (模型)" : 0
+	scale(string) : " 缩放比例 (图标动画)" : "1.0"
+	shootsounds(choices) :"材质声音" : -1 =
+	[
+		-1: "无"
+		//* debris/glass1-4.wav
+		0: "玻璃"
+		//* debris/wood1-4.wav
+		1: "木头"
+		//* debris/metal1-6.wav
+		2: "金属"
+		//* debris/flesh1-7.wav
+		3: "肉"
+		//* debris/concrete1-3.wav
+		4: "混凝土"
+	]
+]
+
+//*
+//*this changes sound for the player UNTIL IT IS RESET by another env sound.  make sure you reset it!
+//*
+@PointClass base(color_env) base(Targetname, Appearflags) iconsprite("sprites/CS/EnvSound.spr") = env_sound : "DSP Sound" 
+[
+	radius(integer) : "作用半径" : 128
+	roomtype(Choices) : "空间声音类型" : "0.1" =
+	[
+		"0.1" : "正常 (关闭)"
+		1 : "普通"
+		
+		2 : "金属 小"
+		3 : "金属 中"
+		4 : "金属 大"
+	
+		5 : "隧道 小"
+		6 : "隧道 中"
+		7 : "隧道 大"
+	
+		8 : "房间 小"
+		9 : "房间 中"
+		10: "房间 大"
+
+		11: "明亮 小"
+		12: "明亮 中"
+		13: "明亮 大"
+
+		14: "水 1"
+		15: "水 2"
+		16: "水 3"
+
+		17: "混凝土 小"
+		18: "混凝土 中"
+		19: "混凝土 大"
+
+		20: "大 1"
+		21: "大 2"
+		22: "大 3"
+
+		23: "岩洞 小"
+		24: "岩洞 中"
+		25: "岩洞 大"
+
+		26: "古怪 1"
+		27: "古怪 2"
+		28: "古怪 3"
+	]
+]
+
+//*beta tested by [dmv]Cross, works in STEAM CS 1.6
+@PointClass base(color_env) base(Targetname, Appearflags) iconsprite("sprites/CS/EnvSnow.spr") = env_snow : "snow Properties" []
+
+@PointClass base(color_effect) base(Targetname, Angles, Appearflags) size(-16 -16 -16, 16 16 16) iconsprite("sprites/CS/EnvSpark.spr") = env_spark : "Spark" 
+[
+	MaxDelay(string) : "最长间隔时间" : "0"
+	spawnflags(flags) =
+	[
+		32: "锁定" : 0
+		64: "开始时打开" : 0
+	]
+]
+
+@PointClass base(color_wall) base(Targetname, Angles, RenderFields, Appearflags) size(-4 -4 -4, 4 4 4) sprite() = env_sprite : "Still Sprite Effect" 
+[
+//* 支持:+framerate,+model(sprite),+scale,+model(studio),-skin,-body,+sequence,-frame
+	model(sprite) : "图标动画文件" : "sprites/glow01.spr"
+	framerate(string) : " 每秒播放帧数" : "10.0"
+	scale(string) : " 缩放比例 (图标动画)" : "1.0"
+	spawnflags(flags) =
+	[
+		1: "开始时打开" : 0
+		2: "只播放一次" : 0
+	]
+]
+
+
+//
+// game entities (requires Half-Life 1.0.0.9)
+//
+
+@PointClass base(color_trigger) base(Targetname, Master, Target, Appearflags) iconsprite("sprites/CS/GameCounter.spr") = game_counter : "Fires when it hits limit"
+[
+	spawnflags(flags) =
+	[
+		1: "引发后删除" : 0
+		2: "引发后复位" : 0
+	]
+	frags(integer) : "初始值" : 0
+	health(integer) : "限定值" : 10
+]
+
+@PointClass base(color_trigger) base(Targetname, Master, Target, Appearflags) iconsprite("sprites/CS/GameCounterSet.spr") = game_counter_set : "Sets a game_counter"
+[
+	spawnflags(flags) =
+	[
+		1: "引发后删除" : 0
+	]
+	frags(integer) : "新值" : 10
+]
+
+@PointClass base(color_game) base(Targetname, Master, Appearflags) iconsprite("sprites/CS/GameEnd.spr") = game_end : "End this multiplayer game" 
+[
+]
+
+//* buggy entity, must use with weapon strip to avoid giving duplicate 
+//* weapons to a player and causing a crash.
+@PointClass base(color_game) base(Targetname, Master, Appearflags) iconsprite("sprites/CS/GamePlayerEquip.spr") = game_player_equip : "Initial player equipment"
+[
+	classname(string) : "[容易导致玩家武器过多出错]"
+	spawnflags(flags) =
+	[
+		1: "只能引发" : 0
+	]
+	weapon_knife (choices) : "刀" : "" = [ "": "否" 1: "是" ]
+	weapon_usp (choices) : "USP45 (45acp口径)" : "" = [ "": "否" 1: "是" ]	
+	weapon_glock18 (choices) : "Glock 18 (9mm口径)" : "" = [ "": "否" 1: "是" ]	
+	weapon_deagle (choices) : "Desert Eagle (50ae口径)" : "" = [ "": "否" 1: "是" ]	
+	weapon_p228 (choices) : "P-228 (357sig口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_elite (choices) : "Beretta Elites (9mm口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_fiveseven (choices) : "Five-Seven (57mm口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_m3 (choices) : "Benelli M3 (12 Gauge)" : "" = [ "": "否" 1: "是" ]
+	weapon_xm1014 (choices) : "Benelli XM1014 (12 Gauge)" : "" = [ "": "否" 1: "是" ]
+	weapon_mp5navy (choices) : "MP5/Navy (9mm口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_tmp (choices) : "TMP (9mm口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_p90 (choices) : "FN P90 (57mm口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_mac10 (choices) : "Mac-10 (45acp口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_ump45 (choices) : "UMP 45 (45acp口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_ak47 (choices) : "AK-47 (762nato口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_sg552 (choices) : "SG552 (556nato口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_m4a1 (choices) : "M4A1 (556nato口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_aug (choices) : "Aug (556nato口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_scout (choices) : "Scout (762nato口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_awp (choices) : "AWP (338magnum口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_g3sg1 (choices) : "G3/SG-1 (762nato口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_sg550 (choices) : "SG550 (556nato口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_m249 (choices) : "M249 (556natobox口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_famas (choices) : "Famas (556nato口径)" : "" = [ "": "否" 1: "是" ]
+	weapon_galil (choices) : "Galil (556natobox口径)"  : "" = [ "": "否" 1: "是" ]
+	weapon_shield (choices) : "防暴盾牌" : "" = [ "": "否" 1: "是" ]
+	item_kevlar (choices) : "防弹衣" : "" = [ "": "否" 1: "是" ]
+	item_assaultsuit (choices) : "防弹衣+头盔" : "" = [ "": "否" 1: "是" ]
+	weapon_flashbang (choices) : "闪光弹" : "" = 
+	[
+		"": "否"
+		1: "1"
+		2: "2"
+	]	
+	weapon_hegrenade (choices) : "高爆手榴弹" : "" = [ "": "否" 1: "是" ]
+	weapon_smokegrenade (choices) : "烟雾弹" : "" = [ "": "否" 1: "是" ]
+	item_thighpack (choices) : "拆弹钳" : "" = [ "": "否" 1: "是" ]
+	weapon_c4 (choices) : "C4炸弹" : "" = [ "": "否" 1: "是" ]
+	ammo_9mm (choices) : "9mm Parabellum 弹药" : "" = 
+	[
+		"": "否" 1: "1 梭 (30发)"
+		2: "2 梭" 3: "3 梭"
+		4: "4 梭 (填满)"
+	]
+	ammo_45acp (choices) : ".45 ACP 弹药" : "" = 
+	[
+		"": "否" 1: "1 梭 (12发)"
+		2: "2 梭" 3: "3 梭" 4: "4 梭" 5: "5 梭" 6: "6 梭" 7: "7 梭" 8: "8 梭"
+		9: "9 梭 (填满)"
+	]
+	ammo_50ae (choices) : ".50 Deagle 弹药" : "" = 
+	[
+		"": "否" 1: "1 梭 (7发)"
+		2: "2 梭" 3: "3 梭" 4: "4 梭"
+		5: "5 梭 (填满)"
+	]
+	ammo_57mm (choices) : "5.7mm 弹药" : "" = 
+	[
+		"": "否" 1: "1 梭 (50发)"
+		2: "2 梭 (填满)"
+	]
+	ammo_357sig (choices) : ".357 SIG 弹药" : "" = 
+	[
+		"": "否" 1: "1 梭 (13发)"
+		2: "2 梭" 3: "3 梭"
+		4: "4 梭 (填满)"
+	]
+	ammo_buckshot (choices) : "12 Gauge 弹药" : "" = 
+	[
+		"": "否" 1: "1 梭 (8发)"
+		2: "2 梭" 3: "3 梭"
+		4: "4 梭 (填满)"
+	]
+	ammo_762nato (choices) : "7.62mm NATO 弹药" : "" = 
+	[
+		"": "否" 1: "1 梭 (30发)"
+		2: "2 梭"
+		3: "3 梭 (填满)"
+	]
+	ammo_556nato (choices) : "5.56mm NATO 弹药" : "" = 
+	[
+		"": "否" 1: "1 梭 (30发)"
+		2: "2 梭"
+		3: "3 梭 (填满)"
+	]
+	ammo_556natobox (choices) : "5.56mm NATO Box 弹药" : "" = 
+	[
+		"": "否" 1: "1 梭 (30发)"
+		2: "2 梭" 3: "3 梭" 4: "4 梭" 5: "5 梭" 6: "6 梭"
+		7: "7 梭 (填满)"
+	]
+	ammo_338magnum (choices) : ".338 AWP 弹药" : "" = 
+	[
+		"": "否" 1: "1 梭 (10发)"
+		2: "2 梭"
+		3: "3 梭 (填满)"
+	]
+	item_healthkit (choices) : "医药包" : "" = 
+	[
+		"": "否"
+		1: "1 医药包 = 15 生命值"
+		2: "2 医药包 = 30 生命值"
+		3: "3 医药包 = 45 生命值"
+		4: "4 医药包 = 60 生命值"
+		5: "5 医药包 = 75 生命值"
+		6: "6 医药包 = 90 生命值"
+		7: "7 医药包 = 100 生命值"
+	]
+	item_battery (choices) : "盔甲能量" : "" = 
+	[
+		"": "否"
+		1: "1 电池 = 15 盔甲值"
+		2: "2 电池 = 30 盔甲值"
+		3: "3 电池 = 45 盔甲值"
+		4: "4 电池 = 60 盔甲值"
+		5: "5 电池 = 75 盔甲值"
+		6: "6 电池 = 90 盔甲值"
+		7: "7 电池 = 100 盔甲值"
+	]
+	item_longjump (choices) : "长跳飞行包" : "" = [ "": "否" 1: "是" ]
+	spark_shower (string) : "产生火花数量" : ""
+	item_airtank (choices) : "产生可打爆的气罐" : "" = [ "": "否" 1: "是" ]
+	grenade (choices) : "产生弹来弹去的grenade" : "" = [
+		"": "否"
+		1: "是"
+		2: "多个"
+	]
+]
+
+@PointClass base(color_game) base(Targetname, Master, Target, Appearflags) iconsprite("sprites/CS/GamePlayerHurt.spr") = game_player_hurt : "Hurts player who fires"
+[
+	dmg(string) : "引发者受到的伤害" : "999"
+	spawnflags(flags) =
+	[
+		1: "引发后删除" : 0
+	]
+]
+
+//-@PointClass base(color_game) base(Targetname, Master, Appearflags) iconsprite("sprites/CS/GamePlayerTeam.spr") = game_player_team : "Allows player to change teams"
+//-[
+//-	spawnflags(flags) =
+//-	[
+//-		1 : "引发后删除" : 0
+//-		2 : "杀死引发者" : 0
+//-		4 : "破碎引发者" : 0
+//-	]
+//-	target(string) : "目标game_team_master实体"
+//-]
+
+@PointClass base(color_game) base(Targetname, Master, Appearflags) iconsprite("sprites/CS/GameScore.spr") = game_score : "Award/Deduct Points" 
+[
+	spawnflags(flags) =
+	[
+		1: "允许负分" : 0
+		2: "队友计分" : 0
+	]
+	points(integer) : "增加的分数 (负数=减少)" : 1
+]
+
+@PointClass base(color_trigger) base(Targetname, Master, Target, Appearflags) iconsprite("sprites/CS/GameTeamMaster.spr") = game_team_master : "Team based master/relay"
+[
+	spawnflags(flags) =
+	[
+		1: "引发后删除" : 0
+	]
+	triggerstate(choices) : "引发方式" : 2 = 
+	[
+		0: "关"
+		1: "开"
+		2: "锁定"
+	]
+//-	teamindex(integer) : "队伍编号 (-1=无)" : -1
+]
+
+//-@PointClass base(color_trigger) base(Targetname, Master, Targetx, Appearflags) iconsprite("sprites/CS/GameTeamSet.spr") = game_team_set : "Sets team of team_master"
+//-[
+//-	spawnflags(flags) =
+//-	[
+//-		1: "引发后删除" : 0
+//-	]
+//-]
+
+@PointClass base(color_game) base(Targetname, Master, Appearflags) iconsprite("sprites/CS/GameText.spr") = game_text : "HUD Text Message" 
+[
+	spawnflags(flags) =
+	[
+		1: "对所有玩家" : 0
+	]
+	message(string) : "信息文本"
+	x(string) : "水平位置(0-1.0=左到右 -1中心)" : "-1"
+	y(string) : "垂直位置(0-1.0=上到下 -1中心)" : "-1"
+	effect(Choices) : "文本效果" : "" =
+	[
+		"" : "淡入淡出"
+		1 : "闪烁"
+		2 : "打字机效果"
+	]
+	color(color255) : "颜色1" : "100 100 100"
+	color2(color255) : "颜色2" : "240 110 0"
+	fadein(string) : "淡入时间/打字时间" : "0.5"
+	fadeout(string) : "淡出时间" : "1.5"
+	holdtime(string) : "保持时间" : "1.2"
+	fxtime(string) : "打字机颜色渐变时间" : "0.25"
+	channel(choices) : "文本频道" : 1 =
+	[
+		1 : "频道 1"
+		2 : "频道 2"
+		3 : "频道 3" 
+		4 : "频道 4"
+	]
+]
+
+@SolidClass base(color_trigger) base(Targetname, Master, Appearflags, SolidInvisible) = game_zone_player : "Player Zone brush"
+[
+	intarget(target_destination) : "让区域内玩家引发的目标"
+	outtarget(target_destination) : "让区域外玩家引发的目标"
+	incount(target_destination) : "区域内玩家数量的赋值目标"
+	outcount(target_destination) : "区域外玩家数量的赋值目标"
+]
+
+@PointClass base(color_effect) base(Targetname, Angles, Appearflags, gibshooterbase) iconsprite("sprites/CS/gib.spr") = gibshooter : "Gib Shooter" []
+
+@PointClass base(color_cs) studio() base(Targetname, Angles, RenderFields, Effects, HostageAnim, Appearflags) size(-16 -16 0, 16 16 72) = hostage_entity : "Hostage" 
+[
+//* 支持:-framerate,-model(sprite),+model(studio),+skin,+body,-sequence,-frame
+	model(choices) : "模型文件[可能不起作用!]" : "models/hostage.mdl" =
+	[
+		"models/scientist.mdl" : "models/scientist.mdl"
+		"models/hostage.mdl" : "models/hostage.mdl"
+	]
+	body(choices) : " 身体子模型 (scientist.mdl)" : 0 =
+	[
+		0 : "0 戴眼镜的"
+		1 : "1 爱因斯坦"
+		2 : "2 黑人"
+		3 : "3 白人"
+		4 : "4 戴眼镜的+注射器"
+		5 : "5 爱因斯坦+注射器"
+		6 : "6 黑人+注射器"
+		7 : "7 白人+注射器"
+	]
+	skin(choices) : " 皮肤 (hostage.mdl)" : 0 =
+	[
+		0: "0 橙色工作服"
+		1: "1 衬衣和领带"
+	]
+]
+
+@PointClass base(color_cs) studio() base(hostage_entity) = monster_scientist : "Scientist Hostage" 
+[
+]
+
+
+//
+// Info entities
+//
+
+@PointClass base(color_cs) base(Targetname, Appearflags) iconsprite("sprites/CS/BombTarget.spr") = info_bomb_target : "Bomb target point" []
+
+@PointClass base(color_compile) iconsprite("sprites/CS/MapParams.spr") = info_texlights : "Textur lights" 
+[
+// not shure if the spawn flag is supported
+//* ZHLT v3.4 final 不支持此选项
+//-	spawnflags(flags) =
+//-	[
+//-		1 : "覆盖" : 0
+//-	]
+]
+
+//-@PointClass base(color_compile) iconsprite("sprites/CS/InfoCompileParameters.spr") = info_compile_parameters : "Compile Options"
+//-[
+//-
+//-	classname(string) : "[zhlt Merl 1.7+ 适用]"
+//-
+//-	hlcsg(choices) : "HLCSG" : -1 = [ 0 : "不运行" 2 : "只更新实体参数" -1: "(不改变)" ]
+//-	hlbsp(choices) : "HLBSP" : -1 = [ 0 : "不运行" 1 : "正常" 2 : "只寻找裂缝" -1 : "(不改变)"]
+//-	hlvis(choices) : "HLVIS" : -1 = [ 0 : "不运行" 1 : "快速" 2 : "正常" 3 : "增强" -1 : "(不改变)" ]
+//-	hlrad(choices) : "HLRAD" : -1 = [ 0 : "不运行" 1 : "正常" 2 : "增强" -1 : "(不改变)" ]
+//-	texdata(string) : "最大纹理存储(KB)" : "32768"
+//-	priority(choices) : "进程优先级" : "" = [ "" : "(不改变)" 1 : "高" -1 : "低" ]
+//-	estimate(choices) : "显示详细编译进度" : 0 = [ 0 : "否" 1 : "是" ]
+//-	verbose(choices) : "输出详细编译报告" : -1 = [ 0 : "否" 1 : "是" -1 : "(不改变)"]
+//-	hullfile(string) : "自定义 hull 文件" : ""
+//-	noclipeconomy(choices) : "移除实体中多余的 clip 节点" : -1 = [ 0 : "否" 1 : "是" -1 : "(不改变)"]
+//-	noskyclip(choices) : "天空固体不生成 clip" : 0 = [ 0 : "否" 1 : "是" ]
+//-	nocliphull(choices) : "不生成 clip" : 0 = [ 0 : "否" 1 : "是" ]
+//-	wadautodetect(choices) : "去除未使用的纹理文件" : 0 = [ 0 : "否" 1 : "是" ]
+//-	wadconfig(string) : "wad.cfg 中使用的纹理配置名" : ""
+//-	bounce(string) : "光线漫反射次数" : ""
+//-	smooth(string) : "光线平滑混合的角度限制值" : ""
+//-	ambient(string) : "最低亮度 (0.0-1.0, R G B)" : "0 0 0"
+//-	customshadowwithbounce(choices) : "自定义阴影对反射光有效" : "" = [ "" : "(不改变)" 1 : "是" ]
+//-	rgbtransfers(choices) : "彩色自定义阴影对反射光有效" : "" = [ "" : "(不改变)" 1 : "是" ]
+//-	sparse(choices) : "计算可见矩阵的方法" : -1 = [ 0 : "不使用可见矩阵" 1 : "低内存可见矩阵" 2 : "正常可见矩阵" -1 : "(不改变)" ]
+//-	chop(string) : "光照chop大小" : ""
+//-	texchop(string) : "发光纹理的光照chop大小" : ""
+//-	circus(choices) : "马戏团模式" : -1 = [ 0 : "否" 1 : "是" -1 : "(不改变)" ]
+//-	dscale(string) : "直射光线比例" : ""
+//-
+//-	classname(string) : "[zhlt XP-Cagey 3.4+ 适用]"
+//-
+//-	cliptype(choices) : "clip 类型" : -1 = [ 0 : "smallest" 1 : "normalized" 2: "simple" 3 : "precise" 4 : "legacy" -1: "默认"]
+//-	noopt(choices) : "不自动移除未使用的面" : 0 = [ 0 : "否" 1 : "是" ]
+//-	lightdata(string) : "光照信息占用存储大小(KB)" : "32768"
+//-	nodynbounce(choices) : "关闭动态光源的动态漫反射" : 0 = [ 0 : "否" 1 : "是" ]
+//-
+//-	classname(string) : "[zhlt Vluzacn v27+ 适用]"
+//-
+//-	wadcfgfile(string) : "使用的纹理配置文件" : ""
+//-]
+
+@PointClass base(color_cs) base(Targetname, Appearflags) iconsprite("sprites/CS/HostageRescue.spr") = info_hostage_rescue : "Hostage rescue point" []
+
+@PointClass base(color_game) base(Targetname, Appearflags) iconsprite("sprites/CS/MapParams.spr") = info_map_parameters : "Miscellaneous mapping parameters"
+[
+	buying(choices)  : "购买武器" : "" =
+	[
+		"": "不限制"
+		1: "匪徒不可以购买"
+		2: "警察不可以购买"
+		3: "双方都不可以购买"
+	]
+	bombradius(integer) : "C4爆炸范围" : 500
+]
+
+@PointClass base(color_point) base(Targetname, Appearflags) iconsprite("sprites/CS/null.spr") = info_null : "info_null (spotlight target)" []
+
+@PointClass base(color_player) base(Targetname, Master, Target, Angles, PlayerAnim, Appearflags) studio() size(-16 -16 -36, 16 16 36) = info_player_deathmatch : "Terrorist start"
+[
+	model(choices)  : "显示的模型 (仅编辑器中)" : "models/player/guerilla/guerilla.mdl" =
+	[
+		0 : "玩家尺寸"
+		"models/player/arctic/arctic.mdl": "Arctic"
+		"models/player/guerilla/guerilla.mdl": "Guerilla"
+		"models/player/leet/leet.mdl": "Leet"
+		"models/player/terror/terror.mdl": "Terror"
+	]
+]
+
+@PointClass base(color_player) base(Targetname, Target, Angles, PlayerAnim, Appearflags) studio() size(-16 -16 -36, 16 16 36) = info_player_start : "Counter-terrorist start"
+[
+	model(choices)  : "显示的模型 (仅编辑器中)" : "models/player/gsg9/gsg9.mdl" =
+	[
+		0 : "玩家尺寸"
+		"models/player/gign/gign.mdl": "Gign"
+		"models/player/gsg9/gsg9.mdl": "Gsg9"
+		"models/player/sas/sas.mdl": "Sas"
+		"models/player/urban/urban.mdl": "Urban"
+	]
+]
+
+@PointClass base(color_point) base(Targetname, Appearflags) size(-4 -4 -4, 4 4 4) iconsprite("sprites/CS/EnvTarget.spr") = info_target : "Beam Target" []
+
+@PointClass base(color_point) base(Targetname, Angles, Appearflags) size(-8 -8 0, 8 8 16) iconsprite("sprites/CS/infoteleportdestination.spr") = info_teleport_destination : "Teleport destination" []
+
+@PointClass base(color_player) base(Targetname, Target, Angles, PlayerAnim, Appearflags) studio() size(-16 -16 -36, 16 16 36) = info_vip_start : "VIP start"
+[
+	model(choices)  : "显示的模型 (仅编辑器中)" : "models/player/vip/vip.mdl" =
+	[
+		0 : "玩家尺寸"
+		"models/player/vip/vip.mdl": "VIP"
+	]
+]
+
+@PointClass base(color_effect) base(Targetname, Appearflags) decal() = infodecal : "Decal"
+[
+	texture(string) : "纹理名称"
+//-	texture(string) : "输入纹理名称"
+//-	texture(decal) : "选择纹理"
+]
+//
+// items
+//
+
+// all items will respawn after a shot period in a multiplayer game.
+//* 物品重生时间为30秒
+// in MP item_security respawns on time not round start
+@PointClass base(color_func) size(-16 -16 0, 16 16 16) base(Targetname, Target, Angles, RenderFields, Effects, Gravity, Velocity, Avelocity, Appearflags) Studio("models/w_antidote.mdl") = item_antidote : "Antidote" []
+@PointClass base(color_func) size(-16 -16 0, 16 16 16) base(Targetname, Target, Angles, RenderFields, Effects, Gravity, Velocity, Avelocity, Appearflags) Studio("models/w_kevlar.mdl") = item_assaultsuit : "Assaultsuit" []
+@PointClass base(color_func) size(-16 -16 0, 16 16 16) base(Targetname, Target, Angles, RenderFields, Effects, Gravity, Velocity, Avelocity, Appearflags) Studio("models/w_kevlar.mdl") = item_kevlar : "Kevlar" []
+@PointClass base(color_func) size(-16 -16 0, 16 16 16) base(Targetname, Target, Angles, RenderFields, Effects, Gravity, Velocity, Avelocity, Appearflags) Studio("models/w_battery.mdl") = item_battery : "HEV battery" []
+@PointClass base(color_func) size(-16 -16 0, 16 16 16) base(Targetname, Target, Angles, RenderFields, Effects, Gravity, Velocity, Avelocity, Appearflags) Studio("models/w_medkit.mdl")= item_healthkit : "Small Health Kit" []
+@PointClass base(color_func) size(-16 -16 0, 16 16 16) base(Targetname, Target, Angles, RenderFields, Effects, Gravity, Velocity, Avelocity, Appearflags) Studio("models/w_longjump.mdl") = item_longjump : "Longjump Module" []
+@PointClass base(color_func) size(-16 -16 0, 16 16 16) base(Targetname, Target, Angles, RenderFields, Effects, Gravity, Velocity, Avelocity, Appearflags) Studio("models/w_security.mdl") = item_security : "Security card" []
+@PointClass base(color_func) size(-16 -16 0, 16 16 16) base(WarningOnce, Targetname, Target, Angles, RenderFields, Effects, Gravity, Velocity, Avelocity, Appearflags) Studio("models/w_thighpack.mdl") = item_thighpack : "Defusal Kit" []
+@PointClass base(color_func) size(-16 -16 0, 16 16 36) base(WarningOnce, Targetname, Targetx, Angles, RenderFields, Effects, Velocity, Avelocity, Appearflags) Studio("models/w_oxygen.mdl") = item_airtank : "Air Tank" []
+
+//
+// Light entities
+//
+
+@PointClass base(color_light) iconsprite("sprites/CS/lightbulb.spr") base(Targetname, Target, Light, Appearflags) = light : "Invisible lightsource" []
+
+@PointClass base(color_light) base(Targetname, Target, Angles, Light, Appearflags) iconsprite("sprites/CS/LightEnvironment.spr") = light_environment : "Environment" 
+[
+	pitch(integer) : "倾斜 (-90=向下 90=向上)" : -90
+	_spread(integer) : "散射角度范围" : 0
+//Shade is used only by Adam Foster's hack of HLRAD to vary the color of shade.
+	_diffuse_light(color255) : "天空 (颜色和亮度)" : "128 128 255 100"
+]
+
+@PointClass base(color_light) base(Targetname, Target, Angles, Light, Appearflags) iconsprite("sprites/CS/LightSpot.spr") = light_spot : "Spotlight" 
+[
+	pitch(integer) : "倾斜 (-90=向下 90=向上)" : -90
+	_cone(integer) : "强光角度范围" : 30
+	_cone2(integer) : "弱光角度范围" : 45
+	_sky(Choices) : "作为太阳" : "" = 
+	[
+		"" : "否"
+		1 : "是"
+	]
+]
+
+//* ------------------------------------------------------------------------------------------------------------
+//* Triggers a sequence of up to 16 entities, at various time offsets.
+//*   To specify the list of entities for it to trigger, turn off Worldcraft's "smart edit" mode
+//* and add fields manually. The name of the field is the targetname of the entity to trigger,
+//* and the contents of the field are the time (in seconds) to wait before triggering it.
+//* 
+//*  Beware: the seconds countdown will continue thru round ends causing some events to happen into the next round.
+//*------------------------------------------------------------------------------------------------------------
+@PointClass base(color_trigger) base(Targetname, Appearflags) iconsprite("sprites/CS/multi_manager.spr") = multi_manager : "MultiTarget Manager" 
+[
+	spawnflags(Flags) = 
+	[
+		//* By default, a manager will ignore all inputs while it's performing a sequence.
+		//* Tick this to allow more than one sequence to run at a time.
+		1 : "多线程" : 0
+	]
+]
+
+//*
+//*multiple inputs to one switch, the AND gate
+//*
+@PointClass base(color_trigger) base(Targetname, Target, Appearflags) iconsprite("sprites/CS/MultiSource.spr") = multisource : "Multisource" 
+[
+	globalstate(string) : "读取全局状态实体"
+]
+
+@PointClass base(color_path) base(Targetname, Angles, Appearflags) size(16 16 16) iconsprite("sprites/CS/PathCorner.spr") = path_corner : "Moving platform stop"
+[
+	spawnflags(Flags) =
+	[
+		1: "到达后暂停移动" : 0
+		2: "传送到此路径点" : 0
+		4: "只引发目标一次" : 0
+	]
+	target(target_destination) : "下一个路径点"
+	message(target_destination) : "到达时引发的目标"
+	wait(integer) : "在此等待的时间(秒)" : 0
+//*if speed more than 2000 problems may result
+	speed(integer) : "新的移动速度" : 0
+	yaw_speed(integer) : "?新的转动速度" : 0
+]
+
+@PointClass base(color_path) base(Targetname, Appearflags) size(16 16 16) iconsprite("sprites/CS/PathTrack.spr") = path_track : "Train Track Path"
+[
+	target(target_destination) : "下一个路径点"
+	spawnflags(Flags) =
+	[
+		1: "开始时关闭" : 0
+		2: "只引发目标一次" : 0
+		4: "反向第二路径点" : 0
+		8: "禁用控制" : 0
+	]
+	message(target_destination) : "到达时引发的目标"
+	altpath(target_destination) : "第二路径点"
+	netname(target_destination) : "火车到死路时引发"
+//if speed more than 2000 problems may result
+	speed(integer) : "新的运动速度" : 0
+]
+
+@PointClass base(color_game) base(Targetname, Appearflags) size(-16 -16 -16, 16 16 16) iconsprite("sprites/CS/PlayerWeaponStrip.spr") = player_weaponstrip : "Strips player's weapons" []
+
+@PointClass base(color_effect) iconsprite("sprites/CS/TestEffect.spr") base(Targetname, Appearflags) = test_effect : "yellow charge" []
+
+//
+// Trigger entities
+//
+
+//
+//will only trigger ONCE per MAP, will not reset or retrigger for a new round!
+//
+@PointClass base(color_trigger) base(Targetname, Targetx, Appearflags) iconsprite("sprites/CS/TriggerAuto.spr") = trigger_auto : "AutoTrigger"
+[
+	spawnflags(Flags) =
+	[
+		1 : "引发后删除" : 1
+	]
+	globalstate(string) : "读取全局状态实体"
+	triggerstate(choices) : "引发方式" : 2 = 
+	[
+		0 : "关"
+		1 : "开"
+		2 : "锁定"
+	]
+]
+
+//
+//before team selection, engine will cycle thru all camera views whether usable or not to show views of level.
+//
+@PointClass base(color_game) base(Targetname, Targetx, Angles, Appearflags) iconsprite("sprites/CS/TriggerCamera.spr") = trigger_camera : "Trigger Camera" 
+[
+	wait(integer) : "停留时间" : 10
+	moveto(string) : "路径点"
+	spawnflags(flags) =
+	[
+		1: "开始于引发者" : 0
+		2: "跟踪引发者" : 0
+		4: "冻结引发者" : 0
+	]
+//
+//note: max speed is 2000 or things go wrong
+//
+	speed(string) : "速度" : "0"
+	acceleration(string) : "启动的加速度" : "500"
+	deceleration(string) : "停止的加速度" : "500"
+]
+
+//
+//makes another trigger point to something different.
+//
+@PointClass base(color_trigger) base(Targetname, Target, Appearflags) iconsprite("sprites/CS/TriggerChangetarget.spr") = trigger_changetarget : "Trigger Change Target"
+[
+	m_iszNewTarget(string) : "新目标"
+]
+
+//-@SolidClass base(color_trigger) base(WarningOnce, Trigger, Appearflags, SolidInvisible) = trigger_counter : "Trigger counter" 
+//-[
+//-	spawnflags(flags) = 
+//-	[
+//-		1 : "没有信息" : 0 
+//-	]
+//-	count(integer) : "引发前计数" : 2
+//-]
+
+//
+//gravity changes player state, will have to be reset to normal as player leaves low friction area.
+//
+@SolidClass base(color_func) base(Targetname, Appearflags, SolidInvisible) = trigger_gravity : "Trigger Gravity"
+[
+	gravity(integer) : "重力 (1.0=正常 填0无效)" : 1
+]
+
+@SolidClass base(color_func) base(Targetname, Target, Appearflags, SolidInvisible) = trigger_hurt : "Trigger player hurt" 
+[
+	delay(string) : "引发前延时" : "0"
+	spawnflags(flags) = 
+	[ 
+		1: "只引发目标一次" : 0 
+		2: "开始时关闭" : 0
+		8: "只伤害非玩家" : 0
+		16:"只有玩家能引发目标" : 0
+		32:"只伤害玩家" : 0
+	]
+	dmg(integer) : "每秒伤害力" : 10
+	damagetype(choices) : "伤害类型" : "" =
+	[
+		"" : "普通"
+		1 : "撞击挤压(1)"
+		2 : "子弹(2)"
+		4 : "砍(4)"
+		8 : "烧(8)"
+		16 : "冻结(16)"
+		32 : "跌落(32)"
+		64 : "爆炸(64)"
+		128 : "棍打(128)"
+		256 : "震动(256)"
+		512 : "声波(512)"
+		1024 : "激光(1024)"
+		16384: "淹(16384)"
+		32768 : "瘫痪(32768)"
+		65536 : "瓦斯(65536)"
+		131072 : "毒(131072)"
+		262144 : "辐射(262144)"
+		524288 : "水淹恢复(524288)"
+		1048576 : "化学(1048576)"
+		2097152 : "慢烧(2097152)"
+		4194304 : "慢冻结(4194304)"
+	]
+]
+
+@SolidClass base(color_trigger) base(Targetname, Master, Targetx, Appearflags, SolidInvisible) = trigger_multiple : "Trigger: Activate multiple" 
+[
+	wait(integer) : "复位前延时" : 10
+	spawnflags(flags) = 
+	[
+		1: "人质可以引发": 0
+		2: "玩家不能引发": 0
+		4: "pushable引发": 0
+	]
+]
+
+@SolidClass base(color_trigger) base(Targetname, Master, Targetx, Appearflags, SolidInvisible) = trigger_once : "Trigger: Activate once" 
+[
+	spawnflags(flags) = 
+	[
+		1: "人质可以引发": 0
+		2: "玩家不能引发": 0
+		4: "pushable引发": 0
+	]
+]
+
+@SolidClass base(color_func) base(Targetname, Angles, Appearflags, SolidInvisible) = trigger_push : "Trigger player push"
+[
+	spawnflags(flags) = 
+	[ 
+		1: "只作用一次" : 0 
+		2: "开始时关闭" : 0
+	]
+//
+//speed of ~1000 needed to go up.
+//
+	speed(integer) : "推力 (800=与重力相同)" : 40
+]
+
+@PointClass base(color_trigger) base(Targetname, Targetx, Appearflags) iconsprite("sprites/CS/TriggerRelay.spr") = trigger_relay : "Trigger Relay"
+[
+	spawnflags(flags) =
+	[
+		1: "引发后删除" : 0
+	]
+	triggerstate(choices) : "引发方式" : 2 = 
+	[
+		0: "关"
+		1: "开"
+		2: "锁定"
+	]
+]
+
+@SolidClass base(color_func) base(Targetname, Master, Target, Appearflags, SolidInvisible) = trigger_teleport : "Trigger teleport" 
+[
+	spawnflags(flags) = 
+	[
+		1: "人质可以引发": 0
+		2: "玩家不能引发": 0
+	]
+]
+
+@PointClass base(color_cs) Studio("models/w_c4.mdl") base(WarningOnce, Targetname, Appearflags) = weapon_c4 : "C4 Plastique Bomb"
+[
+	detonatedelay(string) : "爆炸前延时" : "20"
+//-	detonatetarget(string) : "爆炸时引发"
+//-	defusetarget(string) : "拆除时引发"
+]
+
+
+//
+// Function entities
+//
+
+@SolidClass base(color_cs) base(Targetname, SolidInvisible, Appearflags) = func_bomb_target : "Bomb target zone"
+[
+	target(target_destination) : "爆炸时引发的目标"
+]
+
+@SolidClass base(color_wall) base(Breakable, Skin) = func_breakable : "Breakable Object" 
+[
+//-	onlydamagedby(choices) : "Break on grenade touch" : 0 =
+//-	[
+//-		0: "No"
+//-		1: "Yes"
+//-	]
+	spawnflags(flags) =
+	[
+		1 : "只能引发" : 0
+		2 : "可撞碎" : 0
+		4 : "可踩碎" : 0
+//-		256: "Instant Crowbar" : 1
+	]
+]
+
+@SolidClass base(color_trigger) base(Targetname, Global, Master, Targetx, Angles, SolidVisible, ButtonSounds, LockedUnlocked, Appearflags) = func_button : "Button" 
+[
+	lip(integer) : "露出的尺寸" : 0
+	speed(integer) : "移动速度" : 16
+//-	netname(target_destination) : "Target Path"
+	//* Path Target overrides Targetted Object
+	health(choices) : "通过武器攻击引发" : "" = 
+	[
+		"" : "否"
+		1 : "是"
+	]
+	wait(integer) : "复位前延时 (-1=永不复位)" : 3
+	spawnflags(flags) =
+	[
+		1: "不移动" : 0
+		32: "锁定" : 0
+		64: "冒火花" : 0
+		256: "通过接触引发" : 0
+	]
+]
+
+@SolidClass base(color_cs) base(Targetname, SolidInvisible, Appearflags) = func_buyzone : "Buy zone" 
+[
+	team(choices) : "队伍" : "" =
+	[
+		"": "双方"
+		1: "匪徒"
+		2: "警察"
+	]
+]
+
+@SolidClass base(color_func) base(Targetname, Global, Angles, SolidVisible, Appearflags) = func_conveyor : "Conveyor Belt" 
+[
+	spawnflags(flags) =
+	[
+		1 : "不推动" : 0
+		2 : "内容物非固体" : 0
+	]
+	speed(string) : "移动速度" : "128"
+]
+
+@SolidClass base(color_door) base(Door) = func_door : "Basic sliding door"
+[
+]
+
+@SolidClass base(color_door) base(Door) = func_door_rotating : "Rotating door" 
+[
+	spawnflags(flags) =
+	[
+		2 : "反向" : 0
+		16: "单方向" : 0
+		64: "绕X轴旋转" : 0
+		128: "绕Y轴旋转" : 0
+	]
+	distance(integer) : "旋转角度" : 90
+]
+//*may not work in LINUX system servers.
+@SolidClass base(color_cs) base(Targetname, SolidInvisible, Appearflags) = func_escapezone : "Terrorist escape zone" 
+[
+]
+
+//*
+//* friction changes player state, will have to be reset to normal as player leaves low friction area.
+//* 0% = No friction, 100% = Normal Friction
+//*
+@SolidClass base(color_func) base(Targetname, SolidVisible, Appearflags) = func_friction : "Surface with a change in friction" 
+[
+	modifier(integer) : "摩擦力 (100=正常)" : 15
+]
+
+//     Notes, from info by FJL:
+//     func_grencatch checks for what type grenade falls in its space. If for instance, func_grencatch
+//     is set up to check for a smokegrenade, then the smokegrenade must be thrown and
+//     land within the solid entities occupied space for it to trigger another entity.
+//     I do not really know what the "Disable On Grenade" field is for. 
+//     This entity actually will work on multiplayer games but will only function ONCE per MAP, not per round.
+
+@SolidClass base(color_trigger) base(WarningOnce, Targetname, SolidInvisible, Appearflags) = func_grencatch : "Grenade Check"
+[
+	triggerongrenade(string) : "引发的目标"
+	grenadetype(choices): "手雷类型" : "flash" =
+	[
+		"flash": "闪光弹"
+		"smoke": "烟雾弹"
+	]
+//-	disableongrenade(string) : "Disable On Grenade"
+]
+
+@SolidClass base(color_trigger) base(Targetname, Global, Angles, SolidVisible, Avelocity, Appearflags) = func_guntarget : "Moving platform" 
+[
+	target(target_destination) : "路径点"
+	speed(integer) : "移动速度" : 128
+	message(target_destination) : "引发的目标"
+	health(integer) : "耐久度" : 0
+	spawnflags(flags) =
+	[
+		1: "开始时打开" : 0
+	]
+]
+
+@SolidClass base(color_func) base(Targetname, Global, SolidVisible, Appearflags) = func_healthcharger: "Wall health recharger" 
+[
+	//* dmdelay may not work in CS
+//-	dmdelay(integer) : "Deathmatch recharge delay" : 0
+]
+
+@SolidClass base(color_cs) base(Targetname, SolidInvisible, Appearflags) = func_hostage_rescue : "Hostage rescue zone" 
+[
+//-	target(target_destination) : "引发的目标"
+]
+
+@SolidClass base(color_wall) base(Targetname, SolidVisible, Skin, WaveScale, Appearflags) = func_illusionary : "Fake Wall/Light" 
+[
+]
+
+//* Creates an invisible, climbable field.
+@SolidClass base(color_func) base(Targetname, SolidInvisible, Appearflags) = func_ladder : "Ladder" 
+[
+]
+
+@SolidClass base(color_func) base(Targetname, SolidInvisible, Appearflags) = func_mortar_field : "Mortar Field" 
+[
+	m_flSpread(integer) : "精确度半径" : 64
+	m_iCount(integer) : "重复次数" : 1
+	m_fControl(Choices) : "目标位置" : "" =
+	[
+		"" : "随机"
+		1 : "引发者"
+		2 : "桌面控制"
+	]
+	m_iszXController(target_destination) : "X坐标控制实体"
+	m_iszYController(target_destination) : "Y坐标控制实体"
+]
+
+//* Only partially implemented, some keys don't work properly. 
+//* NOTE: the continous changing animation can lead to lag.
+@SolidClass base(color_door) base(Targetname, Global, Angles, SolidVisible, Skin, Appearflags) = func_pendulum : "Swings back and forth" 
+[
+	speed(integer) : "转动速度" : 90
+	distance(integer) : "转动角度" : 90
+	damp(integer) : "摆动阻力 (0-1000)" : 0
+	dmg(integer) : "接触伤害" : 0
+	spawnflags(flags) =
+	[
+		1: "开始时打开" : 0
+		8: "内容物非固体" : 0
+		16: "关闭时复位" : 0
+		64: "绕X轴旋转" : 0
+		128: "绕Y轴旋转" : 0
+	]
+]
+
+@SolidClass base(color_door) base(Targetname, Global, SolidVisible, PlatSounds, Appearflags) = func_plat : "Elevator" 
+[
+	spawnflags(Flags) =
+	[
+		1: "锁定" : 0
+	]
+	height(integer) : "移动距离 (不可为负数)" : 0
+	speed(integer) : "移动速度" : 128
+]
+
+@SolidClass base(color_door) base(Targetname, Global, Angles, SolidVisible, PlatSounds, Appearflags) = func_platrot : "Moving Rotating platform" 
+[
+	spawnflags(Flags) =
+	[
+		1: "锁定" : 0
+		64: "绕X轴旋转" : 0
+		128: "绕Y轴旋转" : 0
+	]
+	height(integer) : "移动距离 (不可为负数)" : 0
+	speed(integer) : "移动速度" : 128
+	rotation(integer) : "转动角度" : 0
+]
+
+@SolidClass base(color_door) base(Breakable, Gravity, Velocity) = func_pushable : "Pushable object"
+[
+	size(choices) : "?占用空间" : "" =
+	[
+		"": "默认"
+		"0.0": "点"
+		1: "玩家尺寸"
+		2: "大尺寸"
+		3: "玩家蹲下"
+	]
+	spawnflags(flags) =
+	[
+		1 : "只能引发" : 0
+//-		2 : "Broken on touch is buggy" : 0
+//-		4 : "Pressure is buggy" : 0
+		128: "可破碎[不复位]" : 1
+//-		256: "Instant Crowbar" : 1
+	]
+	friction(integer) : "摩擦力 (0-400)" : 50
+	buoyancy(integer) : "浮力" : 20
+]
+
+@SolidClass base(color_func) base(Targetname, Global, SolidVisible, Appearflags) = func_recharge: "Battery recharger" 
+[
+//-	 dmdelay(integer) : "Deathmatch recharge delay" : 0
+]
+
+//* Like func_button, except it rotates.
+@SolidClass base(color_trigger) base(Targetname, Global, Master, Targetx, Angles, SolidVisible, Skin, ButtonSounds, Appearflags) = func_rot_button : "RotatingButton" 
+[
+	distance(integer) : "转动角度" : 90
+	speed(integer) : "转动速度" : 90
+	wait(integer) : "复位前延时 (-1=永不复位)" : 3
+	health(choices) : "通过武器攻击引发" : "" = 
+	[
+		"" : "否"
+		1 : "是"
+	]
+	spawnflags(flags) =
+	[
+		1 : "内容物非固体" : 0
+		2 : "反向运动" : 0
+		32: "锁定" : 0
+		64: "绕X轴旋转" : 0
+		128: "绕Y轴旋转" : 0
+		256: "通过接触引发": 0
+	]
+	//* changetarget will change the button's target's TARGET field to the button's changetarget when button is pressed.
+	changetarget(target_destination) : "?新目标"
+]
+
+@SolidClass base(color_door) base(Targetname, Global, Angles, SolidVisible, Appearflags) = func_rotating : "Rotating Object"
+[
+	speed(integer)	: "转动速度" : 90
+	volume(integer) : "音量 (0-10)" : 10
+	fanfriction(integer) : "关闭时的加速度 (0 - 100%)" : 20
+	//* The number against each sound corresponds to the wav file
+	//* played. e.g. Slow Rush (2) plays "fans/fan2.wav".
+	sounds(choices) : "声音样式 (sound/fans/)" : "" =
+	[
+		"": "无" 
+		1: "fan1.wav"
+		2: "fan2.wav"
+		3: "fan3.wav"
+		4: "fan4.wav"
+		5: "fan5.wav"
+	]
+	//* The sound to play while active. This will only be used if "Fan Sounds" is set to "No Sound".
+	message(sound) : "声音文件"
+	spawnflags(flags) =
+	[
+		1: "开始时打开" : 0
+		2: "反向旋转" : 0
+		4: "绕X轴旋转" : 0
+		8: "绕Y轴旋转" : 0
+		16: "启动时使用加速度" : 0
+		32: "接触时受伤" : 0
+		64: "内容物非固体" : 0
+		//* This and the other "radius" settings, only affect the
+		//* way the Fan Sounds are played; if you set a small radius,
+		//* the sounds will only be audible near to the fan.
+		128: "小范围声音" : 0
+		256: "中范围声音" : 0
+		512: "大范围声音" : 0
+	]
+	spawnorigin(string) : "实际轴心位置 (X Y Z)" : "0 0 0"
+	dmg(integer) : "挤压伤害" : 0
+]
+
+@SolidClass base(color_door) base(BaseTank) = func_tank : "Brush MG Turret" 
+[
+	bullet(choices) : "子弹类型" : "" = 
+	[
+		"": "无"
+		1: "9mm"
+		2: "MP5"
+		3: "12mm"
+	]
+]
+
+@SolidClass base(color_trigger) base(Targetname, Target, SolidInvisible, Appearflags) = func_tankcontrols : "Tank controls"
+[
+]
+
+@SolidClass base(color_door) base(BaseTank) = func_tanklaser : "Brush Laser Turret" 
+[
+	laserentity(target_source) : "env_laser 实体"
+]
+
+@SolidClass base(color_door) base(BaseTank) = func_tankmortar : "Brush Mortar Turret" 
+[
+	iMagnitude(Integer) : "爆炸范围" : 100
+]
+
+@SolidClass base(color_trigger) base(Trackchange) = func_trackautochange : "Automatic track changing platform"
+[
+]
+
+@SolidClass base(color_trigger) base(Trackchange) = func_trackchange : "Train track changing platform"
+[
+]
+
+@SolidClass base(color_door) base(Targetname, Global, Angles, SolidVisible, Skin, Appearflags) = func_tracktrain : "Track Train" 
+[
+	spawnflags(flags) =
+	[
+		1: "不倾斜" : 0
+		2: "不能控制" : 0
+		4: "不能后退" : 0
+		8: "内容物非固体" : 0
+	]
+	target(target_destination) : "路径点"
+//*
+//*if startspeed is not 0, then maybe no train sounds
+//*
+	//* The number against each sound corresponds to the wav file
+	//* played. e.g. Rail 1 plays "plats/ttrain1.wav".
+	sounds(choices) : "声音样式 (sound/plats/)" : "" =
+	[
+		"": "无"
+		1: "ttrain1.wav"
+		2: "ttrain2.wav"
+		3: "ttrain3.wav"
+		4: "ttrain4.wav"
+		5: "ttrain6.wav"
+		6: "ttrain7.wav"
+	]
+	volume(integer) : "音量 (0-10)" : 10
+//*
+//*note: max speed is >2000 or things go wrong
+//*and if startspeed is not 0, then maybe no train sounds
+//*
+	startspeed(integer) : "初始速度" : 0
+	speed(integer) : "运动速度" : 128
+//*stabilty of turn Banking depends on distance between wheels
+	bank(integer) : "转弯时的倾斜角度" : 0
+	dmg(integer) : "挤压伤害" : 0
+//*
+//*distance between wheels relates to stability in turns
+//*
+	wheels(integer) : "车轮间距" : 64
+//*
+//*relates to how high above track ORIGIN brush for train runs.
+//*
+	height(integer) : "轴心距离路径点的高度" : 4
+]
+
+
+//* A func_train will not be rendered correctly once it has gone about 
+//* 4096 units from its spawn position (ie where it sits in worldcraft 
+//* space).  An invisible func_train will still be correctly moving 
+//* around your train path, it is only the visible piece of the train 
+//* that gets 'stuck'. 
+//* So try having your train sitting in the middle of worldcraft's 
+//* space when you compile the level.
+//*(note- a func_train gets its lighting info from where it sits when 
+//* compiled) 
+//* 解决方法:在func_train中心的位置加轴心
+@SolidClass base(color_door) base(Targetname, Global, Angles, SolidVisible, Avelocity, Skin, WaveScale, PlatSounds, Appearflags) = func_train : "Moving platform" 
+[
+	spawnflags(flags) =
+	[
+		8: "内容物非固体" : 0
+	]
+	target(target_source) : "路径点"
+//*
+//*note: max speed is 2000 or things go wrong
+//*
+	speed(integer) : "移动速度" : 128
+//*
+//* avelocity is fixed speed of tumbling, cannot be changed in play
+//*
+	dmg(integer) : "挤压伤害" : 0
+]
+
+@SolidClass base(color_trigger) base(Targetname, Target, SolidInvisible, Appearflags) = func_traincontrols : "Train Controls"
+[
+]
+
+@SolidClass base(color_door) base(Targetname, Angles, SolidVisible, Skin, Appearflags) = func_vehicle : "Drivable Vehicles" 
+[
+	spawnflags(flags) =
+	[
+		1 : "不倾斜" : 0
+		2 : "不能控制" : 0
+		8: "内容物非固体" : 0
+	]
+	target(target_destination) : "路径点"
+	sounds(choices) : "声音样式 (sound/plats/)" : "" =
+	[
+		"": "无"
+		1: "vehicle1.wav"
+		2: "vehicle2.wav"
+		3: "vehicle3.wav"
+		4: "vehicle4.wav"
+		5: "vehicle6.wav"
+		6: "vehicle7.wav"
+	]
+	volume(integer) : "音量 (0-10)" : 10
+//*
+//*note: max speed is 2000 or things go wrong
+//*
+	startspeed(integer) : "初始速度" : 0
+	speed(integer) : "运动速度" : 128
+	bank(integer) : "转弯时的倾斜角度" : 0
+	dmg(integer) : "挤压伤害" : 0
+	length(integer) : "车身长度" : 256
+	width(integer) : "车身宽度" : 64
+	height(integer) : "轴心距离路径点高度" : 4
+]
+
+@SolidClass base(color_trigger) base(Targetname, Target, SolidInvisible, Appearflags) = func_vehiclecontrols : "Vehicle Controls"
+[
+]
+
+@SolidClass base(color_cs) base(Targetname, SolidInvisible, Appearflags) = func_vip_safetyzone : "VIP safety zone" 
+[
+]
+
+@SolidClass base(color_wall) base(Targetname, Global, SolidVisible, Appearflags) = func_wall : "Wall" 
+[
+]
+
+@SolidClass base(color_wall) base(func_wall, Skin) = func_wall_toggle : "Toggleable geometry" 
+[
+	spawnflags(flags) =
+	[
+		1 : "开始时关闭" : 0
+	]
+]
+
+@SolidClass base(color_env) base(Door) = func_water : "Liquid" 
+[
+	skin(choices) : "内容物" : -3 = []
+]
+
+// Hex' notes:
+// func_weaponcheck is used to check if a player which inside its area carry (all) weapon(s) which assigned in that entity.
+// If (all) weapon(s) in the entity list (all) carried by player, then it will fire "trigger_items", otherwise it will fire "trigger_noitems",
+// and will be delayed and rechecked until the player carry (all) those/that weapon(s).
+// Like func_grencatch, this entity can only be used once per map, not per round.
+
+@SolidClass base(color_trigger) base(WarningOnce, Targetname, Master, SolidInvisible, Appearflags) = func_weaponcheck : "Weapon Checking Entity" 
+[
+	trigger_items(target_destination) : "检查成功时时引发的目标"
+	trigger_noitems(target_destination) : "检查失败时引发的目标"
+	trigger_noitems_delay(integer) : "检查失败后重新检查延时"
+	any_weapon(choices) : "任何武器都可以" : 0 =
+	[
+		0: "否"
+		1: "是"
+	]
+	item1(choices) : "需携带的武器1" : "" =
+	[
+		"":"无"
+		"weapon_knife":"刀" "weapon_glock18":"Glock18" "weapon_usp":"USP45"
+		"weapon_p228":"P-228" "weapon_deagle":"DesertEagle" "weapon_elite":"BerettaElites"
+		"weapon_fiveseven":"Five-Seven" "weapon_m3":"BenelliM3" "weapon_xm1014":"BenelliXM1014"
+		"weapon_mac10":"Mac-10" "weapon_tmp":"TMP" "weapon_mp5navy":"MP5/Navy"
+		"weapon_ump45":"UMP45" "weapon_p90":"FNP90" "weapon_galil":"Galil"
+		"weapon_famas":"Famas" "weapon_ak47":"AK47" "weapon_scout":"Scout"
+		"weapon_m4a1":"M4A1" "weapon_sg552":"SG552" "weapon_aug":"Aug"
+		"weapon_sg550":"SG550" "weapon_awp":"AWP" "weapon_g3sg1":"G3/SG-1"
+		"weapon_m249":"M249" "weapon_shield":"防暴盾牌" "weapon_flashbang":"闪光弹"
+		"weapon_hegrenade":"高爆手榴弹" "weapon_smokegrenade":"烟雾弹" "weapon_c4":"C4炸弹"
+	]
+	item2(choices) : "需携带的武器2" : "" =
+	[
+		"":"无"
+		"weapon_knife":"刀" "weapon_glock18":"Glock18" "weapon_usp":"USP45"
+		"weapon_p228":"P-228" "weapon_deagle":"DesertEagle" "weapon_elite":"BerettaElites"
+		"weapon_fiveseven":"Five-Seven" "weapon_m3":"BenelliM3" "weapon_xm1014":"BenelliXM1014"
+		"weapon_mac10":"Mac-10" "weapon_tmp":"TMP" "weapon_mp5navy":"MP5/Navy"
+		"weapon_ump45":"UMP45" "weapon_p90":"FNP90" "weapon_galil":"Galil"
+		"weapon_famas":"Famas" "weapon_ak47":"AK47" "weapon_scout":"Scout"
+		"weapon_m4a1":"M4A1" "weapon_sg552":"SG552" "weapon_aug":"Aug"
+		"weapon_sg550":"SG550" "weapon_awp":"AWP" "weapon_g3sg1":"G3/SG-1"
+		"weapon_m249":"M249" "weapon_shield":"防暴盾牌" "weapon_flashbang":"闪光弹"
+		"weapon_hegrenade":"高爆手榴弹" "weapon_smokegrenade":"烟雾弹" "weapon_c4":"C4炸弹"
+	]
+	item3(choices) : "需携带的武器3" : "" =
+	[
+		"":"无"
+		"weapon_knife":"刀" "weapon_glock18":"Glock18" "weapon_usp":"USP45"
+		"weapon_p228":"P-228" "weapon_deagle":"DesertEagle" "weapon_elite":"BerettaElites"
+		"weapon_fiveseven":"Five-Seven" "weapon_m3":"BenelliM3" "weapon_xm1014":"BenelliXM1014"
+		"weapon_mac10":"Mac-10" "weapon_tmp":"TMP" "weapon_mp5navy":"MP5/Navy"
+		"weapon_ump45":"UMP45" "weapon_p90":"FNP90" "weapon_galil":"Galil"
+		"weapon_famas":"Famas" "weapon_ak47":"AK47" "weapon_scout":"Scout"
+		"weapon_m4a1":"M4A1" "weapon_sg552":"SG552" "weapon_aug":"Aug"
+		"weapon_sg550":"SG550" "weapon_awp":"AWP" "weapon_g3sg1":"G3/SG-1"
+		"weapon_m249":"M249" "weapon_shield":"防暴盾牌" "weapon_flashbang":"闪光弹"
+		"weapon_hegrenade":"高爆手榴弹" "weapon_smokegrenade":"烟雾弹" "weapon_c4":"C4炸弹"
+	]
+	item4(choices) : "需携带的武器4" : "" =
+	[
+		"":"无"
+		"weapon_knife":"刀" "weapon_glock18":"Glock18" "weapon_usp":"USP45"
+		"weapon_p228":"P-228" "weapon_deagle":"DesertEagle" "weapon_elite":"BerettaElites"
+		"weapon_fiveseven":"Five-Seven" "weapon_m3":"BenelliM3" "weapon_xm1014":"BenelliXM1014"
+		"weapon_mac10":"Mac-10" "weapon_tmp":"TMP" "weapon_mp5navy":"MP5/Navy"
+		"weapon_ump45":"UMP45" "weapon_p90":"FNP90" "weapon_galil":"Galil"
+		"weapon_famas":"Famas" "weapon_ak47":"AK47" "weapon_scout":"Scout"
+		"weapon_m4a1":"M4A1" "weapon_sg552":"SG552" "weapon_aug":"Aug"
+		"weapon_sg550":"SG550" "weapon_awp":"AWP" "weapon_g3sg1":"G3/SG-1"
+		"weapon_m249":"M249" "weapon_shield":"防暴盾牌" "weapon_flashbang":"闪光弹"
+		"weapon_hegrenade":"高爆手榴弹" "weapon_smokegrenade":"烟雾弹" "weapon_c4":"C4炸弹"
+	]
+	item5(choices) : "需携带的武器5" : "" =
+	[
+		"":"无"
+		"weapon_knife":"刀" "weapon_glock18":"Glock18" "weapon_usp":"USP45"
+		"weapon_p228":"P-228" "weapon_deagle":"DesertEagle" "weapon_elite":"BerettaElites"
+		"weapon_fiveseven":"Five-Seven" "weapon_m3":"BenelliM3" "weapon_xm1014":"BenelliXM1014"
+		"weapon_mac10":"Mac-10" "weapon_tmp":"TMP" "weapon_mp5navy":"MP5/Navy"
+		"weapon_ump45":"UMP45" "weapon_p90":"FNP90" "weapon_galil":"Galil"
+		"weapon_famas":"Famas" "weapon_ak47":"AK47" "weapon_scout":"Scout"
+		"weapon_m4a1":"M4A1" "weapon_sg552":"SG552" "weapon_aug":"Aug"
+		"weapon_sg550":"SG550" "weapon_awp":"AWP" "weapon_g3sg1":"G3/SG-1"
+		"weapon_m249":"M249" "weapon_shield":"防暴盾牌" "weapon_flashbang":"闪光弹"
+		"weapon_hegrenade":"高爆手榴弹" "weapon_smokegrenade":"烟雾弹" "weapon_c4":"C4炸弹"
+	]
+	item6(choices) : "需携带的武器6" : "" =
+	[
+		"":"无"
+		"weapon_knife":"刀" "weapon_glock18":"Glock18" "weapon_usp":"USP45"
+		"weapon_p228":"P-228" "weapon_deagle":"DesertEagle" "weapon_elite":"BerettaElites"
+		"weapon_fiveseven":"Five-Seven" "weapon_m3":"BenelliM3" "weapon_xm1014":"BenelliXM1014"
+		"weapon_mac10":"Mac-10" "weapon_tmp":"TMP" "weapon_mp5navy":"MP5/Navy"
+		"weapon_ump45":"UMP45" "weapon_p90":"FNP90" "weapon_galil":"Galil"
+		"weapon_famas":"Famas" "weapon_ak47":"AK47" "weapon_scout":"Scout"
+		"weapon_m4a1":"M4A1" "weapon_sg552":"SG552" "weapon_aug":"Aug"
+		"weapon_sg550":"SG550" "weapon_awp":"AWP" "weapon_g3sg1":"G3/SG-1"
+		"weapon_m249":"M249" "weapon_shield":"防暴盾牌" "weapon_flashbang":"闪光弹"
+		"weapon_hegrenade":"高爆手榴弹" "weapon_smokegrenade":"烟雾弹" "weapon_c4":"C4炸弹"
+	]
+	item7(choices) : "需携带的武器7" : "" =
+	[
+		"":"无"
+		"weapon_knife":"刀" "weapon_glock18":"Glock18" "weapon_usp":"USP45"
+		"weapon_p228":"P-228" "weapon_deagle":"DesertEagle" "weapon_elite":"BerettaElites"
+		"weapon_fiveseven":"Five-Seven" "weapon_m3":"BenelliM3" "weapon_xm1014":"BenelliXM1014"
+		"weapon_mac10":"Mac-10" "weapon_tmp":"TMP" "weapon_mp5navy":"MP5/Navy"
+		"weapon_ump45":"UMP45" "weapon_p90":"FNP90" "weapon_galil":"Galil"
+		"weapon_famas":"Famas" "weapon_ak47":"AK47" "weapon_scout":"Scout"
+		"weapon_m4a1":"M4A1" "weapon_sg552":"SG552" "weapon_aug":"Aug"
+		"weapon_sg550":"SG550" "weapon_awp":"AWP" "weapon_g3sg1":"G3/SG-1"
+		"weapon_m249":"M249" "weapon_shield":"防暴盾牌" "weapon_flashbang":"闪光弹"
+		"weapon_hegrenade":"高爆手榴弹" "weapon_smokegrenade":"烟雾弹" "weapon_c4":"C4炸弹"
+	]
+]
+
+
+//
+// Miscellaneous entities
+//
+
+
+@SolidClass base(color_trigger) base(Targetname, Target, SolidVisible, Appearflags) = button_target : "Target Button"
+[
+	spawnflags(flags) =
+	[
+		1: "可通过按E键引发" : 0
+		2: "开始时打开" : 0
+	]
+]
+
+@SolidClass base(color_door) base(Targetname, Global, Angles, SolidVisible, LockedUnlocked, Appearflags) = momentary_door : "Momentary/Continuous door" 
+[
+	//* -----------------------------------------------------------------
+	//* The number against each sound corresponds to the wav file played.
+	//* e.g. Vacuum (4) plays "doors/doormove4.wav".
+	//* -----------------------------------------------------------------
+	movesnd(choices) : "移动声音 (sound/doors/)" : "" = 
+	[
+		"": "无声"
+		1: "电动机 doormove1.wav"
+		2: "气动 doormove2.wav"
+		3: "气动滚轴 doormove3.wav"
+		4: "真空 doormove4.wav"
+		5: "液压 doormove5.wav"
+		6: "大滚轴 doormove6.wav"
+		7: "轨道门 doormove7.wav"
+		8: "爽快的金属门 doormove8.wav"
+		9: "吱吱响1 doormove9.wav"
+		10: "吱吱响2 doormove10.wav"
+	]
+	//* -----------------------------------------------------------------
+	//* The number against each sound corresponds to the wav file played.
+	//* e.g. Chunk (4) plays "doors/doorstop4.wav".
+	//* -----------------------------------------------------------------
+	stopsnd(choices) : "停止声音 (sound/doors/)" : "" = 
+	[
+		"": "无声"
+		1: "叮当响 doorstop1.wav"
+		2: "叮当混响 doorstop2.wav"
+		3: "齿轮 doorstop3.wav"
+		4: "结实的门 doorstop4.wav"
+		5: "轻型气闸 doorstop5.wav"
+		6: "金属滑动 doorstop6.wav"
+		7: "金属锁 doorstop7.wav"
+		8: "轻快金属 doorstop8.wav"
+	]
+	lip(integer) : "露出的尺寸" : 0
+	spawnflags(flags) =
+	[
+		1 : "开始时打开" : 0
+	]
+]
+
+@SolidClass base(color_trigger) base(Targetname, Target, Angles, SolidVisible, Skin, ButtonSounds, Appearflags) = momentary_rot_button : "Direct wheel control" 
+[
+	distance(integer) : "转动角度" : 90
+	speed(integer) : "转动速度" : 45
+	returnspeed(integer) : "回转速度" : 0
+	spawnflags(flags) =
+	[
+		1: "感应(作为转门)" : 0
+//-		2: "不可用" : 0
+		16: "自动回转" : 0
+		64: "绕X轴旋转" : 0
+		128: "绕Y轴旋转" : 0
+	]
+]
+
+
+
+// -----------------------------------------------------------------------
+//
+// 更新历史
+//
+// -----------------------------------------------------------------------
+// 2012年7月18日 - vluzacn (0.8.2.0)
+//   - 删除一些名称重复的键, 因为相同名称但不同类型的键会导致Hammer在添加fgd时显示警告, 这可能会触发Hammer的消息窗口的溢出bug, 在少数情况下会导致Hammer在添加fgd时崩溃.
+//       涉及的实体: cycler_sprite的model键, cycler_wreckage的model键, env_shooter的shootmodel键, infodecal的decal键.
+//       其中infodecal的decal键只保留文本类型而删除纹理类型, 是因为Hammer的bug通常会导致infodecal在选择纹理时无法加载正确的wad文件, 因此纹理类型是无用的.
+//   - 玩家动作和人质动作的默认sequence值改为0.
+//       因为sequence非0时, 如果实体类型更换到cycler_sprite等实体并且选择其他mdl后, sequence却保持不变, 这可能导致sequence超出mdl的sequence的范围, 导致实体在Hammer中显示成一条线而无法选取.
+//   - 增加"波浪高度"键, 添加到实体:
+//       func_illusionary, func_train. 其他实体也可以添加此键, 但一般来说有轴心的实体在应用水纹理时会出现bug, 不能设置内容物的实体添加此键意义不大.
+//   - env_sound的"正常(关闭)"选项的值设置为"0.1", 这是因为这个值填0时引擎会无法正确处理.
+//   - env_beam默认持续时间由0更改为1, 因为0会导致帧率和环形光不起作用.
+//   - env_glow增加角度键.
+//   - game_player_equip中, famas的口径标注由762更正为556.
+//   - game_score的第二个标记由"队伍计分"更正为"队友计分".
+//   - 删除effects键的256选项.
+//       发现该选项并不像128选项一样可以防止同屏可见实体超过256个的错误即too many entities in visible packet list错误, 而只是将实体透明, 因此是无用的. 删除的另一个原因是, 该选项副作用未知.
+//   - 灯的默认颜色重新恢复为255 255 255白色.
+//   - 增加太阳散射角度, 需要vluzacn的zhlt编译程序v27以上.
+//   - zhlt光影选项, 根据vluzacn的zhlt编译程序, 改为"不透明"和"不透明 + 透明纹理修正"两项.
+//   - 删除info_compile_parameters编译参数实体, 因为这个实体应当由编译程序提供.
+//   - zhlt自定义阴影使用选取颜色的方式来设置.
+//   - func_breakable和func_pushable的"破碎时产生的实体"标注"无法复位".
+//   - 更正func_water中一些重复的标记, 使它们与func_door一致.
+//   - 灯的默认衰减速度更改为空, 即在编译时的使用默认值.
+//   - "渲染效果"排列在"渲染模式"之后, 因为一般先设置渲染模式才能设置渲染效果.
+//   - 默认渲染色由"0 0 0"改为空, 这可以节省体积.
+//   - "最小灯光等级"标注的范围由"0.0-1.0"改为"0.0-2.0".
+//   - "删除的目标"标注"无法复原".
+//   - 注意到Hammer在输出map时会自动删除值为0的键(multi_manager除外), func_pushable体积的"0"选项改为"0.0".
+// -----------------------------------------------------------------------
+// 2010年9月26日 - vluzacn (0.8.1.4)
+//   - 所有可见固体实体,armourty_entity,hostage_entity,item_*和item_airtank增加"实体效果"键,包括"粒子漩涡","枪口火焰","强光","弱光","假定环境光线向上","不插入下一帧","发光图标","不可见","永久不可见"等选项.
+//       注意:不保证"永久不可见"选项有效;固体实体可能需要设置轴心以正确显示这些效果.
+//   - armoury_entity和item_*实体添加"重力","初始移动速度","初始转动速度"键.
+//   - item_airtank添加"初始移动速度","初始转动速度"键.
+//   - trigger_once,trigger_multiple,trigger_teleport和trigger_hurt分别添加"人质引发"或"只伤害非玩家"标记.
+//   - func_guntarget添加"实体角度"和"初始转动速度"键.func_train添加"实体角度"键.
+//   - func_pushable添加"重力"和"初始移动速度"键.
+//   - func_breakable添加"实体角度"键;这个角度的用处是非攻击破碎时设置攻击者方向.
+//   - 删除下列实体的无效"属主"键:trigger_gravity,trigger_hurt,trigger_push,momentary_rot_button.
+//   - momentary_rot_button删除"不可用"标记.
+//   - func_pushable的体积选项标注为可能无效.
+//   - 根据实际作用范围重设item_*物体默认显示的尺寸.
+//   - func_pendulum的"挤压伤害"重新解释为"接触伤害".
+//   - cycler_wreckage的model键默认值设置为空.
+// -----------------------------------------------------------------------
+// 2010年8月14日 - vluzacn (0.8.1.3)
+//   - 重新添加game_team_master实体
+//       原因是它是game系列中唯一可以设置"引发方式"的实体.未添加无效的"队伍"键,也不建议把该实体用作属主.
+//   - 重新添加globalstate相关实体和键值
+//       包括env_global,multisource,trigger_auto.
+//   - button_target删除"属主"键
+//   - func_guntarget添加"开始时打开"标记
+//   - game_counter删除"引发前延时"和"删除的目标"键
+//   - game_player_hurt添加"目标"键
+//   - game_text删除"目标"键
+//   - path_track的标记的解释修改为"反向第二路径点"和"禁用控制"
+//   - trigger_changetarget删除"引发前延时"和"删除的目标"键
+// -----------------------------------------------------------------------
+// 2010年6月7日 - vluzacn (0.8.1.2)
+//   - hostage
+//       注明了模型文件设置可能不起作用
+//   - 渲染效果选项
+//       增加选项"发光外壳(仅模型)(19)"
+//   - 内容物选项
+//       为func_door和func_water增加值-1,并设置func_water默认内容物为-3.增加env_bubbles内容物选项.
+//   - breakable
+//       键"碎片散发方向"的"随机"和"攻击者"选项对应的值修正为"random"和"directed"
+//   - door
+//       增加键"引发时加血"
+//   - path_track
+//       标记"禁用"重新解释为"开始时关闭"
+// -----------------------------------------------------------------------
+// 2010年5月23日 - vluzacn (0.8.1.1c)
+//   - info_player_deathmatch
+//       增加键"属主"
+//   - func_tracktrain
+//       增加选项"不能后退"
+// -----------------------------------------------------------------------
+// 2010年1月26日 - vluzacn (0.8.1.1b)
+//   - armoury_entity
+//       支持可选择的模型显示
+//   - 内容物选项
+//       值""的解释由"空"改为"默认",增加值0的解释为"空"
+// -----------------------------------------------------------------------
+// 2009年12月26日 - vluzacn (0.8.1.1)
+//   - 地图属性
+//       重新加入message键,尽管实际上不起作用.
+//       添加纹理发光样式键 style
+//       添加最小灯光等级键 _minlight
+//   - zhlt_lightflags
+//       "不透明+凹体修正"对应的值改为"6".先前版本fgd的"5"是错误的.
+//   - momentary_door
+//       删除大部分无效键值.另外mom_button的属主键也是无效的.
+//   - Door基本类
+//       添加"波浪高度".涉及的实体:func_door,func_door_rotating,func_water
+//   - weapon_c4
+//       添加WarningOnce.在0.8.1.0版中忘记了这点.
+//   - hostage
+//       修正了hostage模型的选项.在0.8.1.0版中的设置有些错误.
+//   - framerate键的默认值
+//       由"1.0"改为正确的"10.0".这是0.8.1.0版中的严重失误.涉及的实体:
+//       cycler_sprite,cycler_wreckage,env_glow,env_sprite
+//   - 文件结构
+//       去除了baseclass:weapon和weapon2.涉及的实体:
+//       item_airtank,item_antidote,item_assaultsuit,item_kevlar,item_battery,
+//       item_healthkit,item_longjump,item_security,item_thighpack
+//   - 文字细微修改
+//       包括:"非固体"改为"内容物非固体", info_compile_parameters中的修改,
+//            path_corner的"新的转动速度"改为"?新的转动速度"
+// -----------------------------------------------------------------------
+// 2009年11月14日 - vluzacn (0.8.1.0c)
+//   - hostage
+//       增加注射器选项,删除monster_scientist的警告,删除game_player_equip的hostage选项
+//   - 地图属性
+//       最大距离增加至32768
+//   - 提示信息
+//       改为classname键
+//       包括:info_texlight,game_player_equip,warningonce,info_compile_parameters
+//   - info_compile_parameters
+//       根据zhlt2.5.3build1.7改写
+// -----------------------------------------------------------------------
+// 2009年11月4日 - vluzacn (0.8.1.0b)
+//   - light默认颜色亮度
+//       光线:255 255 128 100
+//       天空:128 128 255 100
+//   - 所有可重生item_实体去除无效的Targetx只保留Target
+//       item_antidote item_assaultsuit item_kevlar item_battery
+//       item_healthkit item_longjump item_security item_thighpack
+// -----------------------------------------------------------------------
+// 2009年10月25日 - vluzacn (0.8.1.0)
+// 测试所有实体并翻译为中文版
+// 参考资料:
+//   X-man天书, http://www.modchina.com/x-man/csmap/
+//   ZHLT文档及源代码, http://zhlt.info/
+//   VALVE Developer Community, http://developer.valvesoftware.com/
+//   AlliedModders Wiki, http://wiki.tcwonline.org/
+// 主要修改:
+//   - worldspawn
+//       删除若干无用键值,最大可视距离默认值增加到20000
+//   - 实体角度
+//       增加选项"向上"和"向下",再也不需要用黑圆下面那个充满bug的选项了
+//   - 出生点
+//       添加目标键,当玩家(包括观察者)从出生点出生时,会引发相应目标
+//   - 实体在VHE中的颜色
+//       所有实体分为几类,分别设定了颜色;如果不喜欢可以很容易修改或删除
+//   - 实体名称和死亡模式禁用标记
+//       添加到几乎所有实体
+//   - 所有播放model,sprite的实体和env_shooter
+//       增加可用键值
+//   - 内容物
+//       对十余个实体增加内容物选项,内容物选项删除"光线"项
+//   - 不可见实体
+//       补上"不与玩家碰撞"选项.可用于trigger_push.
+//   - 对只能用一次的实体给出警告
+//   - func_breakable和func_pushable
+//       删除一些垃圾标记
+//   - trigger开头实体
+//       全部测试并删除大量无用键值,删除trigger_counter因为game_counter功能更强
+//   - door
+//       删除message,health键
+//   - trigger
+//       删除message键
+//   - 所有解释为TargetPath键
+//       删除
+//   - weapon_c4
+//       删除目标键
+//   - armoury_entity
+//       添加渲染属性
+//   - 重新组织所有实体的键值顺序
+//   - 所有可见固体实体
+//       添加了rad相关键值
+//   - 光源
+//       更改默认颜色亮度.添加样式选项12.键值解释更准确.
+//   - 所有不可见固体实体
+//       自动标记不可见减小占用空间
+//   - 声音样式键
+//       注明了声音文件
+//   - 全局状态
+//       删除全局实体有关的所有实体和键值,以及三个team实体,它们在cs1.6对战模式中不起作用
+//   - anbient_generic
+//       重新测试和翻译,谁让X-man是音乐白痴呢
+//   - env_bubbles
+//       测试并重新解释键值
+//   - game_player_equip
+//       增加用处不大的item_airtank,grenade,monster_scientist
+//   - hostage
+//       测试并重新设置键值.可以使用名称键让CT引发hostage.
+//   - path_corner和path_track
+//       解释更准确
+//   - func_rotating
+//       解释更准确
+//   - 点实体图标
+//       light实体,由sprites/lightbulb.spr改为sprites/CS/lightbulb.spr,并添加相应文件
+//       cycler_wrechage,由Studio()改为sprites/CS/wreck.spr
+//       trigger_camera,由models\CS\TriggerCamera.mdl改为sprites/CS/TriggerCamera.spr
+// -----------------------------------------------------------------------
+// 最新英文fgd与目前(2009年10月)主要中文fgd的区别:
+//   - ZHLT支持的新固体实体键值
+//       不阻挡玩家,不可见,自定义阴影(不透明类键值在目前zhlt版本中有bug)
+//       这些在zhlt v2.5.3中无效
+//   - ZHLT新实体info_texlights
+//       用来定义纹理灯光,比使用lights.rad文件更加方便
+//       用法:关闭优化模式,添加键值,键:纹理名,值:颜色和亮度
+//   - 所有默认选项0由0改为空以节省空间和方便非优化模式查看
+//   - 新实体test_effect
+//       引发时发出黄色激光线效果
+//   - 新实体func_weaponcheck
+//       检查玩家携带的武器,用处不大
+//   - info_compile_parameters
+//       十分强大,但还未包含打包纹理选项
+//   - xen开头实体
+//       删除
+//   - env_fog
+//       增加density键,删除fadein,holdtime,fadeout,startdist,enddist键
+//   - game_player_equip
+//       增加spark_shower(在引发着周围产生火花),删除阵营选项
+//       注意旧版本fgd中出现的game_player_equip阵营选项是不起作用的,大家不要自己再添加上
+//   - cycler类实体
+//       更多可设置的键值
+//   - 出生点
+//       可以选择人物在VHE中显示的模型
+// -----------------------------------------------------------------------
+// August 9, 2008 - Hex-a-Decimal (0.8.0.5)
+// Change env_fog's density initial value to 0.001
+// remove env_smoker (again), item_thighpack (buggy, just show up on first round)
+// -----------------------------------------------------------------------
+// July 25, 2008 - Hex-a-Decimal (0.8.0.4)
+// added func_weaponcheck, item_thighpack
+// remove old keys on the env_fog
+// -----------------------------------------------------------------------
+// July 2, 2008 - Hex-a-Decimal (0.8.0.3)
+// readded weapon_c4
+// change model of weapon_c4 to C4 world model
+// -----------------------------------------------------------------------
+// July 1, 2008 - Hex-a-Decimal (0.8.0.2)
+// made point entities in ascending order
+// added "body" to cycler_sprite
+// -----------------------------------------------------------------------
+// June 30, 2008 - Hex-a-Decimal (0.8.0.1)
+// readded env_fog and env_smoker
+// added properties to env_fog, "density"
+// -----------------------------------------------------------------------
+// May 12, 2005 - Wolf (0.8.0.0)
+// added fixed func_breakable stuff
+// -----------------------------------------------------------------------
+// Agust 25, 2004 - Wolf (0.7.9.9)
+// added func_breakable stuff
+// -----------------------------------------------------------------------
+// Agust 25, 2004 - Wolf (0.7.9.8)
+// gave the zip a name that reflets the version xp_798u (expert version 0.7.9.8 unofficial)
+// Split the fgd back in to a SP and a common,
+// changed cyclers to have Model / Sprite support.
+// added zhlt_invisible to some of the invisable entitys to save on stored polys.
+// Added Angles to trigger_camera.
+// Added entitys
+//	weapon_ak47, weapon_aug, weapon_awp, weapon_deagle, weapon_elite,
+//	weapon_famas, weapon_fiveseven, weapon_flashbang, weapon_g3sg1,
+//	weapon_galil, weapon_glock18, weapon_hegrenade, weapon_knife,
+//	weapon_m249, weapon_m3, weapon_m4a1, weapon_mac10, weapon_mp5navy,
+//	weapon_p228, weapon_p90, weapon_scout, weapon_sg550, weapon_sg552,
+//	weapon_shield, eapon_smokegrenade, weapon_tmp, weapon_ump45,
+//	weapon_usp, weapon_xm1014, ammo_338magnum, ammo_357sig, ammo_45acp,
+//	ammo_50ae, ammo_556nato, ammo_556natobox, ammo_57mm, ammo_762nato,
+//	ammo_9mm, ammo_buckshot, item_antidote, item_kevlar, item_assaultsuit,
+//	item_suit, item_thighpack, info_landmark, item_security,
+//	trigger_endsection, trigger_autosave, trigger_transition,
+//	trigger_changelevel, test_effect, func_weaponcheck
+//	weaponbox (see its note for how to add more ammo types)
+// Added some info from the cs-single-player fgd by fjl
+// Removed
+//	xen entities, env_smoker, info_lights_rad and env_fog (only commented fog out)
+// Updated weapon_c4's dicription.
+// changed some (choices) so that the key is removed if set to 0, saves a bit on entity data.
+// Changed apperiance for
+//	path_corner, path_track, env_explosion, trigger_camera, env_shooter,
+//	item_battery, item_healthkit, item_longjump, env_sprite, cycler_wreckage,
+//	env_beverage, env_funnel, env_rain, env_snow, info_landmark, env_shake,
+//	info_compile_parameters, info_teleport_destination, info_null
+// Added Targetx and RenderFields to the Weapon base class
+// Added spark_shower to game_player_equip
+// Gave the env_shooter a model so it dosen't crash the game
+// Fixed the granade type of the func_grencatch
+// Hostages and players are now displayed by models.
+// Models and animation can be changed from the editor.
+// Made the hostage_entity more compatible with other models.
+// Added zhlt_noclip and zhlt_invisible to all brush entitys.
+// corected the number for Opaque + Concave Fix
+// Added info_texlights
+// Added more keys to info_compile_parameters.
+// 	priority, verbose, hlcsg, wadautodetect, noclipeconomy, noskyclip,
+//	nocliphull, cliptype, texdata, wadconfig, hlbsp, hlvis, hlrad,
+//	Vismatrix Method, lightdata, circus
+// Removed the flags from info_compile_parameters as they are obsoled.
+// Tested most entitis and did some other stuff :)
+// -----------------------------------------------------------------------
+// Mar 22, 2004 - tommy (0.7.9.3c)
+// added angles property to armoury entity so you can rotate or stand
+// the weapons on end.
+// -----------------------------------------------------------------------
+// Oct 18, 2003 - tommy (0.7.9.3b)
+// removed item_airtank, it was causing a precache error.
+// added weapon_C4 pre-plantable bomb from FJL's single player CS fgd.
+// -----------------------------------------------------------------------
+// Oct 16, 2003 - tommy (0.7.9.3 fix)
+// -fixed shieldgun to shield in game_player_equip, and added item_airtank.
+// -added single use func_grencatch from FJL's single player CS fgd.
+// -----------------------------------------------------------------------
+// Sept 17, 2003 - tommy (0.7.9.3)
+// -added env_rain and env_snow for CS 1.6
+// -----------------------------------------------------------------------
+// June 15, 2003 - tommy  (0.7.9.2e)
+// -added flag 2 to trigger_multiple for no player activation for soccer maps.
+// - Style property commented out for triggers, seems to serve no purpose.
+// -added light style 12 underwater weird - buggy.  not really a light source.
+// -added to func_pushable choice 2, breakable by player touch - buggy
+// -----------------------------------------------------------------------
+// January 21st, 2003 - KeshTath (0.7.9.2)
+//   - Added weapon_shieldgun to game_player_equip.
+//   - Added weapon_galil to game_player_equip.
+//   - Added weapon_famas to game_player_equip.
+//   *NOTE* You cannot add any of the new weapons to the armoury_entity, They did not
+// put in any code to allow you to add the UMP, SG550 or any of the new 1.6 weapons.
+//-----------------------------------------------------------------------
+// Oct 7th, 2002 - tommy  (0.7.8.1)
+// added Lauries new entity properties for switchable texture lighting
+//------------------------------------------------------------------------------
+// Aug 19th, 2002 - tommy (0.7.8enhanced)
+// - fixed env_blood choices
+// -----------------------------------------------------------------------------
+// Aug 11th, 2002 - tommy (0.7.8enhanced)
+// - added editing sprites for: monster_cycler, cycler_wreckage, env_beam, env_blood, env_explosion
+// env_glow, env_fade, env_laser, env_render, env_sprite, gibshooter, path_track, path_corner.
+// --------------------------------------------------------------------------------
+// Aug 2nd, 2002 - tommy (0.7.8enhanced)
+// - added sound choices to base trigger copied from button sound choices.
+// - added body choice for use with scientist.mdl to hostage entity.
+// - added sequence(string) to cycler_sprite to give control over model animations.
+// - fixed some comment errors, also modified and added more to some entitys.
+// --------------------------------------------------------------------------------
+// April 29th, 2002 - tommy (0.7.8enhanced)
+//  - added notes on various entitys and choices from Lauri of Spirit of HL and from Waldo's
+//    various notes on DoD and CS fgds, as well as my own.
+//  - Removed renderfield string codes and replaced them with "Renderfields"
+//    baseclasses for cycler_wreckage, 
+//  - env_fog upgraded to the choices/abilities other mods use, in case CS upgrades to full fog someday.
+//  - added property of "shade"(_diffuse_light) to light enviornment for adam foster's hack of HLRAD, so that
+//    shadows can be given a specific color.
+//  - added skins for "water" (-3), "slime" (-4), "lava" (-5) and "make ladder" (-16) to func_illusionary
+//  - added spawnflags "only trigger" (1) and "pressure" (4) to func_pushable as other ways to break it.
+//  - gave func_train ALL the same skins as func_illusionary & func_water, even though the skins work oddly for a train.
+//  - added skins "empty" (-1) and "ladder" (-16) to func_water.  note "ladder" only works with non ! textures.
+//-----------------------------------------------------------------------
+// April 7th, 2002 - fjl (0.7.8)
+//   - Global baseclass is a single player map option. The following baseclasses and
+//     entities listed could support it so I added it to them.
+//     BASECLASSES: Breakable, door, Basetank and Trackchange
+//     SOLID ENTITIES func_button, func_conveyor, func_pendulum, func_plat,
+//     func_rot_button, func_rotating, func_tracktrain, func_train and func_wall
+//   - Added Master(string) to Basetank baseclass.
+//   - Removed renderfield string codes and replaced them with "Renderfields"
+//     baseclasses for cycle, cycler_sprite & button_target.
+//   - Added the Appearflags("Not in Deathmatch") option to these listed entities and
+//     baseclasses that where missing that parameter.
+//     BASECLASSES: playerclass, door
+//     ENTITIES: func_friction, func_pendulum, func_wall, infodecal
+//   - Gave func_breakable the ability to spawn a battery, healthkit or shotgun
+//     shells upon breaking. This options works a bit buggy since the spawned items
+//     will continue to respawn on its own after its been picked up. If the
+//     func_breakable is given a name, it will have the same effect as a
+//     MonsterMaker by spawning the object each time its triggered.
+//     Use this option wisely or only for single player maps.
+//   - Added missing ZHLT options to func_friction.
+//   - Added the "Instant Crowbar" flag to func_pushable. Not that this option is
+//     usable for this mod, but I added it so whoever does the next Half-Life FGD
+//     update, realizes that it supports that option.
+//   - Added missing Renderfields baseclass to func_rot_button.
+//   - Changed func_rotate to default to a speed of 50 instead of 0.
+//   - Added item_healthkit to game_player_equip.
+//   - Added ammo for the M249 Para on game_player_equip. Thanks to [B.o.G]doom for
+//     this information.
+//   - Added some extra information to the game_player_equip entity.
+//   - Added character limit number for the "game_text" entity on its message string.
+//   - Added "Renderfields" baseclass to hostage_entity. This allows the option for
+//     hostages to be transparent, distorted, flickering or any of those other effects.
+//   - Added "Renderfields" baseclass to item_healthkit, item_longjump and item_battery.
+//   - Fixed light_spot bug where its default color was yellow instead of white.
+//   - Gave Light_Environment the "Initially Dark" flag.
+//   - Added "Appearance" effects to light_environment. This allows light_environment
+//     to have the strobe and flicker light effects just incase you want to give
+//     players an epileptic seizure while they play your map :)
+//     Appearance's effect will not work if light_environment is given a name.
+//   - Added "Custom Appearance" to light_environment. This option does require the
+//     entity to have a name for it to work.
+//   - Added the "target" field to light_environment. Add the light_environment
+//     entity, and in the target field, add the name of its target(another entity).
+//     Light_environment will now emit light in that direction from all sky brushes.
+//     This should save time from trying to figure out the annoying angles and pitches.
+//   - Added monster_scientist entity. Works the same as hostage_entity except that
+//     it uses the scientist model. The scientist type(luther, einstein, etc.) is
+//     also selectable. While it is possible to change hostage_entity into the
+//     scientist model, a specific scientist type is not selectable.
+//     Only monster_scientist has that option, which is why I added it.
+//   - Added the sprite color to the multisource and multi_manager entities so they
+//     are the same as Half-Life's FGD.
+//   - Added "Global State Master" to trigger_auto.
+//   - Fixed bug on trigger_counter, where field options repeated themselves.
+//     This same bug seems to be plaguing all the other FGD's. Whoever plans to
+//     updates those other FGD files should take note of it.
+//   - Added "Level Fade In" and "CD track to play" to WorldSpawn. These options
+//     should only be used for single player maps.
+//   - Changed the baseclass name, zhltlightflags to ZHLT.
+//   - Rearranged some of the entities code so that the most common fields and
+//     options come before the other options. It was annoying having to scroll to
+//     the bottom just to find out what some of them trigger or what their names are.
+//     The Name of the entity should always come first and the other important
+//     options right after. Something in the fashion listed below, that is, if they
+//     contain those fields.
+//     ------------------------
+//     Name
+//     Global Entity Name
+//     Master
+//     Target
+//     Trigger delay
+//     Pitch Yaw Roll (Y Z X)
+//     Render FX
+//     Render Mode
+//     FX Amount(1 - 255)
+//     FX Color (R G B)
+//     Light Flags (ZHLT 2.2+)
+//     Light Origin (ZHLT 2.2+)
+//     ------------------------
+//     Not all of them are exactly in this order since that would require re-writing
+//     the whole FGD file, but I did manage to rearrange them to some extent for the
+//     following baseclasses and entities listed below.
+//     BASECLASSES: breakable, gibshooterbase and trigger
+//     ENTITIES: env_sprite, func_button, func_door_rotating, func_pendulum,
+//     func_platrot, func_rot_button, func_rotating, func_tracktrain, func_vehicle,
+//     game_counter, game_counter_set, game_player_hurt, game_player_team,
+//     info_teleport_destination, light, momentary_rot_button, path_track,
+//     trigger_camera, trigger_changetarget, trigger_counter, trigger_hurt
+//     and xen entities
+//   - In order to help with the rearranging of the fields(read previous sentence), I
+//     had to create a Master Baseclass. These are the following baseclasses and
+//     entities that I removed the Master string from their code and replaced it with
+//     the Master baseclass.
+//     BASECLASSES: door and trigger 
+//     ENTITIES: game_counter, game_counter_set, game_score, game_team_master,
+//     game_text, game_zone_player, trigger_hurt, func_button, func_rot_button,
+//     button_target and momentary_rot_button
+//   - Added some extra information to Basetank baseclass and func_rot_button entity.
+//   - Put line codes for trigger_gravity, func_wall, func_wall_toggle and func_water
+//     entities in alphabetical order.
+//   - Added some extra info to the previous update list and fixed some spelling errors.
+//   - Updated once again, "cs_fgd_readme.txt" and "INSTALL.TxT"
+// -----------------------------------------------------------------------    
+// March 16th, 2002 - fjl (0.7.7)
+//   - Added the "New Level Unit" Option on WorldSpawn.
+//   - Added "weapon" baseclass.
+//   - Added "Appearflags" baseclass.
+//   - Added "Global" baseclass.
+//   - Changed ZHLT _fade option to default to 1.0 instead of 0
+//   - Changed ZHLT _falloff option to have a choice of "default," "linear," and "square."
+//   - Removed the zhlt_lightflags choices from the "breakable" baseclass. It didn't need it.
+//   - Added "Opaque + Concave Fix" to zhlt_lightflags.
+//   - Changed IS NOT LOOPED to NOT TOGGLED on ambient_generic
+//   - Removed ZHLT from func_wall_toggle. It caused ZHLT options to repeat.
+//   - Added a Targetname and ZHLT _fade and _falloff options to light_environment.
+//   - Changed light_environment so it defaults to an angle of 270 and pitch of -90.
+//     Similar to high noon sunlight.
+//   - Added the ZHLT _fade and _falloff options for light_spot.
+//   - Changed all light entities to start with a white brightness(255 255 255 200)
+//     instead of the annoying yellow color(255 255 128 200).
+//   - Added "Angular Velocity" to func_train. Angle does not reset with a new round.
+//     Hopefully VALVe will fix this in the future.
+//   - Changed trigger_gravity to display "Gravity (0.0-1)" instead of "Gravity (0-1)"
+//   - Added cycler entity.
+//   - Added cycler_wreckage. Seems its just a big smoke sprite used for machine wrecks
+//     so I edited it to not show the targetted sprite by default. If it does show the
+//     sprite, it will simply look like a sprite stuck inside the smoke stack. It was
+//     best to make it invisible. If a bigger sprite is used like say 320hud1.spr there
+//     will be a more spread out smoke stack. Bigger sprite = wider smoke stack. 
+//   - Added env_fade.
+//   - Added env_fog in hopes to get VALVe to implement it for this mod and make it
+//     compatible for software and direct3d modes. Currently doesn't work with
+//     Counter-Strike version 1.3
+//     LIMITATIONS:
+//     Currently (as of Half-Life 1.1.0.8), objects outside of the 100% opacity range
+//     are still drawn and still contribute to the overall polygon count. This entity is
+//     still quite under development.
+//     The fog is only drawn in OpenGL mode. This means users who are viewing the level
+//     in Software or Direct3D rendering will not see the fog. For this reason, if you
+//     plan on releasing your map publicly, the env_fog entity should not be used as it
+//     will put OpenGL users at a disadvantage.
+//   - Added func_guntarget.
+//   - Added func_recharge and func_healthcharger. Currently the dmdelay,
+//     "Deathmatch recharge delay" does not work with CS 1.3. Hopefully
+//     this will be fixed in the future.
+//   - Added func_tanklaser
+//   - Removed func_tankrocket seeing as how CS cannot support the rocket entity.
+//   - Added all missing weapons for game_player_equip plus added item_longjump &
+//     item_battery including all weapon ammo. Almost did a complete re-write to this
+//     entity to make it alot easier to use. I just can't figure out nightvision goggles
+//     and ammo for the para. If you figure it out, please contact me. I would advice
+//     using this item to give players the longjump or the battery wisely. Those items
+//     do not magically dissapear like all the others. They will remain even after
+//     a round ends. Also, You can't give all weapons and items at one time. SO DON'T TRY!
+//   - Added gibshooter entity.
+//   - Added item_longjump, item_battery and item_healthkit entities. These respawn
+//     like in HL deathmatch. They might be a bit buggy though.
+//   - Added xen entities.
+//   - Rearranged the update list so the latest additions are on top.
+//   - Updated the "readme.txt" that comes with the zip file and renamed it to
+//     "cs_fgd_readme.txt" so it will not over write Worldcraft's "readme.txt" file.
+//   - Created an "install.txt" for the zip file.
+//   - Created a single player FGD file for anyone wanting to create training maps.
+//     It contains the level transition entities required to make such maps. Plus it
+//     contains many other entities that have some type of use on single player maps but
+//     are not supported for multiplayer maps. The file is named "cs-single_player.fgd"
+//     and it MUST be used alongside this FGD file. Read that FGD file to learn more.
+//
+// Jan 26, 2001 - Tim Holt (0.7.6)
+//   - Added "No Clients" check option to Trigger base class per suggestion/lead
+//     from Mataleone (cs mapping forum)
+//-----------------------------------------------------------------------
+// Jan 6, 2001 - Tim Holt (0.7.5)
+//   - Added new parameter options for game_player_equip to list all
+//     CS items in dialog, thus removing the need to turn off SmartEdit
+//     to configure.
+//   - Added new sprite for trigger_auto (green box with words "Trigger Auto")
+//-----------------------------------------------------------------------
+// 01/05/2001 - Morlam (0.7.4)
+//   - Added _fade and _falloff keys to the light_ entities.  Need ZHLT 2.2+
+//	 for these to work.
+//   - Added light_origin key to the ZHLT Light Flags BaseClass.  Again, you
+//	 need the latest version of Zoner's Tools for light_origin to work.
+//   - Moved circus and extra from the "Class Info" tab to the "Flags" tab.
+//   - Shortened the SmartEdit names of certain key/values in info_compile_params
+//	 so that they aren't cut off (at least, on my 800X600 screen on a 15 inch 
+//	 monitor).
+//
+// 01/04/2001 - Morlam (0.7.3)
+//   - Arranged all the point entities in alphabetical order
+//   - Corrected a typo in hostage_entity: "Orange Suit Worker" from
+//	 "Orange Suite Worker".
+//   - Changed func_water default WaveHeight to 0
+//   - Added ZHLT Light Flags to func_plat, _pendulum and _vehicle
+//   - Under info_compile_params:
+//		- Changed extra to choices instead of a string; default is now 0
+//		- Changed extra to read: "Enable Extra mode in HLRAD?"
+//		- Added hullfile, chop, texchop, circus, and dscale keys
+//		- Added "No Clip" flag under Run BSP in the spawnflags
+//   - Under info_lights_rad:
+//		- added radfile key/value, specifies custom texture light file
+//-----------------------------------------------------------------------
+// 01/01/2001 - Tim Holt (0.7.2)
+//   - Added new dropdown to hostage entity, so you can choose hostage skin
+//     directly by name (orange suit guy or tie guy)
+//   - Removed commented out "master" option for game_zone_player.  It was
+//     commented out from the original HL FGD for some reason.  Not sure why
+//     or if maybe there is a problem with it?
+//-----------------------------------------------------------------------
+// 12/31/2000 - Tim Holt (0.7.1
+//   - Added new sprites for all the Game entities
+//   - Added new sprite for Player Weapon Strip
+//   - Added new sprite for Trigger_Relay
+//   - Added new sprite for Trigger_ChangeTarget
+//-----------------------------------------------------------------------
+// Original changes by Tim Holt (0.7.0)
+//   - Added new Trigger Changetarget sprite (green cube w/words)
+//   - Added new Info Target sprite (bullseye)
+//   - Added new trigger_camera sprite (Video camera)
+//   - Added new Multi Manager sprite (box w/arrows coming out of it)
+//   - Added new "Cycler Sprite" sprite (box w/arrow circle around it)
+//   - Added replacement ambient_generic sprite (changed from speaker to speaker
+//     with words "Ambient Generic" around it")
+//   - Added replacement env_sound sprite (changed from speaker to speaker
+//     with words "Env Sound" around it")
+//   - Added replacement light_spot sprite (changed from lightbulb to spotlight)
+//   - Added replacement Light Environment sprite (changed from lightbulb to sun)
+//   - Added all the "game_*" entities
+//   - Added info_compile_params and info_lights_rad entities.  Idea is to
+//     get someone like Zoner to implement support for them in Zoners, or
+//     build support for them into a compile tool like Q2Beaver, HLCC, etc.
+//   - Added env_funnel
+//   - Added trigger_gravity
+//   - Added player_weaponstrip
+//   - Put Zoners RAD option (that allow solid (func_) based ents to cast
+//     shadows) into a number of new additional items that can support it.
+//     Use with caution, as for example a func_pushable can cast a shadow now,
+//     but if you push it, the shadow stays behind :^)
+//
+// --------------------------------------------------------------------------------
+//
+//
+// ---------------------------------------------------------------------------------
+// Note:  I have not fully tested the support of ALL the game_ entities in
+// CS.  I DO know that some work thru experimentation.  Let me know if you
+// find interesting things about these little known and used entities in CS.
+// ---------------------------------------------------------------------------------
