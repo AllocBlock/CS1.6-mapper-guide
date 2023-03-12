@@ -1,7 +1,7 @@
 def get_entity_link(entity_name):
     return f"[{entity_name}](wiki/entity/{entity_name})"
 
-TipNeedOrigin = "需要轴心：需要配合origin纹理![origin](../../images/tex_origin.png)使用。TODO：待补充"
+TipNeedOrigin = "需要轴心：需要配合origin纹理![origin](../../images/tex_origin.png \":no-zoom\")使用。TODO：待补充"
 TipDefaultDirectionRight = "默认朝右：实体默认朝向X轴正方向（即俯视图向右侧），调整实体角度（hammer中旋转、或设置实体角度属性）可以改变方向。"
 TipDefaultDirectionRightNoEditorRotation = "默认朝右：实体默认朝向X轴正方向（即俯视图向右侧），调整实体角度（只能设置实体角度，hammer中旋转无效）可以改变方向。"
 TipWorkWithPath = "配合路径：需要配合路径使用，如何制作路径可参考[制作路径]()"

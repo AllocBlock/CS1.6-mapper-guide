@@ -18,3 +18,6 @@
   - 你可以使用VS Code的Live server插件，一键即可搭建本地服务器
   - 或者按照[Docsify文档](https://docsify.js.org/#/zh-cn/quickstart)的步骤配置环境，然后使用docsify serve docs搭建本地服务器
   - 你可以自己搭建本地服务器，比如通过phpStudy软件
+
+## 成果展示
+![func_door实体描述](docs/images/entity_page_func_door.png)
