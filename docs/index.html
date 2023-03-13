@@ -31,7 +31,7 @@
 
     function hookGitalk(hook, vm) {
       hook.afterEach(function (html) {
-        return html + "<div id='gitalk-container' style='width: 80%;padding-left: 80px;'></div>";
+        return html + "<div id='gitalk-container' style='width: 100%;'></div>";
       });
       hook.doneEach(function () {
         var config = window.$docsify.gitalk;
