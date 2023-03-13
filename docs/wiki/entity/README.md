@@ -113,8 +113,8 @@
 - [trigger_gravity](wiki/entity/trigger_gravity) : 修改重力
 - [trigger_hurt](wiki/entity/trigger_hurt) : 区域伤害/治疗
 - [trigger_multiple](wiki/entity/trigger_multiple) : 区域引发（多次）
-- [trigger_once](wiki/entity/trigger_once) : 区域推力
-- [trigger_push](wiki/entity/trigger_push) : Trigger player push
+- [trigger_once](wiki/entity/trigger_once) : 区域引发（单次）
+- [trigger_push](wiki/entity/trigger_push) : 区域推力
 - [trigger_relay](wiki/entity/trigger_relay) : 中继
 - [trigger_teleport](wiki/entity/trigger_teleport) : 区域传送
 - [weapon_c4](wiki/entity/weapon_c4) : 放置C4

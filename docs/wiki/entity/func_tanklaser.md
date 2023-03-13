@@ -7,7 +7,7 @@
 
 ?> 本实体还需要配置[env_laser](wiki/entity/env_laser)激光点实体使用，制作一个[env_laser](wiki/entity/env_laser)激光点实体，放在地图任何位置都可以，设置激光的样式，然后设置它的“激光目标”属性为激光枪。激光枪的“env_laser 实体”属性也要填这个激光点实体的名称。
 
-?> 需要轴心：需要配合origin纹理![origin](../../images/tex_origin.png)使用。TODO：待补充
+?> 需要轴心：需要配合origin纹理![origin](../../images/tex_origin.png ":no-zoom")使用。TODO：待补充
 
 ?> 默认朝右：实体默认朝向X轴正方向（即俯视图向右侧），调整实体角度（只能设置实体角度，hammer中旋转无效）可以改变方向。
 

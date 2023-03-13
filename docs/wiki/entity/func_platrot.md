@@ -5,7 +5,7 @@
 
 ?> 相关实体 [func_plat](wiki/entity/func_plat)：电梯；
 
-?> 需要轴心：需要配合origin纹理![origin](../../images/tex_origin.png)使用。TODO：待补充
+?> 需要轴心：需要配合origin纹理![origin](../../images/tex_origin.png ":no-zoom")使用。TODO：待补充
 
 !> 实体在编辑器里必须放在最高的位置，进入游戏后会自动降到最低位置。
 

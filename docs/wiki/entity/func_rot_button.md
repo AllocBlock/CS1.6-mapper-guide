@@ -5,7 +5,7 @@
 
 ?> 相关实体 [func_button](wiki/entity/func_button)：可破碎的物体；[func_guntarget](wiki/entity/func_guntarget)：枪靶；[button_target](wiki/entity/button_target)：标靶开关（攻击它时引发）；
 
-?> 需要轴心：需要配合origin纹理![origin](../../images/tex_origin.png)使用。TODO：待补充
+?> 需要轴心：需要配合origin纹理![origin](../../images/tex_origin.png ":no-zoom")使用。TODO：待补充
 
 ## 属性 (property)
 > **名称** *targetname* = *空* | 字符串

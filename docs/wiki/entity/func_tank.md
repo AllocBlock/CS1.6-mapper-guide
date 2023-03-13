@@ -5,7 +5,7 @@
 
 ?> 玩家控制：如果需要玩家控制，需要勾选“玩家控制”标记，并且配合[func_tankcontrols](wiki/entity/func_tankcontrols)实体使用，[func_tankcontrols](wiki/entity/func_tankcontrols)实体用于指定控制机枪的范围，玩家在范围可以控制该机枪。
 
-?> 需要轴心：需要配合origin纹理![origin](../../images/tex_origin.png)使用。TODO：待补充
+?> 需要轴心：需要配合origin纹理![origin](../../images/tex_origin.png ":no-zoom")使用。TODO：待补充
 
 ?> 默认朝右：实体默认朝向X轴正方向（即俯视图向右侧），调整实体角度（只能设置实体角度，hammer中旋转无效）可以改变方向。
 

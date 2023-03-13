@@ -926,7 +926,7 @@ ENTITIY_INFO = {
         "full_description": f"用于区域引发（单次）的固体实体。规定一片区域，玩家进入区域后会引发目标，此后就再也不能引发了（直到重新载入地图）。",
         "tips": [],
     },
-    "trigger_once": {
+    "trigger_push": {
         "tags": [],
         "short_description": "区域推力",
         "full_description": f"用于实现推力的固体实体。规定一片区域，玩家进入区域后会受到推力，可模拟风的效果。",

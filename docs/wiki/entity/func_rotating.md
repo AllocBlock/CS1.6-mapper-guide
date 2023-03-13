@@ -3,7 +3,7 @@
 
 用于制作转动物体的固体实体。物体会不停地转动，可以用来制作风扇、转盘等物体。
 
-?> 需要轴心：需要配合origin纹理![origin](../../images/tex_origin.png)使用。TODO：待补充
+?> 需要轴心：需要配合origin纹理![origin](../../images/tex_origin.png ":no-zoom")使用。TODO：待补充
 
 ## 属性 (property)
 > **名称** *targetname* = *空* | 字符串

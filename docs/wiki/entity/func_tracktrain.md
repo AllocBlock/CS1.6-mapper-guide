@@ -5,7 +5,7 @@
 
 ?> 必须引发：本实体需要被引发才会产生效果。
 
-?> 需要轴心：需要配合origin纹理![origin](../../images/tex_origin.png)使用。TODO：待补充
+?> 需要轴心：需要配合origin纹理![origin](../../images/tex_origin.png ":no-zoom")使用。TODO：待补充
 
 ?> 配合路径：需要配合路径使用，如何制作路径可参考[制作路径]()
 

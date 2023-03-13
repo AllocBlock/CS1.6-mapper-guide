@@ -1,7 +1,7 @@
 # trigger_push
 [#固体实体](wiki/solid_entity)
 
-Trigger player push
+用于实现推力的固体实体。规定一片区域，玩家进入区域后会受到推力，可模拟风的效果。
 
 ## 属性 (property)
 > **名称** *targetname* = *空* | 字符串
