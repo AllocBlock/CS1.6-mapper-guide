@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>彩笔制图宝典</title>
@@ -9,9 +10,35 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
 </head>
+
 <body>
   <div id="app"></div>
   <script>
+    // gitalk config modified base on https://github.com/mg0324/docsify-gitalk
+    function appendGitalk(config) {
+      var gitalk = new Gitalk({
+        clientID: config.clientID,
+        clientSecret: config.clientSecret,
+        repo: config.repo,
+        owner: config.owner,
+        admin: config.admin,
+        distractionFreeMode: false,
+        id: location.hash.replace('#', '')
+      });
+      gitalk.render('gitalk-container');
+      console.log(`Gitalk loaded on ${location.hash.replace('#', '')}`)
+    }
+
+    function hookGitalk(hook, vm) {
+      hook.afterEach(function (html) {
+        return html + "<div id='gitalk-container' style='width: 80%;padding-left: 80px;'></div>";
+      });
+      hook.doneEach(function () {
+        var config = window.$docsify.gitalk;
+        appendGitalk(config);
+      });
+    }
+
     window.$docsify = {
       name: '',
       repo: '',
@@ -22,31 +49,29 @@
         placeholder: '搜索宝典',
         noData: '没有找到结果。',
         depth: 6,
+      },
+      plugins: [hookGitalk],
+      gitalk: {
+        clientID: '66ae90b755709008c4ef',
+        clientSecret: '8d2b990919ab64a72df607e71fd0f2ebb7ba04a9',
+        repo: 'CS1.6-mapper-guide',
+        owner: 'AllocBlock',
+        admin: ['AllocBlock'],
       }
     }
 
     window.$docsify.customPageTitle = {
-        prefix: "彩笔制图宝典",
-        suffix: false,
-        seprator: '|',
+      prefix: "彩笔制图宝典",
+      suffix: false,
+      seprator: '|',
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
-  <script>
-    const gitalk = new Gitalk({
-      clientID: '66ae90b755709008c4ef',
-      clientSecret: '8d2b990919ab64a72df607e71fd0f2ebb7ba04a9',
-      repo: 'CS1.6-mapper-guide',
-      owner: 'AllocBlock',
-      admin: ['AllocBlock'],
-      id: location.hash.replace('#', '')
-    })
-  </script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/@sujaykumarh/docsify-plugin-title@1.x/dist/plugin.min.js"></script>
 </body>
+
 </html>
