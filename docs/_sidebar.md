@@ -1,15 +1,18 @@
 - [主页](/)
-- 教程
-  - [前言](404)
-  - [工具下载和配置](404)
-  - [第一张地图](404)
-  - [发挥你的创意](404)
-  - [地图发布](404)
+---
+- **教程**
+  - [前言](tutorial/startup)
+  - [工具下载和配置](tutorial/setup)
+  - [第一张地图](tutorial/first_map)
+  - [发挥你的创意](tutorial/design)
+  - [地图发布](tutorial/release)
   - 打造个性化的世界
-    - [纹理制作](404)
-    - [图标制作](404)
-    - [模型制作](404)
-- 百科
+    - [纹理制作](tutorial/make_texture)
+    - [图标制作](tutorial/make_sprite)
+    - [模型制作](4tutorial/make_mdl)
+
+---
+- **百科**
   - [基本概念](404)
     - [金源引擎](404)
     - [Valve Hammer Editor 地图编辑器](404)
