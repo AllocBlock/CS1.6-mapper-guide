@@ -236,15 +236,63 @@ def value_type_to_str(v):
     elif v == ValueType.Multiple_Choices:
         return "多选"
 
+def genrate_entity_list(entities : list[FGDEntity], link_path):
+    text = ""
+    for entity in entities:
+        text += f"- [{entity.name}]({link_path}/{entity.name}) : {entity.short_description}\n"
+    text += "\n"
+    return text
+
 def generate_pages(entities : list[FGDEntity], target_dir, link_path):
     if not os.path.exists(target_dir):
         os.makedirs(target_dir)
+
+    sortByTypeIndexFile = "entity_index_by_type.md"
+    sortByCategoryIndexFile = "entity_index_by_category.md"
     # 主页索引
     indexText = "# 实体目录\n"
-    indexText += "> 实体属性、标记的中文翻译基于V大的fgd：[cs16_0.8.2.0_vl.fgd](resources/cs16_0.8.2.0_vl.fgd ':ignore')\n"
-    for entity in entities:
-        indexText += f"- [{entity.name}]({link_path}/{entity.name}) : {entity.short_description}\n"
+    indexText += f"> 实体属性、标记的中文翻译基于V大的fgd：[cs16_0.8.2.0_vl.fgd](resources/cs16_0.8.2.0_vl.fgd ':ignore')\n\n> [按点实体、固体实体分类](wiki/entity/{sortByTypeIndexFile})、[按类型分类](wiki/entity/{sortByCategoryIndexFile})\n\n"
+    indexText += genrate_entity_list(entities, link_path)
     save_file(indexText, target_dir, "README.md")
+
+    # 点实体、固体实体索引
+    indexText = "# 实体索引（点实体、固体实体）\n"
+    indexText += f"> 实体属性、标记的中文翻译基于V大的fgd：[cs16_0.8.2.0_vl.fgd](resources/cs16_0.8.2.0_vl.fgd ':ignore')\n\n> [按名称排序](wiki/entity/README.md)、[按类型分类](wiki/entity/{sortByCategoryIndexFile})\n\n"
+    pointEntities = [ent for ent in entities if ent.type == EntityType.Point]
+    indexText += "## 点实体\n"
+    indexText += genrate_entity_list(pointEntities, link_path)
+
+    solidEntities = [ent for ent in entities if ent.type == EntityType.Solid]
+    indexText += "## 固体实体\n"
+    indexText += genrate_entity_list(solidEntities, link_path)
+    save_file(indexText, target_dir, sortByTypeIndexFile)
+
+    # 基于名称分类的索引
+    indexText = "# 实体索引（按类型分类）\n"
+    categories = [
+        ("env", "环境"),
+        ("cycler", "模型、图标"),
+        ("func", "功能"),
+        ("game", "游戏"),
+        ("info", "设置"),
+        ("item", "装备"),
+        ("light", "灯光"),
+        ("path", "路径"),
+        ("trigger", "触发"),
+    ]
+    indexText += f"> 实体属性、标记的中文翻译基于V大的fgd：[cs16_0.8.2.0_vl.fgd](resources/cs16_0.8.2.0_vl.fgd ':ignore')\n\n> [按名称排序的目录](wiki/entity/README.md)、[按点实体、固体实体分类](wiki/entity/{sortByTypeIndexFile})\n\n"
+
+    remainEntities = entities.copy()
+    for categoryName, categoryDescription in categories:
+        entities = [ent for ent in remainEntities if ent.name.startswith(categoryName)]
+        remainEntities = [ent for ent in remainEntities if ent not in entities]
+        indexText += f"## {categoryName} *{categoryDescription}*\n"
+        indexText += genrate_entity_list(entities, link_path)
+
+    indexText += "## 其他\n"
+    indexText += genrate_entity_list(remainEntities, link_path)
+    save_file(indexText, target_dir, sortByCategoryIndexFile)
+
 
     # 实体详情页索引
     for entity in entities:

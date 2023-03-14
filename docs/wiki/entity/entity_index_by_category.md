@@ -1,14 +1,9 @@
-# 实体目录
+# 实体索引（按类型分类）
 > 实体属性、标记的中文翻译基于V大的fgd：[cs16_0.8.2.0_vl.fgd](resources/cs16_0.8.2.0_vl.fgd ':ignore')
 
-> [按点实体、固体实体分类](wiki/entity/entity_index_by_type.md)、[按类型分类](wiki/entity/entity_index_by_category.md)
+> [按名称排序的目录](wiki/entity/README.md)、[按点实体、固体实体分类](wiki/entity/entity_index_by_type.md)
 
-- [ambient_generic](wiki/entity/ambient_generic) : 播放声音
-- [armoury_entity](wiki/entity/armoury_entity) : 放置武器
-- [button_target](wiki/entity/button_target) : 标靶开关（攻击它时引发）
-- [cycler](wiki/entity/cycler) : 展示模型（模型有碰撞体积）
-- [cycler_sprite](wiki/entity/cycler_sprite) : 展示模型、图标（模型无碰撞体积）
-- [cycler_wreckage](wiki/entity/cycler_wreckage) : 模拟蒸汽效果
+## env *环境*
 - [env_beam](wiki/entity/env_beam) : 闪电效果
 - [env_beverage](wiki/entity/env_beverage) : 生成拉罐饮料模型
 - [env_blood](wiki/entity/env_blood) : 喷血效果
@@ -29,6 +24,13 @@
 - [env_sound](wiki/entity/env_sound) : 改变环境回声音效
 - [env_spark](wiki/entity/env_spark) : 产生火花效果
 - [env_sprite](wiki/entity/env_sprite) : 显示图标（.spr）
+
+## cycler *模型、图标*
+- [cycler](wiki/entity/cycler) : 展示模型（模型有碰撞体积）
+- [cycler_sprite](wiki/entity/cycler_sprite) : 展示模型、图标（模型无碰撞体积）
+- [cycler_wreckage](wiki/entity/cycler_wreckage) : 模拟蒸汽效果
+
+## func *功能*
 - [func_bomb_target](wiki/entity/func_bomb_target) : 炸弹（C4）放置区域
 - [func_breakable](wiki/entity/func_breakable) : 可破碎的物体
 - [func_button](wiki/entity/func_button) : 可破碎的物体
@@ -68,6 +70,8 @@
 - [func_wall_toggle](wiki/entity/func_wall_toggle) : 切换出现消失的实体
 - [func_water](wiki/entity/func_water) : 水
 - [func_weaponcheck](wiki/entity/func_weaponcheck) : 检查携带武器
+
+## game *游戏*
 - [game_counter](wiki/entity/game_counter) : 计数器
 - [game_counter_set](wiki/entity/game_counter_set) : 设置计数器的值
 - [game_end](wiki/entity/game_end) : 结束游戏
@@ -77,8 +81,8 @@
 - [game_team_master](wiki/entity/game_team_master) : （废弃？）确认玩家队伍
 - [game_text](wiki/entity/game_text) : 显示文本
 - [game_zone_player](wiki/entity/game_zone_player) : 判断玩家所在区域
-- [gibshooter](wiki/entity/gibshooter) : 喷射肢体碎片
-- [hostage_entity](wiki/entity/hostage_entity) : 人质
+
+## info *设置*
 - [info_bomb_target](wiki/entity/info_bomb_target) : 炸弹（C4）放置区域（不推荐使用）
 - [info_hostage_rescue](wiki/entity/info_hostage_rescue) : 人质获救区域（不推荐使用）
 - [info_map_parameters](wiki/entity/info_map_parameters) : 地图设置（购买限制、C4爆炸范围）
@@ -90,6 +94,8 @@
 - [info_texlights](wiki/entity/info_texlights) : 发光纹理设置
 - [info_vip_start](wiki/entity/info_vip_start) : VIP出生点
 - [infodecal](wiki/entity/infodecal) : 印花纹理
+
+## item *装备*
 - [item_airtank](wiki/entity/item_airtank) : 氧气罐
 - [item_antidote](wiki/entity/item_antidote) : 解毒药
 - [item_assaultsuit](wiki/entity/item_assaultsuit) : 护甲（带头盔）
@@ -99,17 +105,17 @@
 - [item_longjump](wiki/entity/item_longjump) : 长跳包
 - [item_security](wiki/entity/item_security) : 通行卡
 - [item_thighpack](wiki/entity/item_thighpack) : 拆弹器
+
+## light *灯光*
 - [light](wiki/entity/light) : 点光源
 - [light_environment](wiki/entity/light_environment) : 环境光源
 - [light_spot](wiki/entity/light_spot) : 聚光光源
-- [momentary_door](wiki/entity/momentary_door) : 连续的推拉门
-- [momentary_rot_button](wiki/entity/momentary_rot_button) : 连续阀门开关
-- [monster_scientist](wiki/entity/monster_scientist) : 人质（冗余，不建议使用）
-- [multi_manager](wiki/entity/multi_manager) : 多目标定时引发器
-- [multisource](wiki/entity/multisource) : 全局状态读取实体（状态锁/多源控制器）
+
+## path *路径*
 - [path_corner](wiki/entity/path_corner) : 路径（常规）
 - [path_track](wiki/entity/path_track) : 路径（火车）
-- [player_weaponstrip](wiki/entity/player_weaponstrip) : 剥夺武器
+
+## trigger *触发*
 - [trigger_auto](wiki/entity/trigger_auto) : 起始引发器
 - [trigger_camera](wiki/entity/trigger_camera) : 摄像机
 - [trigger_changetarget](wiki/entity/trigger_changetarget) : 修改目标
@@ -120,5 +126,18 @@
 - [trigger_push](wiki/entity/trigger_push) : 区域推力
 - [trigger_relay](wiki/entity/trigger_relay) : 中继
 - [trigger_teleport](wiki/entity/trigger_teleport) : 区域传送
+
+## 其他
+- [ambient_generic](wiki/entity/ambient_generic) : 播放声音
+- [armoury_entity](wiki/entity/armoury_entity) : 放置武器
+- [button_target](wiki/entity/button_target) : 标靶开关（攻击它时引发）
+- [gibshooter](wiki/entity/gibshooter) : 喷射肢体碎片
+- [hostage_entity](wiki/entity/hostage_entity) : 人质
+- [momentary_door](wiki/entity/momentary_door) : 连续的推拉门
+- [momentary_rot_button](wiki/entity/momentary_rot_button) : 连续阀门开关
+- [monster_scientist](wiki/entity/monster_scientist) : 人质（冗余，不建议使用）
+- [multi_manager](wiki/entity/multi_manager) : 多目标定时引发器
+- [multisource](wiki/entity/multisource) : 全局状态读取实体（状态锁/多源控制器）
+- [player_weaponstrip](wiki/entity/player_weaponstrip) : 剥夺武器
 - [weapon_c4](wiki/entity/weapon_c4) : 放置C4
 
