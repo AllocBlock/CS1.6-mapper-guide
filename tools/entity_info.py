@@ -20,6 +20,7 @@ InfoModelPath = "模型放入models文件夹内，路径格式类似 ```models/m
 InfoSpritePath = "图标放入sprites文件夹内，路径格式类似 ```sprites/mySprites/mySprite.spr```，注意前面有 ```sprites/```。"
 InfoPathOnlyCorner = f"填写{get_entity_link('path_corner')}点实体的名称，实体初始在这个点实体的位置，然后会在其对应的路径上运动。关于如何制作路径，可参考[制作路径]()"
 InfoLightPattern = f"?> 摘自天书\n\n你可以自己定义灯光的样式。范围为a~z：a为全黑  z为全亮，中间字母依次过渡。比如：你在这里设置：“abcdefghijklmlkjihgfedcba”游戏里灯的亮度将会由黑到亮再到黑这样循环的变化。 \n\n注意：当你需要用到这个自定义样式的时候，必须给该实体起一个名字。你可以不让其他实体来引发他，但名字是必须的。"
+InfoPlat = f"这个实体的工作模式比较特殊，这里特别说明一下。这个电梯和你想象的可能不同，这个实体当你站上去后它会上升，带你到高处，然后你下电梯后，他马上会自己跑到最下面，等另一个人上电梯，这个过程是全自动的，你是不能用引发来控制它上升下降的。如果不给他取名字，电梯最开始就在下面等着载人；取了名字的话，最开始它在最上面，要按了按钮它才开始工作，跑到最下面等人。"
 
 ENTITIY_INFO = {
     "ambient_generic": {
@@ -376,7 +377,7 @@ ENTITIY_INFO = {
     "func_plat": {
         "tags": [],
         "short_description": "电梯",
-        "full_description": f"用于制作电梯的固体实体。站在上面的玩家会随他一起上升到指定高度。",
+        "full_description": f"用于制作电梯的固体实体。站在上面的玩家会随他一起上升到指定高度。\n\n" + InfoPlat,
         "tips": [],
         "alerts": [
             "实体在编辑器里必须放在最高的位置，进入游戏后会自动降到最低位置。"
@@ -385,7 +386,7 @@ ENTITIY_INFO = {
     "func_platrot": {
         "tags": [],
         "short_description": "电梯（可旋转）",
-        "full_description": f"用于制作可旋转电梯的固体实体。和{get_entity_link('func_plat')}几乎相同，但是可以旋转。站在上面的玩家会随他一起旋转并上升到指定高度。",
+        "full_description": f"用于制作可旋转电梯的固体实体。和{get_entity_link('func_plat')}几乎相同，但是可以旋转。站在上面的玩家会随他一起旋转并上升到指定高度。\n\n" + InfoPlat,
         "tips": [
             TipNeedOrigin,
         ],

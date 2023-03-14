@@ -14,6 +14,16 @@
 <body>
   <div id="app"></div>
   <script>
+    function getHash() {
+      // remove params
+      hash = location.hash.replace(/\?.*/, "")
+      return hash
+    }
+
+    function getId() {
+      return getHash().replace('#', '')
+    }
+
     // gitalk config modified base on https://github.com/mg0324/docsify-gitalk
     function appendGitalk(config) {
       var gitalk = new Gitalk({
@@ -23,10 +33,10 @@
         owner: config.owner,
         admin: config.admin,
         distractionFreeMode: false,
-        id: location.hash.replace('#', '')
+        id: getId()
       });
       gitalk.render('gitalk-container');
-      console.log(`Gitalk loaded on ${location.hash.replace('#', '')}`)
+      console.log(`Gitalk loaded on ${getId()}`)
     }
 
     function hookGitalk(hook, vm) {
@@ -36,6 +46,13 @@
       hook.doneEach(function () {
         var config = window.$docsify.gitalk;
         appendGitalk(config);
+      });
+    }
+
+    function hookDynamicContent(hook, vm) {
+      hook.beforeEach(function (markdown) {
+        markdown = markdown.replace("{hash}", getHash())
+        return markdown;
       });
     }
 
@@ -51,7 +68,10 @@
         noData: '没有找到结果。',
         depth: 6,
       },
-      plugins: [hookGitalk],
+      plugins: [
+        hookGitalk,
+        hookDynamicContent
+      ],
       gitalk: {
         clientID: '66ae90b755709008c4ef',
         clientSecret: '8d2b990919ab64a72df607e71fd0f2ebb7ba04a9',
