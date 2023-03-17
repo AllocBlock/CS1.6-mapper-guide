@@ -18,4 +18,32 @@
 - **纹理制作工具**：制作自己的wad纹理，*Wally*
 - **纹理提取工具**：从bsp里提取打包的纹理，*wintextract*
 - **反编译工具**：从bsp反编译得到map源文件，*winbspc*
-	
+
+下载解压后的目录结构是这样的：
+
+![](../images/vhe_toolkit_folder.png ':size=20%')
+
+其中“地图制作Hammer3.5.exe“就是主要的制图工具。
+
+## 配置hammer
+- 打开“地图制作Hammer3.5.exe“，你可以看到这样的界面
+	- ![](../images/hammer_layout.png ':size=80%')
+- 在正式开始做图之前，需要先配置hammer，一共要配置的有：
+	- wad纹理：地图场景要用到的贴图纹理，**至少要添加一个**
+	- fgd：全称是Forge Game Data，它包含了CS全部实体的信息，**必须配置，否则实体列表是空的**
+	- 编译程序：hammer里制作的地图是地图源文件（rmf或map格式），需要编译程序生成bsp才能在CS里游玩
+
+- 首先点击菜单栏的“工具"→”参数设置“，会弹出如下窗口
+	- ![](../images/hammer_setting.png ':size=40%')`
+- **配置wad纹理**：选择“纹理”选项卡，点击“添加”来添加纹理
+	- 一般会选择halflife.wad（在CS主目录的valve文件夹里，它包含了半条命1使用的很多纹理）和zhlt.wad（在工具包的tools文件夹里，包含了一些特殊纹理）
+	- ![](../images/hammer_setting_wad.png ':size=40%')
+- **配置fgd**：切换到“游戏参数”选项卡，点击“添加”，只需添加V大最新的FGD（工具包的fgd文件夹中已经有了）
+	- ![](../images/hammer_setting_fgd.png ':size=40%')
+- **配置编译程序**：切换到“编译程序”选项卡
+	- 设置CSG、BSP、VIS、RAD程序（都在工具包的tools文件夹里，名称分别是hlcsg_x64.exe、hlbsp_x64.exe、hlvis_x64.exe、hlrad_x64.exe）
+	- “存放编译好地图的目录”可以填CS的maps文件夹，这样bsp直接放到maps里，不需要手动复制过去
+	- “游戏执行程序”就是cstrike.exe的路径，如果勾了编译后自动启动游戏，就会用指定的这个CS程序，也可以不设置
+	- ![](../images/hammer_setting_compile.png ':size=40%')
+- 点击下方的“确定”，完成设置
+- 到此为止，所有的准备工作已经做完了！下一节里，我们会开始制作第一张地图！
