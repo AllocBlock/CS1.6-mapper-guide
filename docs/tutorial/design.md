@@ -73,7 +73,8 @@
 - 下面会介绍一些常用实体
 
 ### 可破坏的箱子/玻璃
-- 制作一个方块固体放在地上，贴上箱子的纹理（这里用的```CRATE02```纹理）
+- 制作能被枪、毕设破坏的箱子、玻璃
+- 实现制作一个方块固体放在地上，贴上箱子的纹理（这里用的```CRATE02```纹理）
 	- ![](../images/wood_box.png)
 - 转换为[func_breakable](wiki/entity/func_breakable)（可破坏的物体）实体
 	- “材质”填“木头”
@@ -96,7 +97,7 @@
 
 ![](../videos/play_break_glass.mp4 ':include :type=video controls preload="metadata" width=60%')
 ### 水
-- 玩家能在水里游泳
+- 制作一个玩家能在里面游泳的水池
 - 制作一个固体，贴上水的纹理，转为[func_water](wiki/entity/func_water)（这里顺便做了些装饰，变成一个水池）
 	- “渲染模式”选“纹理”
 	- “透明度”填“180”
@@ -112,6 +113,7 @@
 - 梯子是最常见的实体之一了，不过它的制作要复杂一些，需要用到两个实体
 - 制作梯子时，我们需要两个实体：一个负责梯子的外观、另一个负责梯子的功能
 - 制作梯子有不同的方法，这里介绍用[func_illusionary](wiki/entity/func_illusionary)（看得见摸不着的物体）和[func_ladder](wiki/entity/func_ladder)（梯子）实现的方法，另一种方法[func_ladder](wiki/entity/func_ladder)的说明里有提及。
+
 #### 梯子外观部分
 - 制作一个固体，宽度32，贴上梯子的纹理，对齐（自带的梯子纹理宽度也是32，点击中心对齐按钮即可对齐）（这里用的```{LADDER1```纹理）
 	- 梯子纹理一般是以```{```开头的，这种以```{```纹理的蓝色部分是透明的，不过它还需要配合“渲染模式”才能透明，否则在游戏里会变成黑色。这种纹理常用来制作梯子、铁丝网这种镂空的结构。
@@ -119,7 +121,7 @@
 	- “渲染模式”选“**固体**”，这样蓝色部分就会透明
 - ![](../images/ladder_apperance.png)
 
-### 梯子功能部分
+#### 梯子功能部分
 - 制作一个固体，贴上```aaatrigger```纹理，和刚才的梯子重叠在一起，转为[func_ladder](wiki/entity/func_ladder)
 	- [func_ladder](wiki/entity/func_ladder)默认是不可见，所以才需要配合一个外观实体来显示外观
 	- 我们一般给看不见的实体贴上```aaatrigger```纹理，没有特别的功能，只是为了方便区分
@@ -130,3 +132,40 @@
 
 ![](../videos/play_ladder.mp4 ':include :type=video controls preload="metadata" width=60%')
 ### 进入区域触发文本
+- 接下要实现的功能是，玩家进入指定区域时触发文本
+
+#### 触发区域
+- 我们使用[trigger_multiple](wiki/entity/trigger_multiple)来制作触发区域，玩家进入（或者呆在里面）时会触发目标，并且可以多次触发（能设置复位时间）
+- 创建一个固体，用它划定一个区域，然后转为[trigger_multiple](wiki/entity/trigger_multiple)
+	- “目标”填“mytext”
+	- “复位前延迟”填“5”，这样触发一次后，等5秒后能再次触发
+	- 注意[trigger_multiple](wiki/entity/trigger_multiple)本身是**不可见的**
+	- ![](../images/trigger_area.png)
+
+#### 显示文本
+- 显示文本常用[game_text](wiki/entity/game_text)，它能在玩家HUD上显示文字，支持中文和多行
+- 创建一个点实体，放在哪里都可以（一般就放在引发它的实体旁边），选择[game_text](wiki/entity/game_text)
+	- “名称”填“mytext”，要和[trigger_multiple](wiki/entity/trigger_multiple)那边的“目标”一样
+	- “信息文本”就是要显示的内容，这里填“你进入了触发区域！\\n5秒后能再次触发”
+		- 这里的\\n是用来换行的
+	- “垂直位置”填“0.3”，这样文字显示在中间偏上的位置
+	- “颜色”填“255 0 0”，也就是红色
+	- “淡入时间/打字时间”填“0.5”，文字出现时耗费0.5秒慢慢出现
+	- “淡出时间”也填“0.5”，文字消失时耗费0.5秒慢慢消失
+	- “保持时间”填“3”，除去淡入淡出，文字显示3秒
+	- 
+	- ![](../images/trigger_text.png)
+- 进入游戏，走进这个区域，会有这样的效果
+
+![](../videos/play_trigger_text.mp4 ':include :type=video controls preload="metadata" width=60%')
+
+## 总结
+- 除了上述的各种功能外，CS还提供了各种各样的实体，来制作各种有趣的地图
+	- **对战图**：你可以用炸弹、人质、VIP、土匪逃脱等相关的实体来做常规的对战图，或者这些都不用，而是放一些枪带地上做纯粹的对枪图！
+	- **闯关、解谜图**：用实体制作各种机关，玩家要穿过危险的陷阱，探索地图来找到前进的方法，在CS里来一场冒险！
+	- **KZ图**：想练练身法？用实体来装饰攀岩地图，或是制作连跳地图！
+	- **僵尸图**：用实体移除T的枪械，给他们一把匕首、超多的HP以及更高的灵敏度，僵尸诞生了！
+	- 还有很多很多....死跑图、越狱图、HNS图、昼夜求生图等等...发挥你的创意吧！
+- 所有实体的介绍和使用说明可以在这里查看：[实体列表](wiki/entity/)
+
+- 地图制作得差不多了，想要发给别人玩？下一节会详细讲解地图发布需要怎么打包
