@@ -15,7 +15,7 @@
 	- 按住Ctrl可以多选
 	- 我们分别把地面、墙面和天花板换成```C1A3FLOOR02```、```FIFTIES_WALL14```和```FIFTIES_CEIL5```纹理
 
-![](../videos/set_texture_per_face.mp4 ':include :type=video controls preload="metadata" width=60%')
+![](../videos/set_texture_per_face.mp4 ':include :type=video controls preload="metadata"')
 
 - **对齐纹理**：墙面的纹理没有对齐，“纹理调整工具”也提供了辅助对齐的方法。
 	- 调整对齐主要是调整缩放、移动和旋转的值，但一般不需要手动填写，hammer给了一些辅助的按钮
@@ -28,7 +28,7 @@
 		- 一般最常用的就是整面
 	- 这里也是用整面来对齐纹理
 
-![](../videos/align_texture.mp4 ':include :type=video controls preload="metadata" width=60%')
+![](../videos/align_texture.mp4 ':include :type=video controls preload="metadata"')
 
 - 对其他三个墙面进行同样的操作，我们得到一个不错的房间了！
 
@@ -50,7 +50,7 @@
 		- ![](../images/door_in_wall.png)
 	- 先选门，然后选墙（按住Ctrl多选），接着点击菜单栏→工具→雕刻，墙上就会出现一个洞了。
 
-![](../videos/carve.mp4 ':include :type=video controls preload="metadata" width=60%')
+![](../videos/carve.mp4 ':include :type=video controls preload="metadata"')
 
 - 把门放回去，拉扁，门的外形就做好了！
 	- ![](../images/door_solid.png)
@@ -64,7 +64,7 @@
 	- ![](../images/rotating_door.png)
 - **效果**：这样一个转门就制作完成了！同样的方法，在另外三面墙上也制作一个门（记得同样的东西可以直接复制）。这个门在游戏里是这样的：
 
-![](../videos/play_door.mp4 ':include :type=video controls preload="metadata" width=60%')
+![](../videos/play_door.mp4 ':include :type=video controls preload="metadata"')
 
 
 ## 更多实体的应用
@@ -81,7 +81,7 @@
 	- “耐久度”填“100”
 - 这样我们就有了一个100点耐久，能打碎的木箱子，他在游戏里是这样的：
 
-![](../videos/play_breakable_box.mp4 ':include :type=video controls preload="metadata" width=60%')
+![](../videos/play_breakable_box.mp4 ':include :type=video controls preload="metadata"')
 
 - 类似的方法也可以制作玻璃
 - 制作一片固体，贴上玻璃纹理（如```GLASS_BRIGHT```），转为[func_breakable](wiki/entity/func_breakable)
@@ -95,7 +95,7 @@
 	- 
 - 在游戏里效果是这样：
 
-![](../videos/play_break_glass.mp4 ':include :type=video controls preload="metadata" width=60%')
+![](../videos/play_break_glass.mp4 ':include :type=video controls preload="metadata"')
 ### 水
 - 制作一个玩家能在里面游泳的水池
 - 制作一个固体，贴上水的纹理，转为[func_water](wiki/entity/func_water)（这里顺便做了些装饰，变成一个水池）
@@ -108,7 +108,7 @@
 
 - 效果是这样的：
 
-![](../videos/play_water.mp4 ':include :type=video controls preload="metadata" width=60%')
+![](../videos/play_water.mp4 ':include :type=video controls preload="metadata"')
 ### 梯子
 - 梯子是最常见的实体之一了，不过它的制作要复杂一些，需要用到两个实体
 - 制作梯子时，我们需要两个实体：一个负责梯子的外观、另一个负责梯子的功能
@@ -130,7 +130,7 @@
 
 - 大功告成！[func_illusionary](wiki/entity/func_illusionary)负责显示梯子的外观，[func_ladder](wiki/entity/func_ladder)负责梯子的功能，他在游戏里是这样的：
 
-![](../videos/play_ladder.mp4 ':include :type=video controls preload="metadata" width=60%')
+![](../videos/play_ladder.mp4 ':include :type=video controls preload="metadata"')
 ### 进入区域触发文本
 - 接下要实现的功能是，玩家进入指定区域时触发文本
 
@@ -157,7 +157,7 @@
 	- ![](../images/trigger_text.png)
 - 进入游戏，走进这个区域，会有这样的效果
 
-![](../videos/play_trigger_text.mp4 ':include :type=video controls preload="metadata" width=60%')
+![](../videos/play_trigger_text.mp4 ':include :type=video controls preload="metadata"')
 
 ## 总结
 - 除了上述的各种功能外，CS还提供了各种各样的实体，来制作各种有趣的地图
