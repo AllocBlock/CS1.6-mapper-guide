@@ -39,7 +39,7 @@
 
     - ![](../images/mdl_texture_indexed_color.png)
 
-### 3. 原始模型→obj
+### 3 原始模型→obj
 - **导出obj**：用你的3D软件制作/打开源文件后，导出为obj；以blender为例。默认选项无需修改（确认一下UV Coordinates有选中）
 > 你可以导出其他格式，只要Milkshape 3D支持即可；obj是非常简单的模型格式，他只能表示简单的面以及贴图，不支持骨骼、动画等，但这对制作静止的mdl足够了
 
