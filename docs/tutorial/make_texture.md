@@ -27,8 +27,7 @@ CS中的纹理有格式要求，所以需要在图像软件里调好。
     - ![](../images/ps_texture_resize.png)
 - **转索引颜色**：点击菜单栏→模式→索引颜色，会弹出设置窗口，保持默认值即可，点击确定。
     - 转索引颜色后图像质量可能下降，这是正常现象，因为索引颜色模式下，图片最多只有256种颜色。
-    - ![](../images/ps_indexed_color.png)
-    - ![](../images/ps_indexed_color_setting.png)
+    - ![](../images/ps_indexed_color.png) ![](../images/ps_indexed_color_setting.png)
 - **保存bmp**：菜单栏→存储为，格式选择bmp，选项卡默认8位。
     - ![](../images/ps_save_bmp.png)
 - **新建/打开wad**：打开Wally，点击菜单栏→新建，选择```Half-Life Package [wad3] (.wad)```
@@ -44,6 +43,7 @@ CS中的纹理有格式要求，所以需要在图像软件里调好。
 ## 无缝纹理的制作
 无缝纹理指的是上下或左右边界能完美拼合，看不出接缝的纹理。CS中大量使用了这种纹理，可以靠小小的一张贴图贴满整个地面和墙面，从而节省资源。
 > 下图就是一张无缝纹理，以及其平铺开的效果图
+> 
 > ![](../images/seamless_texture_example.png)
 
 接下来会介绍一种无缝纹理的制作方法，它适合偏自然界的纹理。
@@ -68,7 +68,23 @@ CS中的纹理有格式要求，所以需要在图像软件里调好。
     - ![](../images/ps_seamless_compare.png)
 
 
-## 透明纹理
+## 透明纹理的制作
 透明纹理是名称以```{```开头的纹理，它可以实现纹理的部分透明，来实现梯子、铁丝网等等效果。
 
-> {LADDER1
+> 使用{LADDER1制作梯子的效果
+> 
+> ![](../images/transparent_hammer.png) ![](../images/transparent_cs.png)
+
+想要自己实现透明纹理，需要满足以下两点：
+- 纹理名称以```{```开头，如```{LADDER1```、```{FENCE```
+- 调色板最后一个颜色（第255个颜色）代表透明色，一般用蓝色表示，使用这个颜色的地方会透明
+
+实现透明纹理可以在Wally里操作，下面以这个logo为例：
+- **打开纹理**：纹理导入wad后，双击打开编辑
+    - ![](../images/wally_transparent_texture.png)
+- **修改调色板**：菜单栏→颜色→编辑调色板来打开调色板，点击最后一个颜色（最右下角），颜色修改为0 0 255（理论上其他颜色也可以，不过蓝色是约定俗成）
+    - ![](../images/wally_transparent_palatte.png)
+- **用透明色填充**：在右侧点击最后一个颜色，然后在需要透明的地方画上这个颜色（可以用填充功能快速上色）
+    - ![](../images/wally_fill_color.png)
+- 由此透明纹理就制作完成了！在游戏里是这样的：
+    - ![](../images/cs_custom_transparent_texture.png)

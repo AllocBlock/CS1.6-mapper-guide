@@ -13,7 +13,7 @@
 - **最新fgd**：V大 *cs16_0.8.2.0_vl.fgd*
 - **最新编译程序**：V大 *vhlt v34*，64位
 - **超级地图编译器**：第三方编译器，能方便地调整编译选项，发布前的最后一次编译一般用它，X-man开发
-- **spr、mdl、bsp查看工具**：*Sprite Explorer*、*HLMV*、*BSP Viewer*
+- **spr、mdl、bsp查看工具**：*HL Texture Tools*和*Sprite Explorer*、*HLMV*、*BSP Viewer*
 - **地形制作工具**：方便地制作山体，导出map，*GenSurf*和*Terrain Generator*两款
 - **纹理制作工具**：制作自己的wad纹理，*Wally*
 - **纹理提取工具**：从bsp里提取打包的纹理，*wintextract*
