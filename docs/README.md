@@ -17,7 +17,7 @@
         - [模型制作](tutorial/make_mdl)
         - [图标制作](tutorial/make_sprite)
         - [音效制作](tutorial/make_sound)
-- [未完待续...](tutorial/to_be_continue)
+    - [未完待续...](tutorial/to_be_continue)
 
 - [翻阅实体的功能和使用方法](wiki/entity/)
     - [按名称排序](wiki/entity/)
