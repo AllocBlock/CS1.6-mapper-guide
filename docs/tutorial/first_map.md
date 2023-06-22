@@ -92,5 +92,5 @@
 
 ![](../videos/play_first_map.mp4 ':include :type=video controls preload="metadata"')
 
-> 本节的地图源文件可以在这里下载![](../resources/rmfs/first_map_box.rmf)
+> 本节的地图源文件可以在这里[下载](resources/rmfs/first_map_box.rmf ':ignore')
 - 在下一节里，我们会添加更多东西来丰富地图。

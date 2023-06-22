@@ -11,7 +11,7 @@
 - **Blender**：用于格式转换、制作模型、简化模型等。任意3D建模软件均可，这里以免费开源的Blender为例，[【官网】](https://www.blender.org/download/)
 - **MilkShape 3D**：简称MS3D，强大且经典的软件，这里用来导出mdl所需的smd文件，[【官网】](http://milkshape3d.com/)（付费软件，自行寻找资源(͡° ͜ʖ ͡°)，比如CS模型吧置顶贴）
 - **HLMV**：模型查看软件，能直接查看mdl，顺便带了编译mdl的界面（地图工具包里有，CS模型吧置顶贴也能找到）
-- **studiomdl.exe** ：编译mdl的工具。许多HLMV自带打包了一份studiomdl.exe，如果没有的话这里可以[下载](resources/studiomdl.exe)，只有一个studiomdl.exe文件而已
+- **studiomdl.exe** ：编译mdl的工具。许多HLMV自带打包了一份studiomdl.exe，如果没有的话这里可以[下载](resources/studiomdl.exe ':ignore')，只有一个studiomdl.exe文件而已
 - **Photoshop**：用来处理贴图。任意专业图像处理软件均可
 
 ## 步骤
@@ -91,7 +91,7 @@ end
 ```
 - 现在目录下有这些文件了
     - ![](../images/mdl_source_files.png)
-- **配置编译器**：打开HLMV，菜单栏→Tools→Options→Compiler→Path to 'studiomdl.exe'，填studiomdl.exe的路径，他是mdl的编译器，HLMV可能自带一份，如果没有的话这里可以[下载](resources/studiomdl.exe)。
+- **配置编译器**：打开HLMV，菜单栏→Tools→Options→Compiler→Path to 'studiomdl.exe'，填studiomdl.exe的路径，他是mdl的编译器，HLMV可能自带一份，如果没有的话这里可以[下载](resources/studiomdl.exe ':ignore')。
     - ![](../images/hlmv_compiler_setting.png)
 - **编译qc**：菜单栏→Compile Model...，选择qc文件，确认，等待编译完成；编译成功后，mdl会生成在qc同级目录，如果失败了可以查看输出日志的失败原因；使用HLMV打开mdl查看结果，大功告成！
     - ![](../images/compiled_mdl.png)

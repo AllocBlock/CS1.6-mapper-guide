@@ -6,7 +6,7 @@ CS中像烟雾、光晕、火焰等等东西很难用固拼表示，而用模型
 - spr的透明模式
 
 ## 所需软件  
-- **HL Texture Tools**：spr查看和制作工具，比较新的软件（2018年诞生的），使用比较方便，你可以在[Half-Life Texture Tools | Valve Developer Union](https://valvedev.info/tools/half-life-texture-tools/)这里下载， 或者在作者的github仓库[yuraj11/HL-Texture-Tools](https://github.com/yuraj11/HL-Texture-Tools)上找到最新版，[【hammer工具包】](resources/CS地图制作工具包%202023.03.21.zip)中也带有。
+- **HL Texture Tools**：spr查看和制作工具，比较新的软件（2018年诞生的），使用比较方便，你可以在[Half-Life Texture Tools | Valve Developer Union](https://valvedev.info/tools/half-life-texture-tools/)这里下载， 或者在作者的github仓库[yuraj11/HL-Texture-Tools](https://github.com/yuraj11/HL-Texture-Tools)上找到最新版，[【hammer工具包】](resources/CS地图制作工具包%202023.03.21.zip ':ignore')中也带有。
     - 如果HL Texture Tools出现了问题，可以使用比较老的一款软件：**Sprite Explorer**，步骤几乎是一样的。
 
 ## SPR透明模式
