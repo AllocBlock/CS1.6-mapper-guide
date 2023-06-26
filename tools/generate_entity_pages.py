@@ -284,10 +284,10 @@ def generate_pages(entities : list[FGDEntity], target_dir, link_path):
 
     remainEntities = entities.copy()
     for categoryName, categoryDescription in categories:
-        entities = [ent for ent in remainEntities if ent.name.startswith(categoryName)]
-        remainEntities = [ent for ent in remainEntities if ent not in entities]
+        categoryEntities = [ent for ent in remainEntities if ent.name.startswith(categoryName)]
+        remainEntities = [ent for ent in remainEntities if ent not in categoryEntities]
         indexText += f"## {categoryName} *{categoryDescription}*\n"
-        indexText += genrate_entity_list(entities, link_path)
+        indexText += genrate_entity_list(categoryEntities, link_path)
 
     indexText += "## 其他\n"
     indexText += genrate_entity_list(remainEntities, link_path)
@@ -328,6 +328,7 @@ def generate_pages(entities : list[FGDEntity], target_dir, link_path):
                 text += f"{desc}\n\n"
 
         save_file(text, target_dir, entity.name + ".md")
+        print(f"{entity.name} done.")
 
 entities = load_fgd('./docs/resources/cs16_0.8.2.0_vl.fgd')
 generate_pages(entities, "./docs/wiki/entity/", "wiki/entity")

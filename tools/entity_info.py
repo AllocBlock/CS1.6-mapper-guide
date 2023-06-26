@@ -623,7 +623,7 @@ ENTITIY_INFO = {
     "game_team_master": {
         "tags": [],
         "short_description": "（废弃）确认玩家队伍",
-        "full_description": f"用于确认玩家队伍的点实体，**但因为BUG无法正常使用**。与此相关的game_team_set点实体也无法正常使用。",s
+        "full_description": f"用于确认玩家队伍的点实体，**但因为BUG无法正常使用**。与此相关的game_team_set点实体也无法正常使用。",
         "tips": [],
         "alerts": ["因为存在BUG已废弃，本实体不能正确辨别玩家队伍，不能正常使用。"],
     },
